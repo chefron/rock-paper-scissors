@@ -51,7 +51,7 @@ function playRound (playerSelection, computerSelection) {
 
 
 function game(){
-    for (let i = 0; i < 5; i++) {
+    while (playerScore < 5 && computerScore < 5){ // replaced for loop [[for (let i = 0; i < 5; i++)]] with while loop
     const computerSelection = getComputerChoice ();
     let playerSelection = prompt("Choose, bitch")
     playerSelection =  playerSelection.toLowerCase();
