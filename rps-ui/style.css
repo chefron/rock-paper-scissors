@@ -1,0 +1,73 @@
+body {
+   
+}
+
+.top-bar{
+    background-color: black;
+    height: 210px;
+    width: 100%;
+}
+
+.bottom-bar{
+    background-color: black;
+    height: 210px;
+    width: 100%;
+}
+
+.left-fist-container {
+    overflow: hidden;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+.left-fist {
+    width: 700px;
+    margin-left: -75px;
+    rotate: 4deg;
+    animation-duration: 3.3s;
+    animation-name: shake, float;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transform-origin: -90% 0%;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0,0px)
+    }
+    50% {
+        transform: translate(0,4px)
+    }
+    100% {
+        transform: translate(0, 0px)
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    14% {
+        transform: rotate(-8deg);
+    }
+    28% {
+        transform: rotate(0deg);
+    }
+    42% {
+        transform: rotate(-10deg);
+    }    
+    56% {
+        transform: rotate(0deg);
+    }
+    70% {
+        transform: rotate(-12deg);
+    }
+    84% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-40deg);
+    }
+}
+

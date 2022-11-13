@@ -11,14 +11,46 @@ let computerScore = 0;
 const results = document.querySelector('#results');
 const gameResults = document.querySelector('#gameResults');
 
+
+
+function resetGame(){
+    newGame.style.display = 'block';
+}
+
+
+function gameOver (){
+    const buttonContainer = document.querySelector('#buttonContainer')
+    buttonContainer.style.display = 'none';
+}
+
+
 function gameStatus (){
     if (playerScore === 5){
         gameResults.textContent = "You win the game!";
-        
+        gameOver();
+        resetGame();
     } else if (computerScore === 5){
         gameResults.textContent = "The Computer wins the game!";
+        gameOver();
+        resetGame();
     }
 }
+
+
+const newGame = document.getElementById('newGame').querySelector('button');
+newGame.style.display = 'none';
+
+newGame.addEventListener('click', () => {
+    buttonContainer.style.display = 'block';
+    newGame.style.display = 'none';
+    playerScore = 0;
+    computerScore = 0
+    score.textContent = `Your score: ${playerScore}, Computer score: ${computerScore}.`;
+    results.textContent = "";
+    gameResults.textContent = "";
+  });
+
+
 
 function playRound (playerSelection, computerSelection) {
         if (playerSelection == computerSelection){
@@ -42,12 +74,25 @@ function playRound (playerSelection, computerSelection) {
     }  
 
 
-const buttons = document.querySelectorAll('button');
+function removeAnimation () {
+    const leftFist = document.querySelector('.left-fist');
+    leftFist.style.display = 'none';
+    }
+
+const buttons = document.getElementById('buttonContainer').querySelectorAll('button');
 buttons.forEach((button) => {
 button.addEventListener('click', () => {
-    playRound(button.value, getComputerSelection())
+    playRound(button.value, getComputerSelection());
   });
 });
+
+
+
+
+
+
+
+
 
 
 
