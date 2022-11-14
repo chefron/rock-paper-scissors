@@ -51,14 +51,27 @@ newGame.addEventListener('click', () => {
   });
 
 
+  function leftPaperAnimation () {
+    const leftHandContainer = document.querySelector('.left-hand-container')
+    const leftPaper = document.createElement('img');
+    leftPaper.src = "images/left-paper.png";
+    leftPaper.classList.add("left-paper")
+    leftHandContainer.appendChild(leftPaper);
+}
+
 
 function playRound (playerSelection, computerSelection) {
-        if (playerSelection == computerSelection){
+
+        if (playerSelection == "paper"){
+            leftPaperAnimation ();
+        }
+
+        else if (playerSelection == computerSelection){
             results.textContent = `You both selected ${playerSelection}! It\'s a tie!`;
         } 
-        
+  
         else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")){
-            playerScore += 1;
+           playerScore += 1;
             results.textContent = `You selected ${playerSelection} and the computer selected ${computerSelection}. You win!`;
         }    
         
@@ -74,17 +87,24 @@ function playRound (playerSelection, computerSelection) {
     }  
 
 
-function removeAnimation () {
+function shake () {
     const leftFist = document.querySelector('.left-fist');
-    leftFist.style.display = 'none';
-    }
+    leftFist.style.animationName = 'shake';
+    leftFist.style.animationIterationCount = 1;
+   }
+
+
+
+
 
 const buttons = document.getElementById('buttonContainer').querySelectorAll('button');
 buttons.forEach((button) => {
 button.addEventListener('click', () => {
-    playRound(button.value, getComputerSelection());
+    playRound(button.value, getComputerSelection()), shake();
   });
 });
+
+
 
 
 
