@@ -125,7 +125,7 @@ buttons.forEach((button) => {
 
 function leftPaperAnimation () {
     leftPaper.src = "images/left-paper.png";
-    leftPaper.classList.add("left-paper")
+    leftPaper.classList.add("left-paper", "left-movement")
     leftHandContainer.appendChild(leftPaper);
     }
     
