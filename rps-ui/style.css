@@ -1,67 +1,114 @@
+body {
+    background-color: black;
+}
+
 .text {
     color: red;
 }
 
 .top-bar{
     background-color: black;
-    height: 23vh;
-    width: 100%;
-}
-
-.bottom-bar{
-    background-color: black;
-    height: 23vh;
+    height: 20vh;
     width: 100%;
 }
 
 .left-hand-container {
     overflow: hidden;
-    height: 54vh;
+    background-color: black;
+    height: 60vh;
+    background-image: url(images/tabletop.jpg);
+    background-position-y: -60%;
 }
+
+.bottom-bar {
+    background-color: black;
+    color: red;
+    height: 20vh;
+    width: 100%;
+}
+
+.shake-bar {
+    background-color: black;
+    height: 1vh;
+    width: 100%;
+}
+
+.vertical-shake{
+    animation-duration: 2.5s;
+    animation-name: shaking;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+@keyframes shaking {
+    0% {transform: translateY(0px);}
+    17% {transform: translateY(0px);}
+    18% {transform: translateY(4px);}
+    20% {transform: translateY(0px);}
+    44% {transform: translateY(0px);}
+    45% {transform: translateY(4px);}
+    47% {transform: translateY(0px);}
+    71% {transform: translateY(0px);}
+    72% {transform: translateY(4px);}
+    74% {transform: translateY(0px);}
+    100% {transform: translateY(0px);}
+}
+
+
 
 .left-paper {
     width: 700px;
-    rotate: -2deg;
-    margin-left: 150px;
-    margin-top: 110px;
+    margin-left: 120px;
     overflow: hidden;
-    animation-delay: 1.6s;
-    animation-duration: 3.2s;
+    animation-delay: 1.85s;
+    rotate: 4deg;
+    animation-duration: 3.5s;
     animation-name: gesture;
     animation-iteration-count: 1;
     animation-fill-mode: both;
-    transform-origin: -90% 0%;
+    transform-origin: -100% 0%;
     animation-timing-function: ease-in-out;
 }
 
 @keyframes gesture {
-    0%  {transform: rotate(-270deg);}
-    20% {transform: rotate(0deg);}
-    23% {transform: rotate(-.2deg)}
+    0%  {transform: rotate(-240deg)}
+    22% {transform: rotate(0deg);}
+    24% {transform: rotate(-.2deg)}
     26% {transform: rotate(0deg)}
-    70% {transform: rotate(0deg)}
-    100%{transform: rotate(-270deg)}
+    80% {transform: rotate(0deg)}
+    99% {opacity: 1;
+        height: auto;
+        width: 700px;}
+    100%{transform: rotate(-240deg);
+         opacity: 0;
+         height: 0;
+         width: 0;
+    }
 }
 
 
 .left-fist {
     width: 700px;
+    margin-left: -200px;
+    margin-top: -40px;
     height: auto;
-    margin-left: -220px;
-    margin-top: 75px;
-    rotate: -2deg;
-    overflow: hidden;
-    animation-duration: 2s;
+    rotate: 4deg;
+    overflow: hidden;   
+    animation-duration: 2.5s;
     animation-name: float;
-    animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-fill-mode: forwards;
-    transform-origin: -90% 0%;
-    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    transform-origin: -100% 0%;
 }
 
-
-
+.shake-fist{
+    animation-name: shakeFist;
+    animation-iteration-count: 1;
+}
 
 
 @keyframes float {
@@ -76,26 +123,28 @@
     }
 }
 
-@keyframes shake {
-    0% {transform: rotate(0deg);}
-    15% {transform: rotate(8deg);}
-    19% {transform: rotate(8deg);}
-    33% {transform: rotate(-2deg);}
-    48% {transform: rotate(8deg);}
-    52% {transform: rotate(8deg);}
-    66% {transform: rotate(-3deg);}
-    80% {transform: rotate(8deg);}
-    86% {transform: rotate(8deg);}
-    99%{
-        transform: rotate(-15deg);
+@keyframes shakeFist {
+    0%  {transform: rotate(0deg);}
+    12% {transform: rotate(-1deg)}
+    17% {transform: rotate(5deg);}
+    24% {transform: rotate(5deg);}
+    39% {transform: rotate(-5deg);}
+    44% {transform: rotate(5deg);}
+    51% {transform: rotate(5deg);}
+    66% {transform: rotate(-6deg);}
+    71% {transform: rotate(5deg);}
+    81% {transform: rotate(5deg);}
+    95% {transform: rotate(-30deg);
         opacity: 1;
         height: auto;
-        width: 700px;
-    }
-    100% {
+        width: 700px;}
+    96% {
         opacity: 0;
         height: 0;
-        width: 0;
-    }
+        width: 0;}
+    100% {
+            opacity: 0;
+            height: 0;
+            width: 0;}
 }
 

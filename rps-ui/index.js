@@ -1,4 +1,18 @@
 const options = ["rock", "paper", "scissors"];
+const buttons = document.getElementById('buttonContainer').querySelectorAll('button');
+const results = document.querySelector('#results');
+const gameResults = document.querySelector('#gameResults');
+const leftHandContainer = document.querySelector('.left-hand-container')
+const leftPaper = document.createElement('img');
+const shakeBar = document.querySelector('.shake-bar');
+const leftFist = document.querySelector('.left-fist');
+const tableHit = new Audio('sounds/tablehit.mp3');
+
+
+
+
+
+
 
 function getComputerSelection (){
     const selection = options[Math.floor(Math.random() * options.length)];
@@ -8,8 +22,7 @@ function getComputerSelection (){
 let playerScore = 0;
 let computerScore = 0;
 
-const results = document.querySelector('#results');
-const gameResults = document.querySelector('#gameResults');
+
 
 
 
@@ -50,16 +63,6 @@ newGame.addEventListener('click', () => {
     gameResults.textContent = "";
   });
 
-
-  function leftPaperAnimation () {
-    const leftHandContainer = document.querySelector('.left-hand-container')
-    const leftPaper = document.createElement('img');
-    leftPaper.src = "images/left-paper.png";
-    leftPaper.classList.add("left-paper")
-    leftHandContainer.appendChild(leftPaper);
-}
-
-
 function playRound (playerSelection, computerSelection) {
 
         if (playerSelection == "paper"){
@@ -87,22 +90,52 @@ function playRound (playerSelection, computerSelection) {
     }  
 
 
-function shake () {
-    const leftFist = document.querySelector('.left-fist');
-    leftFist.style.animationName = 'shake';
-    leftFist.style.animationIterationCount = 1;
+
+
+
+
+function shakeFist () {
+    leftFist.classList.remove('shake-fist');
+    setTimeout(function(){
+        leftFist.classList.add('shake-fist');
+      },10);
    }
 
+   buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            shakeFist();
+      });
+    });
 
 
+function verticalShake () {
+    leftHandContainer.classList.remove('vertical-shake');
+    setTimeout(function(){
+        leftHandContainer.classList.add('vertical-shake');
+      },10);
+   }
 
-
-const buttons = document.getElementById('buttonContainer').querySelectorAll('button');
 buttons.forEach((button) => {
-button.addEventListener('click', () => {
-    playRound(button.value, getComputerSelection()), shake();
+        button.addEventListener('click', () => {
+            verticalShake();
+      });
+    });
+
+
+
+function leftPaperAnimation () {
+    leftPaper.src = "images/left-paper.png";
+    leftPaper.classList.add("left-paper")
+    leftHandContainer.appendChild(leftPaper);
+    }
+    
+    
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.value, getComputerSelection())
   });
 });
+
 
 
 
