@@ -2,9 +2,11 @@ const options = ["rock", "paper", "scissors"];
 const buttons = document.getElementById('buttonContainer').querySelectorAll('button');
 const results = document.querySelector('#results');
 const gameResults = document.querySelector('#gameResults');
-const leftHandContainer = document.querySelector('.left-hand-container')
+const leftHandContainer = document.querySelector('.left-hand-container');
+const leftRockContainer = document.querySelector('.left-rock-container');
+const leftPaperContainer = document.querySelector('.left-paper-container');
 const leftPaper = document.createElement('img');
-const shakeBar = document.querySelector('.shake-bar');
+const leftRock = document.createElement('img');
 const leftFist = document.querySelector('.left-fist');
 const tableHit = new Audio('sounds/tablehit.mp3');
 
@@ -67,6 +69,9 @@ function playRound (playerSelection, computerSelection) {
 
         if (playerSelection == "paper"){
             leftPaperAnimation ();
+       
+        } else if (playerSelection == "rock"){
+            leftRockAnimation ();
         }
 
         else if (playerSelection == computerSelection){
@@ -125,9 +130,17 @@ buttons.forEach((button) => {
 
 function leftPaperAnimation () {
     leftPaper.src = "images/left-paper.png";
-    leftPaper.classList.add("left-paper", "left-movement")
-    leftHandContainer.appendChild(leftPaper);
+    leftPaper.classList.add("left-paper-container", "left-movement")
+    leftPaperContainer.appendChild(leftPaper);
     }
+
+function leftRockAnimation () {
+    leftRock.src = "images/left-rock.png";
+    leftRock.classList.add("left-rock-container", "left-movement")
+    leftRockContainer.appendChild(leftRock);
+    }
+
+    
     
     
 buttons.forEach((button) => {
