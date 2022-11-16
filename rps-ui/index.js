@@ -3,6 +3,7 @@ const buttons = document.getElementById('buttonContainer').querySelectorAll('but
 const results = document.querySelector('#results');
 const gameResults = document.querySelector('#gameResults');
 const leftHandContainer = document.querySelector('.left-hand-container');
+const flexContainer = document.querySelector('.flex-container');
 const leftRockContainer = document.querySelector('.left-rock-container');
 const leftPaperContainer = document.querySelector('.left-paper-container');
 const leftPaper = document.createElement('img');
@@ -92,12 +93,8 @@ function playRound (playerSelection, computerSelection) {
         score.textContent = `Your score: ${playerScore}, Computer score: ${computerScore}.`;
 
         gameStatus();
+        resetFist();
     }  
-
-
-
-
-
 
 function shakeFist () {
     leftFist.classList.remove('shake-fist');
@@ -114,9 +111,9 @@ function shakeFist () {
 
 
 function verticalShake () {
-    leftHandContainer.classList.remove('vertical-shake');
+    flexContainer.classList.remove('vertical-shake');
     setTimeout(function(){
-        leftHandContainer.classList.add('vertical-shake');
+        flexContainer.classList.add('vertical-shake');
       },10);
    }
 
@@ -140,13 +137,17 @@ function leftRockAnimation () {
     leftRockContainer.appendChild(leftRock);
     }
 
-    
+function resetFist (){
+    setTimeout(function(){
+    leftFist.classList.remove('shake-fist');
+    },5000);
+}
     
     
 buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        playRound(button.value, getComputerSelection())
-  });
+  button.addEventListener('click', () => {
+    playRound(button.value, getComputerSelection())
+    });
 });
 
 

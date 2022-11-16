@@ -9,31 +9,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="top-bar"></div>
-    
-    <div class="left-hand-container">
-        <img src="images/left-rock.png" class="left-fist">
-        <div class="left-rock-container"></div>
-        <div class="left-paper-container"></div>
-    </div>
-    <div class="bottom-bar">
-
-        <div id="buttonContainer">
-            <button value="rock">Rock</button>
-            <button value="paper">Paper</button>
-            <button value="scissors">Scissors</button>
+   
+    <div class="flex-container">
+        
+        <div class="top-bar"></div>
+        
+        <div class="left-hand-container">  
+                <img src="images/left-rock.png" class="left-fist">
+                <div class="left-rock-container"></div>
+                <div class="left-paper-container"></div>
         </div>
+        
+        <div class="bottom-bar">
 
-        <div id="newGame">
-            <button>New Game</button>
+            <div id="buttonContainer">
+                <button value="rock">Rock</button>
+                <button value="paper">Paper</button>
+                <button value="scissors">Scissors</button>
+            </div>
+
+            <div id="newGame">
+                <button>New Game</button>
+            </div>
+
+            <div id="results" class="text"></div>
+            <div id="score"></div>
+            <div id="gameResults"></div>
+
+        
         </div>
-
-        <div id="results" class="text"></div>
-        <div id="score"></div>
-        <div id="gameResults"></div>
-
+    
     </div>
 
-    
 </body>
 </html>
