@@ -7,51 +7,122 @@ body {
 }
 
 .flex-container {
-    width: 100vw;
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-content: stretch;
 }
 
 .top-bar{
-    width: 100vw;
     background-color: black;
+    color: red;
+    width: 100vw;
+    height: 20vh;
     flex: 1;
     flex-shrink: 0;
 }
 
-.left-hand-container {
-    overflow: clip;
-    max-height: 60vh;
+.canvas {
+    overflow: hidden;
     background-color: black;
-    background-image: url(images/tabletop.jpg);
-    background-position-y: 80%;
     mix-blend-mode: hard-light;
-    background-size: 100% auto;
+    height: auto;
+    flex: 3.2;
+    flex-shrink: 1;
+    position: relative;
+    background-image: url("images/tabletop.jpg");
     background-repeat: no-repeat;
-    flex: 3;
-    flex-shrink: 5;
-} 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+}
+
+
+.left-hand-container { 
+    position: relative;
+    flex: 1;
+}
+
+.right-hand-container {
+    background-color: blue;
+    position: relative;
+    flex: 1;
+    opacity: 20%;
+}
+
+.left-fist {
+    position: absolute;
+    bottom: 25%;
+    left: -10%;
+    max-width: 38vw;
+    min-width: 15vw;
+    height: auto;
+}
+
+.left-fist-intro {
+    animation-name: left-fist-intro;
+    animation-duration: 3s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+    transform-origin: -100% 0%;
+}
+
+.left-fist-float {
+    animation-duration: 8s;
+    animation-name: float;
+    animation-delay: .2;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    transform-origin: -100% 0%;}
+
+@keyframes left-fist-intro  {
+    0%  {transform: rotate(-240deg);}
+    50% {transform: rotate(0deg);}
+    53% {transform: rotate(-.2deg);}
+    56% {transform: rotate(0deg);}
+    59% {transform: rotate(-.1deg);}
+    62% {transform: rotate(0deg);}
+    100% {transform: rotate(0deg);}
+}
+
+.left-paper-container {
+    width: 63%;
+    rotate: -4deg;
+}
+
+.left-rock-container {
+    width: 63%;
+    rotate: -4deg;
+}
+
 
 .bottom-bar {
     background-color: black;
     color: red;
     width: 100vw;
+    height: 20vh;
     flex: 1;
     flex-shrink: 0;
+
 }
 
-.vertical-shake{
-    animation-duration: 2.5s;
-    animation-name: shaking;
+.shake-canvas{
+    position: initial;
+    animation-duration: 2.3s;
+    animation-name: shake-canvas;
     animation-iteration-count: 1;
     animation-direction: alternate;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
 }
 
-@keyframes shaking {
+@keyframes shake-canvas {
     0% {transform: translateY(0px);}
     17% {transform: translateY(0px);}
     18% {transform: translateY(4px);}
@@ -65,36 +136,7 @@ body {
     100% {transform: translateY(0px);}
 }
 
-.left-fist {
-    position: absolute;
-    bottom: 30vh;
-    width: 40%;
-    rotate: 2deg;
-    overflow: clip;
-    animation-duration: 2.4s;
-    animation-name: float;
-    animation-direction: alternate;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in;
-    transform-origin: -100% 0%;
-}
 
-.left-paper-container {
-    position: absolute;
-    width: 63%;
-    left: -1%;
-    bottom: 54%;
-    rotate: -4deg;
-}
-
-.left-rock-container {
-    position: absolute;
-    width: 63%;
-    left: -5%;
-    bottom: 50%;
-    rotate: -4deg;
-}
 
 .left-movement {
     animation-delay: 2s;
@@ -127,19 +169,7 @@ body {
 .shake-fist {
     animation-name: shakeFist;
     animation-iteration-count: 1;
-}
-
-
-@keyframes float {
-    0% {
-        transform: rotate(0deg)
-    }
-    50% {
-        transform: rotate(.5deg)
-    }
-    100% {
-        transform: rotate(0deg)
-    }
+    animation-duration: 2.3s;
 }
 
 @keyframes shakeFist {
@@ -153,14 +183,35 @@ body {
     66% {transform: rotate(-6deg);}
     71% {transform: rotate(5deg);}
     81% {transform: rotate(5deg);}
-    99% {
-        opacity: 1;
-        height: auto;
-    }
+    99% {opacity: 1;
+         height: auto;}
+    100% {transform: rotate(-50deg);
+          opacity: 0;
+          height: 0;}
 
-    100% {
-        transform: rotate(-30deg);
-        opacity: 0;
-        height: 0;}
 }
+
+@keyframes float {
+    0% {
+        transform: rotate(0deg)
+    }
+    20% {
+        transform: rotate(.3deg)
+    }
+    40% {
+        transform: rotate(.1deg)
+    }
+    60% {
+        transform: rotate(.4deg)
+    }
+    80% {
+        transform: rotate(.2deg)
+    }
+    100% {
+        transform: rotate(.1deg)
+    }
+}
+
+  
+
 

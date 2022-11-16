@@ -2,15 +2,32 @@ const options = ["rock", "paper", "scissors"];
 const buttons = document.getElementById('buttonContainer').querySelectorAll('button');
 const results = document.querySelector('#results');
 const gameResults = document.querySelector('#gameResults');
+
+const canvas = document.querySelector('.canvas');
+
 const leftHandContainer = document.querySelector('.left-hand-container');
-const flexContainer = document.querySelector('.flex-container');
+
+
 const leftRockContainer = document.querySelector('.left-rock-container');
+const leftRock = document.createElement('img');
+
 const leftPaperContainer = document.querySelector('.left-paper-container');
 const leftPaper = document.createElement('img');
-const leftRock = document.createElement('img');
-const leftFist = document.querySelector('.left-fist');
+
 const tableHit = new Audio('sounds/tablehit.mp3');
 
+function introFist () { 
+const leftFist = document.createElement('img');
+leftFist.src = "images/left-rock.png";
+leftHandContainer.appendChild(leftFist);
+leftFist.classList.add('left-fist-intro');
+leftFist.classList.add('left-fist');
+setTimeout(function(){
+    leftFist.classList.add('left-fist-float');
+  },2400);
+}
+
+introFist()
 
 
 
@@ -93,33 +110,29 @@ function playRound (playerSelection, computerSelection) {
         score.textContent = `Your score: ${playerScore}, Computer score: ${computerScore}.`;
 
         gameStatus();
-        resetFist();
+        //resetFist();
     }  
 
 function shakeFist () {
+    const leftFist = document.querySelector('.left-fist');
     leftFist.classList.remove('shake-fist');
     setTimeout(function(){
         leftFist.classList.add('shake-fist');
       },10);
    }
 
-   buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            shakeFist();
-      });
-    });
+  
 
-
-function verticalShake () {
-    flexContainer.classList.remove('vertical-shake');
+function shakeCanvas () {
+    canvas.classList.remove('shake-canvas');
     setTimeout(function(){
-        flexContainer.classList.add('vertical-shake');
+        canvas.classList.add('shake-canvas');
       },10);
    }
 
 buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            verticalShake();
+            shakeCanvas(), shakeFist ();
       });
     });
 
@@ -137,11 +150,11 @@ function leftRockAnimation () {
     leftRockContainer.appendChild(leftRock);
     }
 
-function resetFist (){
-    setTimeout(function(){
-    leftFist.classList.remove('shake-fist');
-    },5000);
-}
+//function resetFist (){
+  //  setTimeout(function(){
+    //leftFist.classList.remove('shake-fist');
+   // },5000);
+//}
     
     
 buttons.forEach((button) => {
