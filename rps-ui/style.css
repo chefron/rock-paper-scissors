@@ -39,19 +39,19 @@ body {
     display: flex;
 }
 
-.left-hand-container { 
+.user-container { 
     position: relative;
     flex: 1;
 }
 
-.right-hand-container {
+.cpu-container {
     background-color: blue;
     position: relative;
     flex: 1;
     opacity: 20%;
 }
 
-.left-fist {
+.user-fist {
     position: absolute;
     bottom: 25%;
     left: -15%;
@@ -60,7 +60,7 @@ body {
     height: auto;
 }
 
-.left-rock {
+.user-rock {
     position: absolute;
     bottom: 25%;
     left: -15%;
@@ -69,7 +69,7 @@ body {
     height: auto;
 }
 
-.left-scissors {
+.user-scissors {
     position: absolute;
     bottom: 30%;
     left: -3%;
@@ -78,7 +78,7 @@ body {
     height: auto;
 }
 
-.left-paper {
+.user-paper {
     position: absolute;
     bottom: 30%;
     left: -3%;
@@ -87,8 +87,8 @@ body {
     height: auto;
 }
 
-.left-fist-intro {
-    animation-name: left-fist-intro;
+.user-fist-intro {
+    animation-name: user-fist-intro;
     animation-duration: 3s;
     animation-direction: normal;
     animation-iteration-count: 1;
@@ -97,7 +97,7 @@ body {
     transform-origin: -100% 0%;
 }
 
-.left-fist-float {
+.user-fist-float {
     animation-duration: 8s;
     animation-name: float;
     animation-delay: .2;
@@ -107,7 +107,7 @@ body {
     animation-timing-function: ease-in;
     transform-origin: -100% 0%;}
 
-@keyframes left-fist-intro  {
+@keyframes user-fist-intro  {
     0%  {transform: rotate(-240deg);}
     50% {transform: rotate(0deg);}
     53% {transform: rotate(-.2deg);}
@@ -151,7 +151,7 @@ body {
     100% {transform: translateY(0px);}
 }
 
-.left-movement {
+.user-movement {
     animation-delay: 2s;
     animation-duration: 3.1s;
     animation-name: gesture;

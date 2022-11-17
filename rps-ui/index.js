@@ -4,55 +4,37 @@ const results = document.querySelector('#results');
 const gameResults = document.querySelector('#gameResults');
 
 const canvas = document.querySelector('.canvas');
+const userContainer = document.querySelector('.user-container');
 
-const leftHandContainer = document.querySelector('.left-hand-container');
-
-
-
-
+const newGame = document.getElementById('newGame').querySelector('button');
+newGame.style.display = 'none';
 
 const tableHit = new Audio('sounds/tablehit.mp3');
 
 function resetAnimation () { 
-const leftFist = document.createElement('img');
-leftFist.src = "images/left-rock.png";
-leftHandContainer.appendChild(leftFist);
-leftFist.classList.add('left-fist-intro');
-leftFist.classList.add('left-fist');
+const userFist = document.createElement('img');
+userFist.src = "images/left-rock.png";
+userContainer.appendChild(userFist);
+userFist.classList.add('user-fist-intro');
+userFist.classList.add('user-fist');
 setTimeout(function(){
-    leftFist.classList.add('left-fist-float');
+    userFist.classList.add('user-fist-float');
   },2400);
 }
 
 resetAnimation()
 
-
-
-
-
-
-function getComputerSelection (){
-    const selection = options[Math.floor(Math.random() * options.length)];
-    return selection;
+function resetGame(){
+    newGame.style.display = 'block';
 }
 
 let playerScore = 0;
 let computerScore = 0;
 
-
-
-
-
-function resetGame(){
-    newGame.style.display = 'block';
+function getComputerSelection (){
+    const selection = options[Math.floor(Math.random() * options.length)];
+    return selection;
 }
-
-
-function gameOver (){
-    const buttonContainer = document.querySelector('#buttonContainer')
-    buttonContainer.style.display = 'none';
-}
-
 
 function gameStatus (){
     if (playerScore === 5){
@@ -66,9 +48,10 @@ function gameStatus (){
     }
 }
 
-
-const newGame = document.getElementById('newGame').querySelector('button');
-newGame.style.display = 'none';
+function gameOver (){
+    const buttonContainer = document.querySelector('#buttonContainer')
+    buttonContainer.style.display = 'none';
+}
 
 newGame.addEventListener('click', () => {
     buttonContainer.style.display = 'block';
@@ -83,13 +66,13 @@ newGame.addEventListener('click', () => {
 function playRound (playerSelection, computerSelection) {
 
         if (playerSelection == "paper"){
-            leftPaperAnimation ();
+            userPaperAnimation ();
     
         } else if (playerSelection == "rock"){
-            leftRockAnimation ();
+            userRockAnimation ();
         
         } else if (playerSelection == "scissors"){
-            leftScissorsAnimation ();
+            userScissorsAnimation ();
         }
 
         else if (playerSelection == computerSelection){
@@ -114,10 +97,10 @@ function playRound (playerSelection, computerSelection) {
     }  
 
 function shakeFist () {
-    const leftFist = document.querySelector('.left-fist');
-    leftFist.classList.remove('shake-fist');
+    const userFist = document.querySelector('.user-fist');
+    userFist.classList.remove('shake-fist');
     setTimeout(function(){
-        leftFist.classList.add('shake-fist');
+        userFist.classList.add('shake-fist');
       },10);
    }
 
@@ -136,31 +119,31 @@ buttons.forEach((button) => {
       });
     });
 
-function leftRockAnimation () {
-    const leftRock = document.createElement('img');
-    leftRock.src = "images/left-rock.png";
-    leftRock.classList.add("left-rock", "left-movement")
-    leftHandContainer.appendChild(leftRock);
+function userRockAnimation () {
+    const userRock = document.createElement('img');
+    userContainer.appendChild(userRock);
+    userRock.src = "images/left-rock.png";
+    userRock.classList.add("user-rock", "user-movement")
 }
 
-function leftPaperAnimation () {
-    const leftPaper = document.createElement('img');
-    leftHandContainer.appendChild(leftPaper);
-    leftPaper.src = "images/left-paper.png";
-    leftPaper.classList.add("left-paper", "left-movement")
+function userPaperAnimation () {
+    const userPaper = document.createElement('img');
+    userContainer.appendChild(userPaper);
+    userPaper.src = "images/left-paper.png";
+    userPaper.classList.add("user-paper", "user-movement")
 }
 
-function leftScissorsAnimation () {
-    const leftScissors = document.createElement('img');
-    leftHandContainer.appendChild(leftScissors);
-    leftScissors.src = "images/left-scissors.png";
-    leftScissors.classList.add("left-scissors", "left-movement")
+function userScissorsAnimation () {
+    const userScissors = document.createElement('img');
+    userContainer.appendChild(userScissors);
+    userScissors.src = "images/left-scissors.png";
+    userScissors.classList.add("user-scissors", "user-movement")
 }
     
 
 //function resetFist (){
   //  setTimeout(function(){
-    //leftFist.classList.remove('shake-fist');
+    //userFist.classList.remove('shake-fist');
    // },5000);
 //}
     
