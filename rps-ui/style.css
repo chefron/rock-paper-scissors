@@ -39,7 +39,6 @@ body {
     display: flex;
 }
 
-
 .left-hand-container { 
     position: relative;
     flex: 1;
@@ -55,8 +54,35 @@ body {
 .left-fist {
     position: absolute;
     bottom: 25%;
-    left: -10%;
+    left: -15%;
     max-width: 38vw;
+    min-width: 15vw;
+    height: auto;
+}
+
+.left-rock {
+    position: absolute;
+    bottom: 25%;
+    left: -15%;
+    max-width: 38vw;
+    min-width: 15vw;
+    height: auto;
+}
+
+.left-scissors {
+    position: absolute;
+    bottom: 30%;
+    left: -3%;
+    max-width: 40vw;
+    min-width: 15vw;
+    height: auto;
+}
+
+.left-paper {
+    position: absolute;
+    bottom: 30%;
+    left: -3%;
+    max-width: 40vw;
     min-width: 15vw;
     height: auto;
 }
@@ -90,17 +116,6 @@ body {
     62% {transform: rotate(0deg);}
     100% {transform: rotate(0deg);}
 }
-
-.left-paper-container {
-    width: 63%;
-    rotate: -4deg;
-}
-
-.left-rock-container {
-    width: 63%;
-    rotate: -4deg;
-}
-
 
 .bottom-bar {
     background-color: black;
@@ -136,12 +151,9 @@ body {
     100% {transform: translateY(0px);}
 }
 
-
-
 .left-movement {
     animation-delay: 2s;
-    rotate: 6deg;
-    animation-duration: 3.3s;
+    animation-duration: 3.1s;
     animation-name: gesture;
     animation-iteration-count: 1;
     animation-fill-mode: both;
@@ -150,11 +162,11 @@ body {
 }
 
 @keyframes gesture {
-    0%  {transform: rotate(-240deg);}
-    20% {transform: rotate(0deg)}
-    23% {transform: rotate(-.2deg)}
-    26% {transform: rotate(0deg)}
-    29% {transform: rotate(-.1deg)}
+    0%  {transform: rotate(-90deg);}
+    15% {transform: rotate(0deg)}
+    17% {transform: rotate(-.1deg)}
+    19% {transform: rotate(0deg)}
+    21% {transform: rotate(-.1deg)}
     32% {transform: rotate(0deg)}
     50% {transform: rotate(.1deg)}
     75% {transform: rotate(0deg)}
@@ -185,7 +197,7 @@ body {
     81% {transform: rotate(5deg);}
     99% {opacity: 1;
          height: auto;}
-    100% {transform: rotate(-50deg);
+    100% {transform: rotate(-80deg);
           opacity: 0;
           height: 0;}
 

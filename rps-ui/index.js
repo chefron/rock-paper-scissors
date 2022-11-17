@@ -8,15 +8,12 @@ const canvas = document.querySelector('.canvas');
 const leftHandContainer = document.querySelector('.left-hand-container');
 
 
-const leftRockContainer = document.querySelector('.left-rock-container');
-const leftRock = document.createElement('img');
 
-const leftPaperContainer = document.querySelector('.left-paper-container');
-const leftPaper = document.createElement('img');
+
 
 const tableHit = new Audio('sounds/tablehit.mp3');
 
-function introFist () { 
+function resetAnimation () { 
 const leftFist = document.createElement('img');
 leftFist.src = "images/left-rock.png";
 leftHandContainer.appendChild(leftFist);
@@ -27,7 +24,7 @@ setTimeout(function(){
   },2400);
 }
 
-introFist()
+resetAnimation()
 
 
 
@@ -87,9 +84,12 @@ function playRound (playerSelection, computerSelection) {
 
         if (playerSelection == "paper"){
             leftPaperAnimation ();
-       
+    
         } else if (playerSelection == "rock"){
             leftRockAnimation ();
+        
+        } else if (playerSelection == "scissors"){
+            leftScissorsAnimation ();
         }
 
         else if (playerSelection == computerSelection){
@@ -132,23 +132,31 @@ function shakeCanvas () {
 
 buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            shakeCanvas(), shakeFist ();
+            shakeCanvas(), shakeFist();
       });
     });
 
-
+function leftRockAnimation () {
+    const leftRock = document.createElement('img');
+    leftRock.src = "images/left-rock.png";
+    leftRock.classList.add("left-rock", "left-movement")
+    leftHandContainer.appendChild(leftRock);
+}
 
 function leftPaperAnimation () {
+    const leftPaper = document.createElement('img');
+    leftHandContainer.appendChild(leftPaper);
     leftPaper.src = "images/left-paper.png";
-    leftPaper.classList.add("left-paper-container", "left-movement")
-    leftPaperContainer.appendChild(leftPaper);
-    }
+    leftPaper.classList.add("left-paper", "left-movement")
+}
 
-function leftRockAnimation () {
-    leftRock.src = "images/left-rock.png";
-    leftRock.classList.add("left-rock-container", "left-movement")
-    leftRockContainer.appendChild(leftRock);
-    }
+function leftScissorsAnimation () {
+    const leftScissors = document.createElement('img');
+    leftHandContainer.appendChild(leftScissors);
+    leftScissors.src = "images/left-scissors.png";
+    leftScissors.classList.add("left-scissors", "left-movement")
+}
+    
 
 //function resetFist (){
   //  setTimeout(function(){
