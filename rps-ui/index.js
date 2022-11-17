@@ -1,6 +1,7 @@
 const options = ["rock", "paper", "scissors"];
 const buttons = document.getElementById('buttonContainer').querySelectorAll('button');
 const results = document.querySelector('#results');
+const score = document.querySelector('#score');
 const gameResults = document.querySelector('#gameResults');
 
 const canvas = document.querySelector('.canvas');
@@ -11,7 +12,7 @@ newGame.style.display = 'none';
 
 const tableHit = new Audio('sounds/tablehit.mp3');
 
-function resetAnimation () { 
+function resetAnimation() { 
 const userFist = document.createElement('img');
 userFist.src = "images/left-rock.png";
 userContainer.appendChild(userFist);
@@ -28,27 +29,27 @@ function resetGame(){
     newGame.style.display = 'block';
 }
 
-let playerScore = 0;
-let computerScore = 0;
+let userScore = 0;
+let cpuScore = 0;
 
-function getComputerSelection (){
+function getCpuSelection(){
     const selection = options[Math.floor(Math.random() * options.length)];
     return selection;
 }
 
-function gameStatus (){
-    if (playerScore === 5){
+function gameStatus(){
+    if (userScore === 5){
         gameResults.textContent = "You win the game!";
         gameOver();
         resetGame();
-    } else if (computerScore === 5){
+    } else if (cpuScore === 5){
         gameResults.textContent = "The Computer wins the game!";
         gameOver();
         resetGame();
     }
 }
 
-function gameOver (){
+function gameOver(){
     const buttonContainer = document.querySelector('#buttonContainer')
     buttonContainer.style.display = 'none';
 }
@@ -56,47 +57,74 @@ function gameOver (){
 newGame.addEventListener('click', () => {
     buttonContainer.style.display = 'block';
     newGame.style.display = 'none';
-    playerScore = 0;
-    computerScore = 0
-    score.textContent = `Your score: ${playerScore}, Computer score: ${computerScore}.`;
+    userScore = 0;
+    cpuScore = 0
+    score.textContent = `Your score: ${userScore}, Computer score: ${cpuScore}.`;
     results.textContent = "";
     gameResults.textContent = "";
   });
 
-function playRound (playerSelection, computerSelection) {
-
-        if (playerSelection == "paper"){
-            userPaperAnimation ();
+function playRound (userSelection, cpuSelection) {
+        
+    //combinations where user and cpu tie:
     
-        } else if (playerSelection == "rock"){
-            userRockAnimation ();
-        
-        } else if (playerSelection == "scissors"){
-            userScissorsAnimation ();
-        }
+    if ((userSelection == "rock") && (cpuSelection == "rock")){
+            userRockAnimation();
+            //cpuRockAnimation();
+            results.textContent = `You both selected rock! It\'s a tie!`;
+    } else if ((userSelection == "paper") && (cpuSelection == "paper")){
+            userPaperAnimation();
+            //cpuPaperAnimation();
+            results.textContent = `You both selected paper! It\'s a tie!`;
+    } else if ((userSelection == "scissors") && (cpuSelection == "scissors")){
+            userScissorsAnimation();
+            //cpuScissorsAnimation();
+            results.textContent = `You both selected scissors! It\'s a tie!`;
 
-        else if (playerSelection == computerSelection){
-            results.textContent = `You both selected ${playerSelection}! It\'s a tie!`;
-        } 
-  
-        else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")){
-           playerScore += 1;
-            results.textContent = `You selected ${playerSelection} and the computer selected ${computerSelection}. You win!`;
-        }    
-        
-        else if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")){
-            computerScore += 1;
-            results.textContent = `You selected ${playerSelection} and the computer selected ${computerSelection}. You lose!`;
-        }
-        
-        const score = document.querySelector('#score');
-        score.textContent = `Your score: ${playerScore}, Computer score: ${computerScore}.`;
+    //combinations where user beats cpu:
+    
+    } else if ((userSelection == "rock" && cpuSelection == "scissors")){
+            userRockAnimation();
+            //cpuScissorsAnimation();
+            userScore += 1;
+            results.textContent = `You selected rock and the computer selected scissors! You win!`;
+    } else if ((userSelection == "paper" && cpuSelection == "rock")){
+            userPaperAnimation();
+            //cpuRockAnimation();
+            userScore += 1;
+            results.textContent = `You selected paper and the computer selected rock! You win!`;
+    } else if ((userSelection == "scissors" && cpuSelection == "paper")){
+            userScissorsAnimation();
+            //cpuPaperAnimation();
+            userScore += 1;
+            results.textContent = `You selected scissors and the computer selected paper! You win!`;
+    
+    //combinations where user loses to cpu:
+    
+    } else if ((userSelection == "rock" && cpuSelection == "paper")){
+            userRockAnimation();
+            //cpuPaperAnimation();
+            cpuScore += 1;
+            results.textContent = `You selected rock and the computer selected paper! You lose!`;
+    } else if ((userSelection == "paper" && cpuSelection == "scissors")){
+            userPaperAnimation();
+            //cpuScissorsAnimation();
+            cpuScore += 1;
+            results.textContent = `You selected paper and the computer selected scissors! You lose!`;
+    } else if ((userSelection == "scissors" && cpuSelection == "rock")){
+            userScissorsAnimation();
+            //cpuRockAnimation();
+            cpuScore += 1;
+            results.textContent = `You selected scissors and the computer selected rock! You lose!`;
+    }
+       
+    score.textContent = `Your score: ${userScore}, Computer score: ${cpuScore}.`;
 
         gameStatus();
         //resetFist();
     }  
 
-function shakeFist () {
+function shakeFist() {
     const userFist = document.querySelector('.user-fist');
     userFist.classList.remove('shake-fist');
     setTimeout(function(){
@@ -106,7 +134,7 @@ function shakeFist () {
 
   
 
-function shakeCanvas () {
+function shakeCanvas() {
     canvas.classList.remove('shake-canvas');
     setTimeout(function(){
         canvas.classList.add('shake-canvas');
@@ -119,21 +147,21 @@ buttons.forEach((button) => {
       });
     });
 
-function userRockAnimation () {
+function userRockAnimation() {
     const userRock = document.createElement('img');
     userContainer.appendChild(userRock);
     userRock.src = "images/left-rock.png";
     userRock.classList.add("user-rock", "user-movement")
 }
 
-function userPaperAnimation () {
+function userPaperAnimation() {
     const userPaper = document.createElement('img');
     userContainer.appendChild(userPaper);
     userPaper.src = "images/left-paper.png";
     userPaper.classList.add("user-paper", "user-movement")
 }
 
-function userScissorsAnimation () {
+function userScissorsAnimation() {
     const userScissors = document.createElement('img');
     userContainer.appendChild(userScissors);
     userScissors.src = "images/left-scissors.png";
@@ -150,7 +178,7 @@ function userScissorsAnimation () {
     
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
-    playRound(button.value, getComputerSelection())
+    playRound(button.value, getCpuSelection())
     });
 });
 
