@@ -49,61 +49,6 @@ body, html {
     flex: 2;
 }
 
-#button-container {
-    flex: 1;
-    display: inline-flex;
-    margin-right: -8%;
-    margin-top: -10%;
-}
-
-.rock-button {
-    rotate: 0deg;
-    transform-origin: 100%;
-}
-
-.paper-button {
-    margin-left: -33.33%;
-    transform-origin: 100%;
-    rotate: 120deg;
-}
-
-.scissors-button {
-    margin-left: -33.33%;
-    transform-origin: 100%;
-    rotate: 240deg;
-}
-
-.selection-button {
-    background-color: transparent;
-    border: none;
-    animation: rotation 35s infinite linear;
-}
-
-@keyframes rotation {
-    0% {transform: rotate(-360deg)}
-}
-
-.selection-button-image {
-    width: 7vw;
-    height: auto;
-    filter: invert(100%) opacity(65%) drop-shadow(1px 1px 1px rgb(255, 255, 255));
-}
-
-.selection-button-image:hover {
-    animation: pulse 1s infinite ease-in-out;
-}
-
-@keyframes pulse {
-    0% {transform: scale(1);}
-    50% {transform: scale(1.15);}
-    100% {transform: scale(1);}
-}
-
-.cpu-container {
-    position: relative;
-    flex: 2;
-}
-
 .user-fist {
     position: absolute;
     bottom: 25%;
@@ -164,16 +109,6 @@ body, html {
     59% {transform: rotate(-.1deg);}
     62% {transform: rotate(0deg);}
     100% {transform: rotate(0deg);}
-}
-
-.bottom-bar {
-    background-color: black;
-    color: red;
-    width: 100vw;
-    height: 20vh;
-    flex: 1;
-    flex-shrink: 0;
-
 }
 
 .shake-canvas{
@@ -263,7 +198,7 @@ body, html {
         transform: rotate(.1deg)
     }
     60% {
-        transform: rotate(.4deg)
+        transform: rotate(.3deg)
     }
     80% {
         transform: rotate(.2deg)
@@ -273,6 +208,129 @@ body, html {
     }
 }
 
-  
+#button-container {
+    flex: 1;
+    display: inline-flex;
+    margin-right: -8%;
+    margin-top: -10%;
+}
 
+.rock-button {
+    rotate: 0deg;
+    transform-origin: 100%;
+}
+
+.paper-button {
+    margin-left: -33.33%;
+    transform-origin: 100%;
+    rotate: 120deg;
+}
+
+.scissors-button {
+    margin-left: -33.33%;
+    transform-origin: 100%;
+    rotate: 240deg;
+}
+
+.selection-button {
+    background-color: transparent;
+    border: none;
+    animation: rotation 35s infinite linear;
+}
+
+@keyframes rotation {
+    0% {transform: rotate(-360deg)}
+}
+
+.selection-button-image {
+    width: 7vw;
+    height: auto;
+    filter: invert(100%) opacity(65%) drop-shadow(1px 1px 1px rgb(255, 255, 255));
+}
+
+.selection-button-image:hover {
+    animation: pulse 1s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.15);}
+    100% {transform: scale(1);}
+}
+
+.cpu-container {
+    position: relative;
+    flex: 2;
+}
+
+.cpu-fist {
+    position: absolute;
+    right: -14%;
+    bottom: 25%;
+    width: 100%;
+    height: auto;
+    translate: 0% 15%;
+}
+
+.cpu-fist-intro {
+    animation-name: cpu-fist-intro;
+    animation-duration: 2.5s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+    transform-origin: 100% 0%;
+}
+
+.cpu-fist-float {
+    animation-duration: 8s;
+    animation-name: cpu-float;
+    animation-delay: .2;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    transform-origin: 100% 0%;
+}
+
+@keyframes cpu-float {
+    0% {
+        transform: rotate(0deg)
+    }
+    10% {
+        transform: rotate(.2deg)
+    }
+    40% {
+        transform: rotate(-.4deg)
+    }
+    65% {
+        transform: rotate(-0deg)
+    }
+    85% {
+        transform: rotate(.15eg)
+    }
+    100% {
+        transform: rotate(-.1deg)
+    }
+}
+
+@keyframes cpu-fist-intro  {
+    0%  {transform: rotate(-240deg);}
+    50% {transform: rotate(0deg);}
+    53% {transform: rotate(-.2deg);}
+    56% {transform: rotate(0deg);}
+    59% {transform: rotate(-.1deg);}
+    62% {transform: rotate(0deg);}
+    100% {transform: rotate(0deg);}
+}
+
+.bottom-bar {
+    background-color: black;
+    color: red;
+    width: 100vw;
+    height: 20vh;
+    flex: 1;
+    flex-shrink: 0;
+
+}
 

@@ -4,10 +4,16 @@ const roundResults = document.querySelector('#roundResults');
 const score = document.querySelector('#score');
 const gameResults = document.querySelector('#gameResults');
 
-const canvas = document.querySelector('.canvas');
-const userFist = document.createElement('img');
-
 const userContainer = document.querySelector('.user-container');
+const cpuContainer = document.querySelector('.cpu-container')
+
+const canvas = document.querySelector('.canvas');
+
+const userFist = document.createElement('img');
+const cpuFist = document.createElement('img');
+
+
+
 
 const newGame = document.getElementById('newGame').querySelector('button');
 newGame.style.display = 'none';
@@ -20,19 +26,24 @@ function resetAnimation() {
     }
 }
 
-function dropFist() {
-userFist.src = "images/left-rock.png";
+function dropFists() {
+userFist.src = 'images/left-rock.png';
+cpuFist.src = 'images/right-rock.png';
 userContainer.appendChild(userFist);
+cpuContainer.appendChild(cpuFist);
 userFist.classList.add('user-fist-intro');
+cpuFist.classList.add('cpu-fist-intro');
 userFist.classList.add('user-fist');
+cpuFist.classList.add('cpu-fist');
 setTimeout(function(){
     userFist.classList.add('user-fist-float');
+    cpuFist.classList.add('cpu-fist-float');
   },2000);
 }
 
-dropFist()
+dropFists()
 
-function resetFist(){
+function resetFists(){
     userFist.classList.remove('user-fist-intro');
     userFist.classList.remove('shake-fist');
     userFist.classList.remove('user-fist-float');
@@ -139,12 +150,12 @@ function playRound (userSelection, cpuSelection) {
 
     //reset fist for next round
     setTimeout(function(){
-        resetFist();
+        resetFists();
     },3000);
         
         
     setTimeout(function(){
-        dropFist();
+        dropFists();
     },4000);
         
 }  
