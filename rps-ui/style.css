@@ -1,3 +1,14 @@
+/* Document generally reads from top to bottom of page layout, then left to right*/
+
+@font-face {
+    font-family: 'neondesmonregular';
+    src: url('fonts/neon_desmon-webfont.woff2') format('woff2'),
+         url('fonts/neon_desmon-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body, html {
     background-color: black;
     margin: 0;
@@ -18,13 +29,54 @@ body, html {
     align-content: stretch;
 }
 
-.top-bar{
+.top-bar {
     background-color: black;
     color: red;
     width: 100vw;
     height: 20vh;
+    display: flex;
+    align-items: stretch;
     flex: 1;
     flex-shrink: 0;
+}
+
+.health-bar {
+    flex: 1;
+}
+
+.title {
+    font-family: 'neondesmonregular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    flex: 3;
+    }
+
+.rock-title {
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #f09,
+        0 0 82px #f09,
+        0 0 92px #f09,
+        0 0 102px #f09,
+        0 0 151px #f09;
+}
+
+.paper-title {
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #15fc12,
+        0 0 82px #15fc12,
+        0 0 92px #15fc12,
+        0 0 102px #15fc12,
+        0 0 151px #15fc12;
+        color: neon
 }
 
 .canvas {
@@ -67,7 +119,7 @@ body, html {
 
 .user-scissors {
     position: absolute;
-    bottom: 25%;
+    bottom: 23%;
     left: -3%;
     width: 100%;
     height: auto;
@@ -76,7 +128,7 @@ body, html {
 .user-paper {
     position: absolute;
     bottom: 30%;
-    left: -3%;
+    left: -4%;
     width: 100%;
     height: auto;
 }
@@ -141,7 +193,7 @@ body, html {
     animation-name: gesture;
     animation-iteration-count: 1;
     animation-fill-mode: both;
-    transform-origin: -100% 0%;
+    transform-origin: -100% 100%;
     animation-timing-function: ease-in-out;
 }
 
@@ -162,13 +214,13 @@ body, html {
     }
 }
 
-.shake-fist {
-    animation-name: shakeFist;
+.shake-user-fist {
+    animation-name: shake-user-fist;
     animation-iteration-count: 1;
     animation-duration: 2.3s;
 }
 
-@keyframes shakeFist {
+@keyframes shake-user-fist {
     0%  {transform: rotate(0deg);}
     12% {transform: rotate(-1deg)}
     17% {transform: rotate(5deg);}
@@ -184,7 +236,6 @@ body, html {
     100% {transform: rotate(-80deg);
           opacity: 0;
           height: 0;}
-
 }
 
 @keyframes float {
@@ -266,7 +317,7 @@ body, html {
 .cpu-fist {
     position: absolute;
     right: -14%;
-    bottom: 25%;
+    bottom: 26%;
     width: 100%;
     height: auto;
     translate: 0% 15%;
@@ -279,7 +330,7 @@ body, html {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
-    transform-origin: 100% 0%;
+    transform-origin: 100% 75%;
 }
 
 .cpu-fist-float {
@@ -315,13 +366,38 @@ body, html {
 }
 
 @keyframes cpu-fist-intro  {
-    0%  {transform: rotate(-240deg);}
+    0%  {transform: rotate(190deg);}
     50% {transform: rotate(0deg);}
     53% {transform: rotate(-.2deg);}
     56% {transform: rotate(0deg);}
     59% {transform: rotate(-.1deg);}
     62% {transform: rotate(0deg);}
     100% {transform: rotate(0deg);}
+}
+
+.shake-cpu-fist {
+    animation-name: shake-cpu-fist;
+    animation-iteration-count: 1;
+    animation-duration: 2.3s;
+    transform-origin: 100% 60%;
+}
+
+@keyframes shake-cpu-fist {
+    0%  {transform: rotate(0deg);}
+    12% {transform: rotate(1deg)}
+    17% {transform: rotate(-12deg);}
+    24% {transform: rotate(-12deg);}
+    39% {transform: rotate(5deg);}
+    44% {transform: rotate(-12deg);}
+    51% {transform: rotate(-12deg);}
+    66% {transform: rotate(6deg);}
+    71% {transform: rotate(-12deg);}
+    81% {transform: rotate(-12deg);}
+    99% {opacity: 1;
+         height: auto;}
+    100% {transform: rotate(100deg);
+          opacity: 0;
+          height: 0;}
 }
 
 .bottom-bar {

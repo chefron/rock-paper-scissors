@@ -4,6 +4,9 @@ const roundResults = document.querySelector('#roundResults');
 const score = document.querySelector('#score');
 const gameResults = document.querySelector('#gameResults');
 
+const userHealth = document.getElementById("user-health");
+const cpuHealth = document.getElementById("cpu-health");
+
 const userContainer = document.querySelector('.user-container');
 const cpuContainer = document.querySelector('.cpu-container')
 
@@ -20,21 +23,14 @@ newGame.style.display = 'none';
 
 const tableHit = new Audio('sounds/tablehit.mp3');
 
-function resetAnimation() {
-    while (userContainer.firstChild) {
-        userContainer.remove(userContainer.firstChild)
-    }
-}
 
 function dropFists() {
 userFist.src = 'images/left-rock.png';
 cpuFist.src = 'images/right-rock.png';
 userContainer.appendChild(userFist);
 cpuContainer.appendChild(cpuFist);
-userFist.classList.add('user-fist-intro');
-cpuFist.classList.add('cpu-fist-intro');
-userFist.classList.add('user-fist');
-cpuFist.classList.add('cpu-fist');
+userFist.classList.add('user-fist-intro', 'user-fist');
+cpuFist.classList.add('cpu-fist-intro', 'cpu-fist');
 setTimeout(function(){
     userFist.classList.add('user-fist-float');
     cpuFist.classList.add('cpu-fist-float');
@@ -44,10 +40,10 @@ setTimeout(function(){
 dropFists()
 
 function resetFists(){
-    userFist.classList.remove('user-fist-intro');
-    userFist.classList.remove('shake-fist');
-    userFist.classList.remove('user-fist-float');
+    userFist.classList.remove('user-fist-intro', 'shake-user-fist', 'user-fist-float');
+    cpuFist.classList.remove('cpu-fist-intro', 'shake-cpu-fist', 'cpu-fist-float');
     userContainer.removeChild(userFist);
+    cpuContainer.removeChild(cpuFist);
 }
 
 function resetGame(){
@@ -112,16 +108,19 @@ function playRound (userSelection, cpuSelection) {
             userRockAnimation();
             //cpuScissorsAnimation();
             userScore += 1;
+            cpuHealth.value -= 20;
             roundResults.textContent = `You selected rock and the computer selected scissors! You win!`;
     } else if ((userSelection == "paper" && cpuSelection == "rock")){
             userPaperAnimation();
             //cpuRockAnimation();
             userScore += 1;
+            cpuHealth.value -= 20;
             roundResults.textContent = `You selected paper and the computer selected rock! You win!`;
     } else if ((userSelection == "scissors" && cpuSelection == "paper")){
             userScissorsAnimation();
             //cpuPaperAnimation();
             userScore += 1;
+            cpuHealth.value -= 20;
             roundResults.textContent = `You selected scissors and the computer selected paper! You win!`;
     
     //combinations where user loses to cpu:
@@ -130,16 +129,19 @@ function playRound (userSelection, cpuSelection) {
             userRockAnimation();
             //cpuPaperAnimation();
             cpuScore += 1;
+            userHealth.value -= 20;
             roundResults.textContent = `You selected rock and the computer selected paper! You lose!`;
     } else if ((userSelection == "paper" && cpuSelection == "scissors")){
             userPaperAnimation();
             //cpuScissorsAnimation();
             cpuScore += 1;
+            userHealth.value -= 20;
             roundResults.textContent = `You selected paper and the computer selected scissors! You lose!`;
     } else if ((userSelection == "scissors" && cpuSelection == "rock")){
             userScissorsAnimation();
             //cpuRockAnimation();
             cpuScore += 1;
+            userHealth.value -= 20;
             roundResults.textContent = `You selected scissors and the computer selected rock! You lose!`;
     }
        
@@ -160,11 +162,12 @@ function playRound (userSelection, cpuSelection) {
         
 }  
 
-function shakeFist() {
-    const userFist = document.querySelector('.user-fist');
-    userFist.classList.remove('shake-fist');
+function shakeFists() {
+    userFist.classList.remove('shake-user-fist');
+    cpuFist.classList.remove('shake-cpu-fist');
     setTimeout(function(){
-        userFist.classList.add('shake-fist');
+        userFist.classList.add('shake-user-fist');
+        cpuFist.classList.add('shake-cpu-fist');
       },10);
    }
   
@@ -177,15 +180,36 @@ function shakeCanvas() {
 
 buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            shakeCanvas(), shakeFist();
+            shakeCanvas(), shakeFists();
       });
     });
 
 function userRockAnimation() {
     const userRock = document.createElement('img');
-    userContainer.appendChild(userRock);
     userRock.src = "images/left-rock.png";
+    userContainer.appendChild(userRock);
     userRock.classList.add("user-rock", "user-movement")
+}
+
+function userPaperAnimation() {
+    const userPaper = document.createElement('img');
+    userPaper.src = "images/left-paper.png";
+    userContainer.appendChild(userPaper);
+    userPaper.classList.add("user-paper", "user-movement")
+}
+
+function userScissorsAnimation() {
+    const userScissors = document.createElement('img');
+    userScissors.src = "images/left-scissors.png";
+    userContainer.appendChild(userScissors);
+    userScissors.classList.add("user-scissors", "user-movement")
+}
+
+function cpuRockAnimation() {
+    const cpuRock = document.createElement('img');
+    cpuRock.src = "images/right-rock.png";
+    cpuContainer.appendChild(cpuRock);
+    cpuRock.classList.add("cpu-rock", "cpu-movement")
 }
 
 function userPaperAnimation() {
@@ -201,7 +225,7 @@ function userScissorsAnimation() {
     userScissors.src = "images/left-scissors.png";
     userScissors.classList.add("user-scissors", "user-movement")
 }
-    
+
 
 //function resetFist (){
   //  setTimeout(function(){
