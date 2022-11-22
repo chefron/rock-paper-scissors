@@ -13,12 +13,11 @@
     src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
 }
 
-body, html {
-    background-color: rgb(65, 0, 0);
+body {
+    background-color: rgb(52, 0, 0);
     margin: 0;
     padding: 0;
     width: 100vw;
-    max-width: 1200px;
     height: auto;
 }
 
@@ -36,10 +35,13 @@ body, html {
 
 .top-bar {
     background-color: black;
-    color: red;
+    width: 100vw;
     height: auto;
     flex: 1;
-    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
 }
 
 .title {
@@ -47,6 +49,11 @@ body, html {
     font-size: 3.3em;
     text-align: center;
     flex: 1;
+    padding: 10px 10px 0px 10px;
+    border: 4px solid #28D7FE;
+    border-radius: 10px;
+    box-shadow: 0 0 .33vw #1041FF, 0 0 1vw #1041FF, 0 0 3.33vw #1041FF, 0 0 3.33vw #1041FF, 0 0 .133vw #8BFDFE, .166vw .166vw .033vw #147280;
+    filter: brightness(130%);
 }
 
 .rock-title {
@@ -55,14 +62,19 @@ body, html {
 }
 
 .paper-title {
-    color: #28D7FE;
+    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
+    color: #FED128;
+   /* color: #28D7FE; 
     text-shadow: 0 0 .33vw #1041FF, 0 0 1vw #1041FF, 0 0 3.33vw #1041FF, 0 0 3.33vw #1041FF, 0 0 .133vw #8BFDFE, .166vw .166vw .033vw #147280;
+    filter: brightness(130%); */
 }
 
 .scissors-title {
-    text-shadow: 0 0 .33vw #950606, 0 0 1vw #a50101, 0 0 3.33vw #900606, 0 0 3.33vw #6a0808, 0 0 .133vw #fe8b8b, .166vw .166vw .033vw #801414;
+    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
+    color: #FED128;
+    /* text-shadow: 0 0 .33vw #950606, 0 0 1vw #a50101, 0 0 3.33vw #900606, 0 0 3.33vw #6a0808, 0 0 .133vw #fe8b8b, .166vw .166vw .033vw #801414;
     color: #FF3131;
-    filter: brightness(130%);
+    filter: brightness(130%); */
 }
 
 #health-container {
@@ -114,7 +126,6 @@ progress::-webkit-progress-bar {
 
 .canvas {
     overflow: hidden;
-    
     background-color: black;
     mix-blend-mode: hard-light;
     height: auto;
@@ -517,6 +528,16 @@ disappear {
     max-height: 18vh;
     flex: 1;
     flex-shrink: 0;
+}
 
+@media (min-width: 1250px){
+    .cpu-fist {
+        bottom: 18%;
+    }
+
+    .top-bar {
+        height: auto;
+        max-height: 17vh;
+    }
 }
 
