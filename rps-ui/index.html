@@ -14,21 +14,9 @@
         
         <div class="top-bar">
 
-            <div class="health-bar">
-            
-                <meter id="user-health" value="100" max="100"></meter>
-            
-            </div>
-            
             <div id="title">
 
-                <p class="title"><span class="rock-title">ROCK, </span><span class="paper-title">PAPER, </span><span>SCISSORS</span></p>
-
-            </div>
-            
-            <div class="health-bar">
-            
-                <meter id="cpu-health" value="100" max="100"></meter>
+                <p class="title"><span class="rock-title">ROCK, </span><span class="paper-title">PAPER, </span><span class="scissors-title">SCISSORS</span></p>
 
             </div>
 
@@ -40,14 +28,14 @@
                         
             </div>
 
-            <div id="button-container">
+            <div id="button-container" class="appear">
                
-                <button value="rock" class="selection-button rock-button"><img src="images/rock-icon.png" class="selection-button-image"></button>
+                    <button value="rock" class="selection-button rock-button"><img src="images/rock-icon.png" class="selection-button-image"></button>
 
-                <button value="paper" class="selection-button paper-button"><img src="images/paper-icon.png" class="selection-button-image"></button>
-                
-                <button value="scissors" class="selection-button scissors-button"><img src="images/scissors-icon.png" class="selection-button-image"></button>
-                
+                    <button value="paper" class="selection-button paper-button"><img src="images/paper-icon.png" class="selection-button-image"></button>
+                    
+                    <button value="scissors" class="selection-button scissors-button"><img src="images/scissors-icon.png" class="selection-button-image"></button>
+           
             </div>
             
             <div class="cpu-container"> 
@@ -57,6 +45,22 @@
         </div>
         
         <div class="bottom-bar">
+
+            <div id="health-container">
+            
+                <div class="user-health-container">
+                
+                    <progress id="user-health" value="100" max="100"></progress>
+                
+                </div>
+                
+                <div class="cpu-health-container">
+                
+                    <progress id="cpu-health" value="100" max="100"></progress>
+
+                </div>
+
+            </div>
 
             <div id="newGame">
                 <button>New Game</button>
