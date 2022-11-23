@@ -16,8 +16,10 @@ const canvas = document.querySelector('.canvas');
 const userFist = document.createElement('img');
 const cpuFist = document.createElement('img');
 
-const newGame = document.getElementById('newGame').querySelector('button');
-newGame.style.display = 'none';
+const newGame = document.getElementById('new-game');
+//newGame.style.display = 'none';
+
+ 
 
 const tableHit = new Audio('sounds/tablehit.mp3');
 
@@ -45,9 +47,9 @@ function resetFists(){
     cpuContainer.innerHTML = '';
 }
 
-function resetGame(){
-    newGame.style.display = 'block';
-}
+//function resetGame(){
+//    newGame.style.display = 'block';
+// }
 
 let userScore = 0;
 let cpuScore = 0;
@@ -58,30 +60,50 @@ function getCpuSelection(){
 }
 
 function gameStatus(){
-    if (userScore === 5){
+    if (userScore === 2){
+        userWins();
         gameResults.textContent = "You win the game!";
         gameOver();
+        setTimeout(function(){
+            resetFists();
+        },4900);
         resetGame();
-    } else if (cpuScore === 5){
+    } else if (cpuScore === 2){
+        userLoses();
         gameResults.textContent = "The Computer wins the game!";
         gameOver();
+        setTimeout(function(){
+            resetFists();
+        },4900);
         resetGame();
     }
 }
 
 function gameOver(){
-    const buttonContainer = document.querySelector('#button-container')
+    const buttonContainer = document.querySelector('#button-container');
     buttonContainer.innerHTML = '';
 }
 
+function userWins(){
+    const userWinsModal = document.getElementById('user-wins-modal');
+    userWinsModal.style.display = "block";
+}
+
+function userLoses(){
+    const userLosesModal = document.getElementById('user-loses-modal');
+    userLosesModal.style.display = "block";
+}
+
 newGame.addEventListener('click', () => {
-    buttonContainer.style.display = 'block';
-    newGame.style.display = 'none';
+    //buttonContainer.style.display = 'block';
+    //newGame.style.display = 'none';
     userScore = 0;
-    cpuScore = 0
-    score.textContent = `Your score: ${userScore}, Computer score: ${cpuScore}.`;
-    roundResults.textContent = "";
-    gameResults.textContent = "";
+    cpuScore = 0;
+    userHealth.value = 100;
+    cpuHealth.value = 100;
+    //score.textContent = `Your score: ${userScore}, Computer score: ${cpuScore}.`;
+    //roundResults.textContent = "";
+    //gameResults.textContent = "";
   });
 
 function playRound (userSelection, cpuSelection) {

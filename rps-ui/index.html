@@ -14,18 +14,31 @@
 
 <body>
     
-    <div id="game-over-modal" class="modal">
+    <div id="user-wins-modal" class="modal">
 
         <div class="modal-content">
 
-            <h1>GAME OVER</h1>
-            <h2>YOU LOSE</h2>
+            <h1>YOU WIN</h1>
+
+            <button id="new-game">new game</button>
 
         </div>
 
     </div>
 
-    <div id="button-container" class="appear" style="display:none;">
+    <div id="user-loses-modal" class="modal">
+
+        <div class="modal-content">
+
+            <h1>YOU LOSE</h1>
+
+            <button id="new-game">new game</button>
+
+        </div>
+
+    </div>
+
+    <div id="button-container" class="appear">
                
         <button value="rock" class="selection-button rock-button"><img src="images/rock-icon.png" class="selection-button-image"></button>
 
