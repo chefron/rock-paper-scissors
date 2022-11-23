@@ -45,6 +45,8 @@ function resetFists(){
     cpuFist.classList.remove('cpu-fist-intro', 'shake-cpu-fist', 'cpu-fist-float');
     userContainer.removeChild(userFist);
     cpuContainer.removeChild(cpuFist);
+    userContainer.innerHTML = '';
+    cpuContainer.innerHTML = '';
 }
 
 function resetGame(){
@@ -166,12 +168,12 @@ function playRound (userSelection, cpuSelection) {
     //reset fist for next round
     setTimeout(function(){
         resetFists();
-    },3000);
+    },4900);
         
         
     setTimeout(function(){
-        dropFists();
-    },4000);
+       dropFists();
+    },5000);
 
     setTimeout(function(){
         reappearButtons();
@@ -251,15 +253,16 @@ function cpuRockAnimation() {
 function cpuPaperAnimation() {
     const cpuPaper = document.createElement('img');
     cpuPaper.src = "images/right-paper.png";
+   
     cpuContainer.appendChild(cpuPaper);
-    cpuPaper.classList.add("cpu-paper", "cpu-movement");
+    cpuPaper.classList.add('cpu-paper', 'cpu-movement');
 }
 
 function cpuScissorsAnimation() {
     const cpuScissors = document.createElement('img');
     cpuScissors.src = "images/right-scissors.png";
     cpuContainer.appendChild(cpuScissors);
-    cpuScissors.classList.add("cpu-scissors", "cpu-movement");
+    cpuScissors.classList.add('cpu-scissors', 'cpu-movement');
 }
 
 
