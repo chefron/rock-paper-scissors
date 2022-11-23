@@ -11,8 +11,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
+
 <body>
-   
+    
+    <div id="game-over-modal" class="modal">
+
+        <div class="modal-content">
+
+            <h1>GAME OVER</h1>
+            <h2>YOU LOSE</h2>
+
+        </div>
+
+    </div>
+
+    <div id="button-container" class="appear" style="display:none;">
+               
+        <button value="rock" class="selection-button rock-button"><img src="images/rock-icon.png" class="selection-button-image"></button>
+
+        <button value="paper" class="selection-button paper-button"><img src="images/paper-icon.png" class="selection-button-image"></button>
+        
+        <button value="scissors" class="selection-button scissors-button"><img src="images/scissors-icon.png" class="selection-button-image"></button>
+
+    </div>
+
     <div class="flex-container">
         
         <div class="top-bar">
@@ -37,16 +59,6 @@
             </div>
        
         </div>
-
-        <div id="button-container" class="appear">
-               
-            <button value="rock" class="selection-button rock-button"><img src="images/rock-icon.png" class="selection-button-image"></button>
-
-            <button value="paper" class="selection-button paper-button"><img src="images/paper-icon.png" class="selection-button-image"></button>
-            
-            <button value="scissors" class="selection-button scissors-button"><img src="images/scissors-icon.png" class="selection-button-image"></button>
-   
-    </div>
         
         <div class="bottom-bar">
 

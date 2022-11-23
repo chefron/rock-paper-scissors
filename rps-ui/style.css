@@ -17,6 +17,7 @@
 
 html {
     min-width: 390px;
+    overflow: hidden;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
     padding: 0;
     width: 100vw;
     height: auto;
+    overflow: hidden;
 }
 
 .text {
@@ -53,7 +55,7 @@ body {
 
 .title {
     font-family: neon, Arial, sans-serif;
-    font-size: 3.3em;
+    font-size: clamp(2.2em, 7vw, 3.3em);
     text-align: center;
     flex: 1;
     padding: 10px 10px 0px 10px;
@@ -84,9 +86,11 @@ body {
     filter: brightness(130%); */
 }
 
+/* wrapper div to improve cpu performance with mix-blend-mode */
+
+
 .canvas {
     overflow: hidden;
-    background-color: black;
     mix-blend-mode: hard-light;
     flex: 5;
     display: flex;
@@ -247,12 +251,15 @@ body {
 
 #button-container {
     position: absolute;
+    padding-top: 20vh;
+    padding-bottom: 40vh;
     display: flex;
     min-height: 250px;
-    bottom: 40%;
-    left: 43%;
+    height: 40vh;
+    left: 43.2%;
     overflow: hidden;
-    scale: 1.3;
+    scale: 1.4;
+    z-index: 1;
 }
 
 .appear {
@@ -318,6 +325,27 @@ body {
     50% {transform: scale(1.15);}
     100% {transform: scale(1);}
 }
+
+.modal {
+    position: fixed;
+    z-index: 2; /* Sit on top */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: none;
+    color: whitesmoke ;
+    margin: 15% auto; /* 15% from the top and centered */
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
 
 .cpu-container {
     flex-grow: 0;
@@ -460,6 +488,7 @@ body {
     height: 100%;
     flex: 1;
     flex-wrap: nowrap;
+    overflow: clip;
 }
 
 #health-title {
@@ -467,22 +496,24 @@ body {
     color:rgb(255, 255, 255);
     font-family: 'Pacifico', cursive;
     text-align: center;
-    font-size: 3em;
+    font-size: clamp(1em, 5vw, 3em);
+    max-width: 200px;
     color: #fff;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
 }
 
 .user-health-container {
-    flex: 3;
+    flex: 2;
     display: flex;
     justify-content: right;
+    padding-right: 1vw;
 }
 
 .cpu-health-container {
-    flex: 3;
+    flex: 2;
     display: flex;
     justify-content: left;
-    
+    padding-left: 1vw;
 }
 
 #cpu-health {
@@ -490,20 +521,22 @@ body {
 }
 
 progress[value] {
-    width: 85%;
+    width: 95%;
+    height: 1.5vh;
     -webkit-appearance: none; 
     appearance: none;
 }
 
 progress::-webkit-progress-value {
     background: rgb(211, 32, 32);
-    border: 2px solid rgb(255, 225, 225);
-    border-radius: 2px;
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+    border: 1px solid rgb(255, 225, 225);
+    border-radius: 6px;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e61f00, 0 0 20px #e61f00, 0 0 25px #e61f00;
   }
 
 progress::-webkit-progress-bar {
-    background: rgb(0, 0, 0);
+    background: rgb(255, 225, 225);
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
   }
 
 @media (min-width: 1250px){

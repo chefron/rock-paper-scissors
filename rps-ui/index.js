@@ -16,14 +16,10 @@ const canvas = document.querySelector('.canvas');
 const userFist = document.createElement('img');
 const cpuFist = document.createElement('img');
 
-
-
-
 const newGame = document.getElementById('newGame').querySelector('button');
 newGame.style.display = 'none';
 
 const tableHit = new Audio('sounds/tablehit.mp3');
-
 
 function dropFists() {
 userFist.src = 'images/left-rock.png';
@@ -75,7 +71,7 @@ function gameStatus(){
 
 function gameOver(){
     const buttonContainer = document.querySelector('#button-container')
-    buttonContainer.style.display = 'none';
+    buttonContainer.innerHTML = '';
 }
 
 newGame.addEventListener('click', () => {
