@@ -8,6 +8,8 @@
     font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 @font-face {
     font-family: neon;
     src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
@@ -18,7 +20,7 @@ html {
 }
 
 body {
-    background-color: rgb(52, 0, 0);
+    background-color: rgb(85, 0, 0);
     min-width: 390px;
     margin: 0;
     padding: 0;
@@ -81,53 +83,6 @@ body {
     color: #FF3131;
     filter: brightness(130%); */
 }
-
-#health-container {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    width: 100vw;
-    height: auto;
-    flex: 1;
-    overflow: hidden;
-}
-
-.user-health-container {
-    flex: 1;
-    display: flex;
-    justify-content: left;
-    align-self: flex-end;
-    margin-left: -3%;
-}
-
-.cpu-health-container {
-    flex: 1;
-    display: flex;
-    justify-content: right;
-    align-self: flex-end;
-    margin-right: -3%;
-}
-
-#cpu-health {
-    transform: rotateY(180deg);
-}
-
-progress[value] {
-    width: 50vw;
-    -webkit-appearance: none; 
-    appearance: none;
-    mix-blend-mode: hard-light;
-}
-
-progress::-webkit-progress-value {
-    background: rgb(211, 32, 32);
-    border: 2px solid rgb(255, 225, 225);
-    border-radius: 2px;
-  }
-
-progress::-webkit-progress-bar {
-    background: rgb(0, 0, 0);
-  }
 
 .canvas {
     overflow: hidden;
@@ -301,24 +256,24 @@ progress::-webkit-progress-bar {
 }
 
 .appear {
-    animation: appear .5s ease-in-out 0s 1 forwards;
+    animation: appear .6s ease-in-out 0s 1 forwards;
 }
 
 @keyframes appear {
-    from{
-        opacity: 0;}
-    to{
-        opacity: 1;}
+    0% {opacity: 0;
+        display: initial}
+    100% {opacity: 1;}
 }
 
-disappear {
+.disappear {
     animation: disappear .25s ease-in-out 0s 1 forwards;
 }
 
 @keyframes disappear {
-    from{opacity: 1;}
-    to{height:  0%;
-       opacity: 0;}
+    0% {opacity: 1;}
+    99% {opacity: 0;}
+    100% {display: none;
+        opacity: 0;}
 }
     
 .rock-button {
@@ -496,6 +451,60 @@ disappear {
     max-height: 18vh;
     flex: 1;
 }
+
+#health-container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    flex: 1;
+    flex-wrap: nowrap;
+}
+
+#health-title {
+    flex: 1;
+    color:rgb(255, 255, 255);
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+}
+
+.user-health-container {
+    flex: 3;
+    display: flex;
+    justify-content: right;
+}
+
+.cpu-health-container {
+    flex: 3;
+    display: flex;
+    justify-content: left;
+    
+}
+
+#cpu-health {
+    transform: rotateY(180deg);
+}
+
+progress[value] {
+    width: 85%;
+    -webkit-appearance: none; 
+    appearance: none;
+}
+
+progress::-webkit-progress-value {
+    background: rgb(211, 32, 32);
+    border: 2px solid rgb(255, 225, 225);
+    border-radius: 2px;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+  }
+
+progress::-webkit-progress-bar {
+    background: rgb(0, 0, 0);
+  }
 
 @media (min-width: 1250px){
     .top-bar {

@@ -177,7 +177,7 @@ function playRound (userSelection, cpuSelection) {
 
     setTimeout(function(){
         reappearButtons();
-    },5000);
+    },5800);
         
 }  
 
@@ -206,14 +206,17 @@ function shakeCanvas() {
 }
 
 function disappearButtons() {
-    buttonContainer.classList.add('disappear');
     buttonContainer.classList.remove('appear');
+    setTimeout(function(){
+        buttonContainer.classList.add('disappear');
+      },10);
 }
 
 function reappearButtons() {
     buttonContainer.classList.add('appear');
-    buttonContainer.classList.remove('disappear');
-
+    setTimeout(function(){
+        buttonContainer.classList.remove('disappear');
+      },10);
 }
 
 buttons.forEach((button) => {
