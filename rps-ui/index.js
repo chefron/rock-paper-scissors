@@ -17,7 +17,6 @@ const userFist = document.createElement('img');
 const cpuFist = document.createElement('img');
 
 const newGame = document.getElementById('new-game');
-//newGame.style.display = 'none';
 
  
 
@@ -41,18 +40,13 @@ dropFists()
 function resetFists(){
     userFist.classList.remove('user-fist-intro', 'shake-user-fist', 'user-fist-float');
     cpuFist.classList.remove('cpu-fist-intro', 'shake-cpu-fist', 'cpu-fist-float');
-    userContainer.removeChild(userFist);
-    cpuContainer.removeChild(cpuFist);
     userContainer.innerHTML = '';
     cpuContainer.innerHTML = '';
 }
 
-//function resetGame(){
-//    newGame.style.display = 'block';
-// }
-
 let userScore = 0;
 let cpuScore = 0;
+let isGameOver = false;
 
 function getCpuSelection(){
     const selection = options[Math.floor(Math.random() * options.length)];
@@ -61,27 +55,27 @@ function getCpuSelection(){
 
 function gameStatus(){
     if (userScore === 2){
-        userWins();
-        gameResults.textContent = "You win the game!";
+        isGameOver = true;
+        userWins(); 
         gameOver();
         setTimeout(function(){
             resetFists();
         },4900);
-        resetGame();
     } else if (cpuScore === 2){
+        isGameOver = true;
         userLoses();
         gameResults.textContent = "The Computer wins the game!";
         gameOver();
         setTimeout(function(){
             resetFists();
         },4900);
-        resetGame();
     }
 }
 
 function gameOver(){
     const buttonContainer = document.querySelector('#button-container');
     buttonContainer.innerHTML = '';
+
 }
 
 function userWins(){
@@ -188,10 +182,11 @@ function playRound (userSelection, cpuSelection) {
         resetFists();
     },4900);
         
-        
+    if (isGameOver == false){    
     setTimeout(function(){
        dropFists();
     },5000);
+    }
 
     setTimeout(function(){
         reappearButtons();
@@ -299,8 +294,6 @@ buttons.forEach((button) => {
     playRound(button.value, getCpuSelection())
     });
 });
-
-
 
 
 
