@@ -5,6 +5,8 @@ const roundResults = document.querySelector('#roundResults');
 const score = document.querySelector('#score');
 const gameResults = document.querySelector('#gameResults');
 
+const modal = document.getElementById('modal');
+
 const userHealth = document.getElementById("user-health");
 const cpuHealth = document.getElementById("cpu-health");
 
@@ -16,11 +18,11 @@ const canvas = document.querySelector('.canvas');
 const userFist = document.createElement('img');
 const cpuFist = document.createElement('img');
 
-const newGame = document.getElementById('new-game');
-
- 
-
 const tableHit = new Audio('sounds/tablehit.mp3');
+
+function showModal () {
+    modal.style.display = "block";
+}
 
 function dropFists() {
 userFist.src = 'images/left-rock.png';
@@ -54,51 +56,42 @@ function getCpuSelection(){
 }
 
 function gameStatus(){
-    if (userScore === 2){
+    if (userScore === 1){
         isGameOver = true;
         userWins(); 
-        gameOver();
         setTimeout(function(){
-            resetFists();
-        },4900);
-    } else if (cpuScore === 2){
+            removeButtons();
+        },2000);
+    } else if (cpuScore === 1){
         isGameOver = true;
         userLoses();
-        gameResults.textContent = "The Computer wins the game!";
-        gameOver();
         setTimeout(function(){
-            resetFists();
-        },4900);
+            removeButtons();
+        },2000);
     }
 }
 
-function gameOver(){
+function removeButtons(){
     const buttonContainer = document.querySelector('#button-container');
     buttonContainer.innerHTML = '';
 
 }
 
 function userWins(){
-    const userWinsModal = document.getElementById('user-wins-modal');
-    userWinsModal.style.display = "block";
+    showModal();
 }
 
 function userLoses(){
-    const userLosesModal = document.getElementById('user-loses-modal');
-    userLosesModal.style.display = "block";
+    showModal();
 }
 
-newGame.addEventListener('click', () => {
-    //buttonContainer.style.display = 'block';
-    //newGame.style.display = 'none';
+function resetGame() {
     userScore = 0;
     cpuScore = 0;
     userHealth.value = 100;
     cpuHealth.value = 100;
-    //score.textContent = `Your score: ${userScore}, Computer score: ${cpuScore}.`;
-    //roundResults.textContent = "";
-    //gameResults.textContent = "";
-  });
+    isGameOver = false;
+} 
 
 function playRound (userSelection, cpuSelection) {
         
@@ -178,19 +171,23 @@ function playRound (userSelection, cpuSelection) {
     gameStatus();
 
     //reset fist for next round
+    if (!isGameOver){
     setTimeout(function(){
         resetFists();
     },4900);
+    }
         
-    if (isGameOver == false){    
+    if (!isGameOver){    
     setTimeout(function(){
        dropFists();
     },5000);
     }
 
+    if (!isGameOver){
     setTimeout(function(){
         reappearButtons();
     },5800);
+    }
         
 }  
 
