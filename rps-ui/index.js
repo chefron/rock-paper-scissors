@@ -6,6 +6,7 @@ const score = document.querySelector('#score');
 const gameResults = document.querySelector('#gameResults');
 
 const modal = document.getElementById('modal');
+const modalTitle = document.createElement('p');
 
 const userHealth = document.getElementById("user-health");
 const cpuHealth = document.getElementById("cpu-health");
@@ -74,15 +75,20 @@ function gameStatus(){
 function removeButtons(){
     const buttonContainer = document.querySelector('#button-container');
     buttonContainer.innerHTML = '';
-
 }
 
 function userWins(){
     showModal();
+    modalTitle.classList.add("win-title");
+    modal.prepend(modalTitle);
+    modalTitle.innerHTML = "YOU WIN";
 }
 
 function userLoses(){
     showModal();
+    modalTitle.classList.add("lose-title");
+    modal.prepend(modalTitle);
+    modalTitle.innerHTML = "YOU LOSE";
 }
 
 function resetGame() {
@@ -91,7 +97,14 @@ function resetGame() {
     userHealth.value = 100;
     cpuHealth.value = 100;
     isGameOver = false;
-} 
+}
+
+const playAgain = document.getElementById('play-again');
+
+playAgain.addEventListener('click', resetGame);
+playAgain.addEventListener('click', resetFists);
+playAgain.addEventListener('click', dropFists)              
+playAgain.addEventListener('click', reappearButtons);
 
 function playRound (userSelection, cpuSelection) {
         
@@ -170,23 +183,21 @@ function playRound (userSelection, cpuSelection) {
     //check if game won or lost
     gameStatus();
 
-    //reset fist for next round
+    //if game is still going, reset fists and buttons for next round
     if (!isGameOver){
-    setTimeout(function(){
-        resetFists();
-    },4900);
-    }
         
-    if (!isGameOver){    
-    setTimeout(function(){
-       dropFists();
-    },5000);
-    }
-
-    if (!isGameOver){
-    setTimeout(function(){
+        setTimeout(function(){
+        resetFists();
+        },4900);
+       
+        setTimeout(function(){
+        dropFists();
+        },5000);
+    
+        setTimeout(function(){
         reappearButtons();
-    },5800);
+        },5800);
+   
     }
         
 }  

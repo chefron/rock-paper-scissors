@@ -21,7 +21,7 @@ html {
 }
 
 body {
-    background-color: rgb(85, 0, 0);
+    background-color: rgb(45, 0, 0);
     min-width: 390px;
     margin: 0;
     padding: 0;
@@ -339,7 +339,6 @@ body {
     width: 30vw;
     height: min-content;
     background-color: none;
-    color: whitesmoke;
     text-align: center;
     margin: auto;
     top: 0%;
@@ -347,7 +346,9 @@ body {
     left: 0;
     right: 0;
     padding: 20px;
-    border: 1px solid #888;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 2px;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d0d0d0, 0 0 20px #bababa;
     animation-name: modal;
     animation-duration: 5.5s;
     animation-direction: forward;
@@ -359,11 +360,31 @@ body {
   100% {opacity: 1;}
 }
 
-#play-again {
-    opacity: 100%;
+.win-title {
+    font-family: 'neondesmonregular', Helvetica, sans-serif;
+    color: whitesmoke;
+    font-size: clamp(2, 5vw, 2.5em);
+    font-weight: 600;
+    animation: win-pulse .3s infinite alternate;
+}
+
+@keyframes win-pulse {
+  0% {text-shadow: 0 0 2.5px #fff, 0 0 5px #fff, 0 0 7.5px #ffd154, 0 0 10px #e6a900;}
+  100% {text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ffd154, 0 0 20px #e6a900, 0 0 30px #e6a900, 0 0 50px #e6a900;}
+}
+
+.lose-title {
+    font-family: 'neondesmonregular', Helvetica, sans-serif;
+    color: #000000;
+    font-weight: 600;
+    font-size: clamp(2, 5vw, 2.5em);
+    text-shadow: 0 0 5px dimgray, 0 0 10px dimgray, 0 0 15px #000000, 0 0 20px #000000, 0 0 30px #0000
 }
 
 
+#play-again {
+    
+}
 
 
 .cpu-container {
