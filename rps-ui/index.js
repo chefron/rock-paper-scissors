@@ -22,6 +22,17 @@ const cpuFist = document.createElement('img');
 
 const tableHit = new Audio('sounds/tablehit.mp3');
 
+
+const numberOfRounds = prompt("rounds please");
+
+
+userHealth.value = Math.ceil(numberOfRounds / 2);
+userHealth.max = Math.ceil(numberOfRounds /2);
+cpuHealth.value = Math.ceil(numberOfRounds / 2);
+cpuHealth.max = Math.ceil(numberOfRounds /2);
+
+
+
 function dropFists() {
     userFist.src = 'images/left-rock.png';
     cpuFist.src = 'images/right-rock.png';
@@ -54,10 +65,10 @@ function getCpuSelection(){
 }
 
 function gameStatus(){
-    if (userScore === 1){
+    if (cpuHealth.value === 0){
         isGameOver = true;
         displayUserWinsModal(); 
-    } else if (cpuScore === 1){
+    } else if (userHealth.value === 0){
         isGameOver = true;
         displayUserLosesModal();
     }
@@ -178,7 +189,9 @@ function playRound (userSelection, cpuSelection) {
     }
 
     //check if game is won, lost, or still ongoing
-    gameStatus();
+    setTimeout(function(){
+        gameStatus();
+    },3000);
 
     //if game is still ongoing, reset fists and buttons for next round
     if (!isGameOver){
@@ -201,12 +214,12 @@ function playRound (userSelection, cpuSelection) {
 
 //dock user health points for a lost round
 function userHealthHit () {
-    userHealth.value -= 20;
+    userHealth.value -= 1;
 }
 
 //dock CPU health points for a lost round
 function cpuHealthHit () {
-    cpuHealth.value -= 20;
+    cpuHealth.value -= 1;
 }
 
 function shakeFists() {
