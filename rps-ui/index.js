@@ -71,7 +71,7 @@ function displayUserWinsModal(){
     modalContainer.style.display = "block";
     modalTitle.classList.add("win-title");
     modal.prepend(modalTitle);
-    modalTitle.innerHTML = "YOU WIN";
+    modalTitle.innerHTML = "YOU WIN!";
 }
 
 //hide game buttons and display User Loses Modal in their place
@@ -82,7 +82,7 @@ function displayUserLosesModal(){
     modalContainer.style.display = "block";
     modalTitle.classList.add("lose-title");
     modal.prepend(modalTitle);
-    modalTitle.innerHTML = "YOU &nbsp LOSE";
+    modalTitle.innerHTML = "YOU LOSE";
 }
 
 function removeButtons(){
@@ -120,22 +120,17 @@ playAgain.addEventListener('click', displayButtons);
 function playRound (userSelection, cpuSelection) {
         
     //combinations where user and cpu tie:
-    
     if ((userSelection == "rock") && (cpuSelection == "rock")){
             userRockAnimation();
             cpuRockAnimation();
-            roundResults.textContent = `You both selected rock! It\'s a tie!`;
     } else if ((userSelection == "paper") && (cpuSelection == "paper")){
             userPaperAnimation();
             cpuPaperAnimation();
-            roundResults.textContent = `You both selected paper! It\'s a tie!`;
     } else if ((userSelection == "scissors") && (cpuSelection == "scissors")){
             userScissorsAnimation();
             cpuScissorsAnimation();
-            roundResults.textContent = `You both selected scissors! It\'s a tie!`;
 
     //combinations where user beats cpu:
-    
     } else if ((userSelection == "rock" && cpuSelection == "scissors")){
             userRockAnimation();
             cpuScissorsAnimation();
@@ -143,7 +138,6 @@ function playRound (userSelection, cpuSelection) {
             setTimeout(function(){
                 cpuHealthHit();
             },2750);
-            roundResults.textContent = `You selected rock and the computer selected scissors! You win!`;
     } else if ((userSelection == "paper" && cpuSelection == "rock")){
             userPaperAnimation();
             cpuRockAnimation();
@@ -151,7 +145,6 @@ function playRound (userSelection, cpuSelection) {
             setTimeout(function(){
                 cpuHealthHit();
             },2750);
-            roundResults.textContent = `You selected paper and the computer selected rock! You win!`;
     } else if ((userSelection == "scissors" && cpuSelection == "paper")){
             userScissorsAnimation();
             cpuPaperAnimation();
@@ -159,10 +152,8 @@ function playRound (userSelection, cpuSelection) {
             setTimeout(function(){
                 cpuHealthHit();
             },2750);
-            roundResults.textContent = `You selected scissors and the computer selected paper! You win!`;
-    
+            
     //combinations where user loses to cpu:
-    
     } else if ((userSelection == "rock" && cpuSelection == "paper")){
             userRockAnimation();
             cpuPaperAnimation();
@@ -170,7 +161,6 @@ function playRound (userSelection, cpuSelection) {
             setTimeout(function(){
                 userHealthHit();
             },2750);
-            roundResults.textContent = `You selected rock and the computer selected paper! You lose!`;
     } else if ((userSelection == "paper" && cpuSelection == "scissors")){
             userPaperAnimation();
             cpuScissorsAnimation();
@@ -178,7 +168,6 @@ function playRound (userSelection, cpuSelection) {
             setTimeout(function(){
                 userHealthHit();
             },2750);
-            roundResults.textContent = `You selected paper and the computer selected scissors! You lose!`;
     } else if ((userSelection == "scissors" && cpuSelection == "rock")){
             userScissorsAnimation();
             cpuRockAnimation();
@@ -186,10 +175,7 @@ function playRound (userSelection, cpuSelection) {
             setTimeout(function(){
                 userHealthHit();
             },2750);
-            roundResults.textContent = `You selected scissors and the computer selected rock! You lose!`;
     }
-       
-    score.textContent = `Your score: ${userScore}, Computer score: ${cpuScore}.`;
 
     //check if game is won, lost, or still ongoing
     gameStatus();
