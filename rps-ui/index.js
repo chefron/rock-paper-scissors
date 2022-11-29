@@ -5,6 +5,7 @@ const roundResults = document.querySelector('#roundResults');
 const score = document.querySelector('#score');
 const gameResults = document.querySelector('#gameResults');
 
+const modalContainer = document.getElementById('modal-container');
 const modal = document.getElementById('modal');
 const modalTitle = document.createElement('p');
 
@@ -21,21 +22,17 @@ const cpuFist = document.createElement('img');
 
 const tableHit = new Audio('sounds/tablehit.mp3');
 
-function showModal () {
-    modal.style.display = "block";
-}
-
 function dropFists() {
-userFist.src = 'images/left-rock.png';
-cpuFist.src = 'images/right-rock.png';
-userContainer.appendChild(userFist);
-cpuContainer.appendChild(cpuFist);
-userFist.classList.add('user-fist-intro', 'user-fist');
-cpuFist.classList.add('cpu-fist-intro', 'cpu-fist');
-setTimeout(function(){
-    userFist.classList.add('user-fist-float');
-    cpuFist.classList.add('cpu-fist-float');
-  },2000);
+    userFist.src = 'images/left-rock.png';
+    cpuFist.src = 'images/right-rock.png';
+    userContainer.appendChild(userFist);
+    cpuContainer.appendChild(cpuFist);
+    userFist.classList.add('user-fist-intro', 'user-fist');
+    cpuFist.classList.add('cpu-fist-intro', 'cpu-fist');
+    setTimeout(function(){
+        userFist.classList.add('user-fist-float');
+        cpuFist.classList.add('cpu-fist-float');
+    },2000);
 }
 
 dropFists()
@@ -59,17 +56,33 @@ function getCpuSelection(){
 function gameStatus(){
     if (userScore === 1){
         isGameOver = true;
-        userWins(); 
-        setTimeout(function(){
-            removeButtons();
-        },2000);
+        displayUserWinsModal(); 
     } else if (cpuScore === 1){
         isGameOver = true;
-        userLoses();
-        setTimeout(function(){
-            removeButtons();
-        },2000);
+        displayUserLosesModal();
     }
+}
+
+//hide game buttons and display User Wins Modal in their place
+function displayUserWinsModal(){
+    setTimeout(function(){
+        hideButtons();
+    },2000);
+    modalContainer.style.display = "block";
+    modalTitle.classList.add("win-title");
+    modal.prepend(modalTitle);
+    modalTitle.innerHTML = "YOU WIN";
+}
+
+//hide game buttons and display User Loses Modal in their place
+function displayUserLosesModal(){
+    setTimeout(function(){
+        hideButtons();
+    },2000);
+    modalContainer.style.display = "block";
+    modalTitle.classList.add("lose-title");
+    modal.prepend(modalTitle);
+    modalTitle.innerHTML = "YOU &nbsp LOSE";
 }
 
 function removeButtons(){
@@ -77,34 +90,32 @@ function removeButtons(){
     buttonContainer.innerHTML = '';
 }
 
-function userWins(){
-    showModal();
-    modalTitle.classList.add("win-title");
-    modal.prepend(modalTitle);
-    modalTitle.innerHTML = "YOU WIN";
-}
+const playAgain = document.getElementById('play-again-button');
 
-function userLoses(){
-    showModal();
-    modalTitle.classList.add("lose-title");
-    modal.prepend(modalTitle);
-    modalTitle.innerHTML = "YOU LOSE";
-}
+playAgain.addEventListener('click', resetGame);
 
 function resetGame() {
+    isGameOver = false;
     userScore = 0;
     cpuScore = 0;
     userHealth.value = 100;
     cpuHealth.value = 100;
-    isGameOver = false;
 }
 
-const playAgain = document.getElementById('play-again');
+playAgain.addEventListener('click', resetModal);
 
-playAgain.addEventListener('click', resetGame);
+//hide and reset Modal for next round
+function resetModal() {
+
+    modalContainer.style.display='none';
+    modalTitle.className = ''
+    modalTitle.innerHTML = '';
+    modal.removeChild(modalTitle)
+}
+
 playAgain.addEventListener('click', resetFists);
 playAgain.addEventListener('click', dropFists)              
-playAgain.addEventListener('click', reappearButtons);
+playAgain.addEventListener('click', displayButtons);
 
 function playRound (userSelection, cpuSelection) {
         
@@ -180,10 +191,10 @@ function playRound (userSelection, cpuSelection) {
        
     score.textContent = `Your score: ${userScore}, Computer score: ${cpuScore}.`;
 
-    //check if game won or lost
+    //check if game is won, lost, or still ongoing
     gameStatus();
 
-    //if game is still going, reset fists and buttons for next round
+    //if game is still ongoing, reset fists and buttons for next round
     if (!isGameOver){
         
         setTimeout(function(){
@@ -195,17 +206,19 @@ function playRound (userSelection, cpuSelection) {
         },5000);
     
         setTimeout(function(){
-        reappearButtons();
+        displayButtons();
         },5800);
    
     }
         
 }  
 
+//dock user health points for a lost round
 function userHealthHit () {
     userHealth.value -= 20;
 }
 
+//dock CPU health points for a lost round
 function cpuHealthHit () {
     cpuHealth.value -= 20;
 }
@@ -226,23 +239,23 @@ function shakeCanvas() {
       },10);
 }
 
-function disappearButtons() {
-    buttonContainer.classList.remove('appear');
+function hideButtons() {
+    buttonContainer.classList.remove('fade-in-buttons');
     setTimeout(function(){
-        buttonContainer.classList.add('disappear');
+        buttonContainer.classList.add('fade-out-buttons');
       },10);
 }
 
-function reappearButtons() {
-    buttonContainer.classList.add('appear');
+function displayButtons() {
+    buttonContainer.classList.add('fade-in-buttons');
     setTimeout(function(){
-        buttonContainer.classList.remove('disappear');
+        buttonContainer.classList.remove('fade-out-buttons');
       },10);
 }
 
 buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            shakeCanvas(), shakeFists(), disappearButtons();
+            shakeCanvas(), shakeFists(), hideButtons();
       });
     });
 

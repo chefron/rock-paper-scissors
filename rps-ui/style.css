@@ -259,28 +259,25 @@ body {
     left: 43.2%;
     overflow: hidden;
     scale: 1.4;
-    z-index: 2;
+    z-index: 1;
 }
 
-.appear {
-    animation: appear .6s ease-in-out 0s 1 forwards;
+.fade-in-buttons {
+    animation: fade-in-buttons .5s ease-in-out 0s 1 forwards;
 }
 
-@keyframes appear {
-    0% {opacity: 0;
-        display: initial}
+@keyframes fade-in-buttons {
+    0% {opacity: 0;}
     100% {opacity: 1;}
 }
 
-.disappear {
-    animation: disappear .25s ease-in-out 0s 1 forwards;
+.fade-out-buttons {
+    animation: fade-out-buttons .25s ease-in-out 0s 1 forwards;
 }
 
-@keyframes disappear {
+@keyframes fade-out-buttons {
     0% {opacity: 1;}
-    99% {opacity: 0;}
-    100% {display: none;
-        opacity: 0;}
+    100% {opacity: 0;}
 }
     
 .rock-button {
@@ -330,15 +327,23 @@ body {
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.3);
+    display: none;
+    animation: fade-in-modal 4s ease-in 0s 1 forwards;
 }
 
+@keyframes fade-in-modal {
+    0% {opacity: 0;}
+    75% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
 #modal {
-    display: none;
     position: absolute;
     width: 30vw;
     height: min-content;
-    background-color: none;
     text-align: center;
     margin: auto;
     top: 0%;
@@ -347,25 +352,17 @@ body {
     right: 0;
     padding: 20px;
     border: 3px solid rgb(255, 255, 255);
-    border-radius: 2px;
+    border-radius: 10px;
     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d0d0d0, 0 0 20px #bababa;
-    animation-name: modal;
-    animation-duration: 5.5s;
-    animation-direction: forward;
-}
-
-@keyframes modal {
-  0% {opacity: 0;}
-  75% {opacity: 0;}
-  100% {opacity: 1;}
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .win-title {
     font-family: 'neondesmonregular', Helvetica, sans-serif;
     color: whitesmoke;
-    font-size: clamp(2, 5vw, 2.5em);
+    font-size: clamp(2.5em, 5vw, 3em);
     font-weight: 600;
-    animation: win-pulse .3s infinite alternate;
+    animation: win-pulse .6s infinite alternate;
 }
 
 @keyframes win-pulse {
@@ -375,15 +372,21 @@ body {
 
 .lose-title {
     font-family: 'neondesmonregular', Helvetica, sans-serif;
-    color: #000000;
+    color: #ff1818;
+    font-size: clamp(2.5em, 5vw, 3em);
     font-weight: 600;
-    font-size: clamp(2, 5vw, 2.5em);
-    text-shadow: 0 0 5px dimgray, 0 0 10px dimgray, 0 0 15px #000000, 0 0 20px #000000, 0 0 30px #0000
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e61f00, 0 0 20px #e61f00, 0 0 25px #e61f00;
 }
 
 
-#play-again {
-    
+#play-again-button {
+    background: none;
+    border: none;
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    font-size: clamp(1.3em, 3.3vw, 2.5em);
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
 }
 
 
@@ -533,7 +536,6 @@ body {
 
 #health-title {
     flex: 1;
-    color:rgb(255, 255, 255);
     font-family: 'Pacifico', cursive;
     text-align: center;
     font-size: clamp(1em, 5vw, 3em);
@@ -568,7 +570,7 @@ progress[value] {
 }
 
 progress::-webkit-progress-value {
-    background: rgb(211, 32, 32);
+    background: #ff1818;
     border: 1px solid rgb(255, 225, 225);
     border-radius: 6px;
     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e61f00, 0 0 20px #e61f00, 0 0 25px #e61f00;
