@@ -13,14 +13,32 @@
 </head>
 
 <body>
-
-    <input type="number" id="number-of-rounds" value="3" min="1">
-
-    <button onclick="getNumberOfRounds();">PLAY</button>
     
-    <div id="modal-container">
+    <div id="start-game-modal-container">
+    
+        <div id="start-game-modal">
+            
+            <div id="input-rounds">
+                
+                <p class="start-game-text">BEST OF:</p>
 
-        <div id="modal">
+                <input type="number" id="number-of-rounds" class="start-game-text" value="3" min="1" autofocus>
+
+            </div>
+            
+            <div id="play-button-container">
+
+                <button onclick="getNumberOfRounds();" id="play-button">Play</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="game-over-modal-container">
+
+        <div id="game-over-modal">
 
                 <button id="play-again-button">Play again?</button>
 

@@ -2,9 +2,9 @@ const options = ["rock", "paper", "scissors"];
 const buttons = document.getElementById('button-container').querySelectorAll('button');
 const buttonContainer = document.getElementById('button-container');
 
-const modalContainer = document.getElementById('modal-container');
-const modal = document.getElementById('modal');
-const modalTitle = document.createElement('p');
+const gameOverModalContainer = document.getElementById('game-over-modal-container');
+const gameOverModal = document.getElementById('game-over-modal');
+const gameOverModalTitle = document.createElement('p');
 
 const userHealth = document.getElementById("user-health");
 const cpuHealth = document.getElementById("cpu-health");
@@ -79,10 +79,11 @@ function displayUserWinsModal(){
     setTimeout(function(){
         hideButtons();
     },2000);
-    modalContainer.style.display = "block";
-    modalTitle.classList.add("win-title");
-    modal.prepend(modalTitle);
-    modalTitle.innerHTML = "YOU WIN!";
+    gameOverModalContainer.style.display = "block";
+    gameOverModalContainer.classList.add("fade-in-modal");
+    gameOverModalTitle.classList.add("win-title");
+    gameOverModal.prepend(gameOverModalTitle);
+    gameOverModalTitle.innerHTML = "YOU WIN!";
     playAgain.style.display = "block";
 }
 
@@ -91,10 +92,11 @@ function displayUserLosesModal(){
     setTimeout(function(){
         hideButtons();
     },2000);
-    modalContainer.style.display = "block";
-    modalTitle.classList.add("lose-title");
-    modal.prepend(modalTitle);
-    modalTitle.innerHTML = "YOU LOSE";
+    gameOverModalContainer.style.display = "block";
+    gameOverModalContainer.classList.add("fade-in-modal");
+    gameOverModalTitle.classList.add("lose-title");
+    gameOverModal.prepend(gameOverModalTitle);
+    gameOverModalTitle.innerHTML = "YOU LOSE";
     playAgain.style.display = "block";
 }
 
@@ -115,10 +117,10 @@ playAgain.addEventListener('click', resetModal);
 
 //hide and reset Modal for next round
 function resetModal() {
-    modalContainer.style.display='none';
-    modalTitle.className = ''
-    modalTitle.innerHTML = '';
-    modal.removeChild(modalTitle)
+    gameOverModalContainer.style.display='none';
+    gameOverModalTitle.className = ''
+    gameOverModalTitle.innerHTML = '';
+    gameOverModal.removeChild(gameOverModalTitle)
 }
 
 playAgain.addEventListener('click', resetFists);

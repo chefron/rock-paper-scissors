@@ -28,10 +28,6 @@ body {
     overflow: hidden;
 }
 
-.text {
-    color: red;
-}
-
 .flex-container {
     height: 100vh;
     width: 100vw;
@@ -49,6 +45,7 @@ body {
     align-items: center;
     justify-content: center;
     padding-top: 15px;
+    z-index: 3;
 }
 
 .title {
@@ -322,13 +319,86 @@ body {
     100% {transform: scale(1);}
 }
 
-#modal-container {
+#start-game-modal-container {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: black;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+#start-game-modal {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    /*border: 4px solid #28D7FE;
+    border-radius: 50%;
+    box-shadow: 0 0 .33vw #1041FF, 0 0 1vw #1041FF, 0 0 3.33vw #1041FF, 0 0 3.33vw #1041FF, 0 0 .133vw #8BFDFE, .166vw .166vw .033vw #147280;
+    */
+    filter: brightness(130%);
+    /* border: 5px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d0d0d0, 0 0 20px #bababa; */
+}
+
+#start-game-title{
+    font-family: neon, Arial, sans-serif;
+    font-size: clamp(2.2em, 7vw, 3.3em);
+    text-align: center;
+    flex: 1;
+    margin: 0px 10px 0px 10px;
+    padding: 10px 10px 0px 10px;
+    filter: brightness(130%);
+}
+
+.start-game-text {
+    color: whitesmoke;
+    font-family: 'neondesmonregular', Helvetica, sans-serif;
+    font-size: clamp(2em, 4vw, 2.5em);
+}
+
+#input-rounds {
+    display: flex;
+}
+
+#number-of-rounds {
+    background-color: transparent;
+    width: 10%;
+    border: hidden;
+    text-decoration-color: whitesmoke;
+    text-align: center;
+}
+
+#number-of-rounds:focus {
+    outline: none;
+    font-weight: bolder;
+}
+
+#play-button {
+    background: none;
+    border: none;
+    margin: 0 auto;
+    font-family: 'Pacifico', Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: clamp(1.3em, 3.3vw, 2.5em);
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
+}
+
+#game-over-modal-container {
     height: 100%;
     width: 100%;
     position: fixed;
     z-index: 2;
     background-color: rgba(0,0,0,0.5);
     display: none;
+}
+
+.fade-in-modal {
     animation: fade-in-modal 4s ease-in 0s 1 forwards;
 }
 
@@ -338,7 +408,7 @@ body {
     100% {opacity: 1;}
 }
 
-#modal {
+#game-over-modal {
     position: absolute;
     width: 45vw;
     height: min-content;
