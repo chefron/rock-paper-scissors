@@ -383,6 +383,7 @@ body {
 #play-again-button {
     background: none;
     border: none;
+    display: none;
     font-family: 'Pacifico', Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: clamp(1.3em, 3.3vw, 2.5em);

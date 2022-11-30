@@ -14,7 +14,9 @@
 
 <body>
 
-    <input type="number">
+    <input type="number" id="number-of-rounds" value="3" min="1">
+
+    <button onclick="getNumberOfRounds();">PLAY</button>
     
     <div id="modal-container">
 
@@ -83,7 +85,7 @@
 
                 <div class="user-health-container">
 
-                    <progress id="user-health" value="100" max="100"></progress>
+                    <progress id="user-health" value="" max=""></progress>
                 
                 </div>
 
@@ -95,7 +97,7 @@
                 
                 <div class="cpu-health-container">
                 
-                    <progress id="cpu-health" value="100" max="100"></progress>
+                    <progress id="cpu-health" value="" max=""></progress>
 
                 </div>
 

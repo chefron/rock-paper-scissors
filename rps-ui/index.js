@@ -22,16 +22,13 @@ const cpuFist = document.createElement('img');
 
 const tableHit = new Audio('sounds/tablehit.mp3');
 
-
-const numberOfRounds = prompt("rounds please");
-
-
-userHealth.value = Math.ceil(numberOfRounds / 2);
-userHealth.max = Math.ceil(numberOfRounds /2);
-cpuHealth.value = Math.ceil(numberOfRounds / 2);
-cpuHealth.max = Math.ceil(numberOfRounds /2);
-
-
+function getNumberOfRounds () {
+    let numberOfRounds = document.getElementById('number-of-rounds').value;
+    userHealth.value = Math.floor((numberOfRounds / 2)+1);
+    userHealth.max = Math.floor((numberOfRounds / 2)+1);
+    cpuHealth.value = Math.floor((numberOfRounds / 2)+1);
+    cpuHealth.max = Math.floor((numberOfRounds / 2)+1);
+}
 
 function dropFists() {
     userFist.src = 'images/left-rock.png';
@@ -63,6 +60,8 @@ function getCpuSelection(){
     const selection = options[Math.floor(Math.random() * options.length)];
     return selection;
 }
+
+//NOTE FOR TOMORROW: change the health value back to user score and read that in below function. Can use the exact same calculation. Shadow data.
 
 function gameStatus(){
     if (cpuHealth.value === 0){
