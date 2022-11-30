@@ -327,7 +327,7 @@ body {
     width: 100%;
     position: fixed;
     z-index: 2;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.5);
     display: none;
     animation: fade-in-modal 4s ease-in 0s 1 forwards;
 }
@@ -338,10 +338,9 @@ body {
     100% {opacity: 1;}
 }
 
-
 #modal {
     position: absolute;
-    width: 35vw;
+    width: 45vw;
     height: min-content;
     text-align: center;
     margin: auto;
@@ -350,10 +349,6 @@ body {
     left: 0;
     right: 0;
     padding: 20px;
-    border: 3px solid rgb(255, 255, 255);
-    border-radius: 50%;
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d0d0d0, 0 0 20px #bababa;
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .win-title {
@@ -363,6 +358,7 @@ body {
     font-size: clamp(2em, 7vw, 3em);
     font-weight: 600;
     animation: win-pulse .6s infinite alternate;
+    filter: brightness(130%) contrast(130%);
 }
 
 @keyframes win-pulse {
@@ -377,13 +373,14 @@ body {
     font-size: clamp(2em, 5vw, 3em);
     font-weight: 600;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e61f00, 0 0 20px #e61f00, 0 0 25px #e61f00;
+    filter: brightness(130%) contrast(130%);
 }
-
 
 #play-again-button {
     background: none;
     border: none;
     display: none;
+    margin: 0 auto;
     font-family: 'Pacifico', Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: clamp(1.3em, 3.3vw, 2.5em);

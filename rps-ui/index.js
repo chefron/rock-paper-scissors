@@ -1,9 +1,6 @@
 const options = ["rock", "paper", "scissors"];
 const buttons = document.getElementById('button-container').querySelectorAll('button');
 const buttonContainer = document.getElementById('button-container');
-const roundResults = document.querySelector('#roundResults');
-const score = document.querySelector('#score');
-const gameResults = document.querySelector('#gameResults');
 
 const modalContainer = document.getElementById('modal-container');
 const modal = document.getElementById('modal');
@@ -22,13 +19,21 @@ const cpuFist = document.createElement('img');
 
 const tableHit = new Audio('sounds/tablehit.mp3');
 
+let numberOfRounds;
+let userHealthCopy; //Background user score to circumvent animation delays
+let cpuHealthCopy; //Background cpu score to circumvent animation delays
+
+// Asks user to input number of rounds, which dictates initial score
 function getNumberOfRounds () {
-    let numberOfRounds = document.getElementById('number-of-rounds').value;
+    numberOfRounds = document.getElementById('number-of-rounds').value;
     userHealth.value = Math.floor((numberOfRounds / 2)+1);
     userHealth.max = Math.floor((numberOfRounds / 2)+1);
     cpuHealth.value = Math.floor((numberOfRounds / 2)+1);
     cpuHealth.max = Math.floor((numberOfRounds / 2)+1);
+    userHealthCopy = Math.floor((numberOfRounds / 2)+1);
+    cpuHealthCopy = Math.floor((numberOfRounds / 2)+1);
 }
+
 
 function dropFists() {
     userFist.src = 'images/left-rock.png';
@@ -52,8 +57,6 @@ function resetFists(){
     cpuContainer.innerHTML = '';
 }
 
-let userScore = 0;
-let cpuScore = 0;
 let isGameOver = false;
 
 function getCpuSelection(){
@@ -61,19 +64,17 @@ function getCpuSelection(){
     return selection;
 }
 
-//NOTE FOR TOMORROW: change the health value back to user score and read that in below function. Can use the exact same calculation. Shadow data.
-
 function gameStatus(){
-    if (cpuHealth.value === 0){
+    if (cpuHealthCopy === 0){
         isGameOver = true;
         displayUserWinsModal(); 
-    } else if (userHealth.value === 0){
+    } else if (userHealthCopy === 0){
         isGameOver = true;
         displayUserLosesModal();
     }
 }
 
-//hide game buttons and display User Wins Modal in their place
+//Hide game buttons and display User Wins Modal in their place
 function displayUserWinsModal(){
     setTimeout(function(){
         hideButtons();
@@ -82,6 +83,7 @@ function displayUserWinsModal(){
     modalTitle.classList.add("win-title");
     modal.prepend(modalTitle);
     modalTitle.innerHTML = "YOU WIN!";
+    playAgain.style.display = "block";
 }
 
 //hide game buttons and display User Loses Modal in their place
@@ -93,6 +95,7 @@ function displayUserLosesModal(){
     modalTitle.classList.add("lose-title");
     modal.prepend(modalTitle);
     modalTitle.innerHTML = "YOU LOSE";
+    playAgain.style.display = "block";
 }
 
 function removeButtons(){
@@ -101,22 +104,17 @@ function removeButtons(){
 }
 
 const playAgain = document.getElementById('play-again-button');
-
 playAgain.addEventListener('click', resetGame);
 
 function resetGame() {
     isGameOver = false;
-    userScore = 0;
-    cpuScore = 0;
-    userHealth.value = 100;
-    cpuHealth.value = 100;
+    getNumberOfRounds();
 }
 
 playAgain.addEventListener('click', resetModal);
 
 //hide and reset Modal for next round
 function resetModal() {
-
     modalContainer.style.display='none';
     modalTitle.className = ''
     modalTitle.innerHTML = '';
@@ -144,21 +142,21 @@ function playRound (userSelection, cpuSelection) {
     } else if ((userSelection == "rock" && cpuSelection == "scissors")){
             userRockAnimation();
             cpuScissorsAnimation();
-            userScore += 1;
+            cpuHealthCopy -= 1;
             setTimeout(function(){
                 cpuHealthHit();
             },2750);
     } else if ((userSelection == "paper" && cpuSelection == "rock")){
             userPaperAnimation();
             cpuRockAnimation();
-            userScore += 1;
+            cpuHealthCopy -= 1;
             setTimeout(function(){
                 cpuHealthHit();
             },2750);
     } else if ((userSelection == "scissors" && cpuSelection == "paper")){
             userScissorsAnimation();
             cpuPaperAnimation();
-            userScore += 1;
+            cpuHealthCopy -= 1;
             setTimeout(function(){
                 cpuHealthHit();
             },2750);
@@ -167,30 +165,28 @@ function playRound (userSelection, cpuSelection) {
     } else if ((userSelection == "rock" && cpuSelection == "paper")){
             userRockAnimation();
             cpuPaperAnimation();
-            cpuScore += 1;
+            userHealthCopy -= 1;
             setTimeout(function(){
                 userHealthHit();
             },2750);
     } else if ((userSelection == "paper" && cpuSelection == "scissors")){
             userPaperAnimation();
             cpuScissorsAnimation();
-            cpuScore += 1;
+            userHealthCopy -= 1;
             setTimeout(function(){
                 userHealthHit();
             },2750);
     } else if ((userSelection == "scissors" && cpuSelection == "rock")){
             userScissorsAnimation();
             cpuRockAnimation();
-            cpuScore += 1;
+            userHealthCopy -= 1;
             setTimeout(function(){
                 userHealthHit();
             },2750);
     }
 
     //check if game is won, lost, or still ongoing
-    setTimeout(function(){
         gameStatus();
-    },3000);
 
     //if game is still ongoing, reset fists and buttons for next round
     if (!isGameOver){
