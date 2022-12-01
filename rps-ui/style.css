@@ -44,6 +44,32 @@ body {
     text-align: center;
     align-items: center;
     justify-content: center;
+    mix-blend-mode: hard-light;
+}
+
+.top-wipe{
+animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
+}
+
+@keyframes top-wipe {
+    from {clip-path: inset(0 0 0 0);}
+    to {clip-path: inset(0 0 100% 0);}
+}
+
+#start-game-screen-bottom {
+    width: 100%;
+    height: 50%;
+    background-color: black;
+    
+}
+
+.bottom-wipe {
+    animation: 2.5s cubic-bezier(.25, 1, .30, 1) bottom-wipe forwards;
+}
+
+@keyframes bottom-wipe {
+    from {clip-path: inset(0 0 0 0);
+    }to {clip-path: inset(100% 0 0 0);}
 }
 
 #header-underlay {
@@ -162,12 +188,6 @@ body {
     filter: brightness(130%);
 }
 
-#start-game-screen-bottom {
-    width: 100%;
-    height: 50%;
-    background-color: black;
-}
-
 #game-over-modal-container {
     height: 100%;
     width: 100%;
@@ -192,19 +212,21 @@ body {
     width: 100vw;
     display: flex;
     flex-direction: column;
-    align-content: stretch;
+    justify-content: stretch;
 }
 
 .header {
     background-color: black;
     width: 100vw;
-    height: auto;
-    flex: 1;
+    min-height: 15vh;
+    flex: 1 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 15px;
     z-index: 3;
+    box-shadow: 0 .2vh 3px #0119787e;
+
 }
 
 .title {
@@ -243,11 +265,16 @@ body {
 
 /* wrapper div to improve cpu performance with mix-blend-mode */
 
+.canvas-container {
+    width: 100%;
+    flex: 2 0 auto;
+}
 
 .canvas {
+    width: 100%;
+    height: 68vh;
     overflow: hidden;
     mix-blend-mode: hard-light;
-    flex: 5;
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
@@ -654,32 +681,54 @@ body {
     }
 }
 
-.bottom-bar {
+#footer {
+    flex: 1 0 auto;
+    min-height: 20vh;
     background-color: black;
-    color: red;
     width: 100vw;
-    max-height: 18vh;
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
+    justify-content: left;
+    box-shadow: 0px -5px 10px rgba(255, 255, 255, 0.64);
+}
+
+#player-names {
+    height: 5vh;
+    flex: 0 1 auto;
+    margin: -1.5vh 0 1.5vh 0;
+    display: flex;
+    font-family: 'neondesmonregular', Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: clamp(.5em, 1.2em, 2em);
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+}
+
+#user-name {
+    flex: 1;
+    text-align: right;
+    margin-right: 10%;
+}
+
+#cpu-name {
+    flex: 1;
 }
 
 #health-container {
-    flex: 1;
+    height: 5vh;
+    flex: 0 0 auto;
     width: 100vw;
-    max-height: 75px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: nowrap;
-    padding-top: 10px;
 }
 
 #health-title {
     flex: 1;
     font-family: 'Pacifico', cursive;
     text-align: center;
-    font-size: clamp(1em, 5vw, 3em);
+    font-size: clamp(1.5em, 5vw, 3em);
     max-width: 200px;
     color: #fff;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
@@ -706,7 +755,7 @@ body {
 
 progress[value] {
     width: 95%;
-    height: 1.5vh;
+    height: 1.2vh;
     -webkit-appearance: none; 
     appearance: none;
 }
@@ -723,35 +772,26 @@ progress::-webkit-progress-bar {
     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
   }
 
-
-#player-names {
-    flex: 1;
-    display: flex;
-    max-height: 30px;
-    margin: -1.5vh 0 -1.5vh 0;
-    font-family: 'neondesmonregular', Arial, Helvetica, sans-serif;
-    color: #fff;
-    font-size: clamp(.5em, 1.2em, 2em);
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
-}
-
-#user-name {
-    flex: 1;
+#info {
+    flex: 0 0 auto;
     text-align: right;
-    margin-right: 10%;
+    
 }
 
-#cpu-name {
-    flex: 1;
+#info-text {
+    color: whitesmoke;
+    height: 1vh;
+    font-family: 'neondesmonregular', Helvetica, sans-serif;
+    font-size: .8em;
+    font-weight: 500;
+    padding: 5px 5px 2px 0;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6;
 }
 
 
 
 
-@media (min-width: 1250px){
-    .header {
-        height: auto;
-        max-height: 17vh;
-    }
-}
+
+
+
 
