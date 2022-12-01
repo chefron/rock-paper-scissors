@@ -29,13 +29,17 @@ body {
 }
 
 #start-game-screen {
-    height: 100%;
     width: 100%;
-    position: fixed;
+    height: 68vh;
+    overflow: hidden;
+    position: absolute;
     z-index: 2;
+    background: rgba(0, 0, 0);
+    display: flex;
+    flex-direction: column;
 }
 
-#start-game-screen-top {
+/* #start-game-screen-top {
     width: 100%;
     height: 50%;
     background: black;
@@ -45,9 +49,7 @@ body {
     align-items: center;
     justify-content: center;
     mix-blend-mode: hard-light;
-}
 
-.top-wipe{
 animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
@@ -61,9 +63,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     height: 50%;
     background-color: black;
     
-}
 
-.bottom-wipe {
     animation: 2.5s cubic-bezier(.25, 1, .30, 1) bottom-wipe forwards;
 }
 
@@ -76,12 +76,11 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     width: 100%;
     height: 25%;
     flex: 1 1 auto;
-}
+} */
 
 #input-rounds-container {
     width: 100%;
-    height: 45%;
-    flex: 0 1 auto;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -89,12 +88,21 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 #sound-toggle-container {
     width: 100%;
-    height: 20%;
-    flex: 0 1 auto;
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+#play-button-container {
+    width: 50%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    flex: 1 0 auto;
 }
 
 #how-many-rounds {
     height: 35%;
+    text-align: center;
     flex: 0 0 auto; 
 }
 
@@ -157,16 +165,9 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
 }
 
-#play-button-container {
-    width: 50%;
-    margin: 0px auto;
-    padding-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
 #play-button {
     background: none;
+    margin-top: -10vh;
     border: none;
     font-family: 'Pacifico', Arial, Helvetica, sans-serif;
     text-align: center;
@@ -267,7 +268,12 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 .canvas-container {
     width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
     flex: 2 0 auto;
+    background: red;
+    
 }
 
 .canvas {
