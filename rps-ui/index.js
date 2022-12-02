@@ -55,7 +55,35 @@ function dropFists() {
     },2000);
 }
 
-dropFists()
+//the first time fists are shown the timing is staggered
+function dropFistsInitial() {
+    userFist.src = 'images/left-rock.png';
+    cpuFist.src = 'images/right-rock.png';
+    userContainer.appendChild(userFist);
+    setTimeout(function(){
+        cpuContainer.appendChild(cpuFist);
+    }, 1000);
+    userFist.classList.add('user-fist-intro', 'user-fist');
+    setTimeout(function(){
+        cpuFist.classList.add('cpu-fist-intro', 'cpu-fist');
+    }, 1000);
+    setTimeout(function(){
+        userFist.classList.add('user-fist-float');
+        cpuFist.classList.add('cpu-fist-float');
+    },2000);
+}
+
+//the players' names appear in sync with the fists
+function showPlayerNames(){
+    const userName = document.getElementById('user-name');
+    const cpuName = document.getElementById('cpu-name');
+    setTimeout(function(){
+        userName.style.display = 'inline';
+    }, 1000);
+    setTimeout(function(){
+        cpuName.style.display = 'inline';
+    }, 2000);
+}
 
 function resetFists(){
     userFist.classList.remove('user-fist-intro', 'shake-user-fist', 'user-fist-float');
