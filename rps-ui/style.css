@@ -30,14 +30,34 @@ body {
 
 #start-game-screen {
     width: 100%;
-    height: 68vh;
+    margin-top: -.2vh;
+    height: 68.3vh;
     overflow: hidden;
     position: absolute;
     z-index: 2;
-    background: rgba(0, 0, 0);
+    background: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
 }
+
+.cinematic-wipe {
+    animation: cinematic-wipe 2.5s forwards;
+}
+
+
+@keyframes cinematic-wipe {
+    0% {
+        clip-path: inset(0% 0 0% 0);
+      
+    }
+    30%, 70% {
+      clip-path: inset(0 37% 0 37%);
+    }
+    100% {
+        clip-path: inset(0 100% 0 100%);
+    }
+  }
+  
 
 /* #start-game-screen-top {
     width: 100%;
@@ -225,9 +245,8 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     align-items: center;
     justify-content: center;
     padding-top: 15px;
-    z-index: 3;
+    z-index: 1;
     box-shadow: 0 .2vh 3px #0119787e;
-
 }
 
 .title {
@@ -272,7 +291,6 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     position: relative;
     overflow: hidden;
     flex: 2 0 auto;
-    background: red;
     
 }
 
@@ -794,7 +812,38 @@ progress::-webkit-progress-bar {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6;
 }
 
+@media (max-width: 520px){
 
+    .user-fist, .user-rock {
+        width: 75vw;
+        height: auto;
+        margin-bottom: -45vh;
+        margin-left: -17vw;
+    }
+    
+    .user-paper, .user-scissors {
+        width: 75vw;
+        height: auto;
+        margin-bottom: -41vh;
+        margin-left: 1vw;
+    }
+
+    .cpu-fist, .cpu-rock {
+        width: 74vw;
+        height: auto;
+        margin-bottom: -44vh;
+        margin-right: -12vw;
+        padding-left: 9vw;
+    }
+    
+    .cpu-paper, .cpu-scissors {
+        width: 74vw;
+        height: auto;
+        margin-right: -3vw;
+        margin-bottom: -44vh;
+    }
+
+}
 
 
 

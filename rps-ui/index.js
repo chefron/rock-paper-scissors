@@ -34,6 +34,13 @@ function getNumberOfRounds () {
     cpuHealthCopy = Math.floor((numberOfRounds / 2)+1);
 }
 
+function exitStartScreen () {
+    const startScreen = document.getElementById('start-game-screen');
+    startScreen.innerHTML = '';
+    startScreen.classList.add('cinematic-wipe');
+
+}
+
 
 function dropFists() {
     userFist.src = 'images/left-rock.png';
