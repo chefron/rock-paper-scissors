@@ -18,13 +18,13 @@
 
         <div id="game-over-modal">
 
-                <button id="play-again-button">Play again?</button>
+            <button id="play-again-button">Play again?</button>
 
         </div>
 
     </div>
 
-    <div id="button-container" class="fade-in-buttons">
+    <div id="game-button-container" class="fade-in-buttons">
                
         <button value="rock" class="selection-button rock-button"><img src="images/rock-icon.png" class="selection-button-image"></button>
 
@@ -40,7 +40,7 @@
 
             <div id="title">
 
-                <div class="title"><span class="rock-title">ROCK </span><span class="paper-title">PAPER </span><span class="scissors-title">SCISSORS </div></p>
+                <span id="rock-title" class="dim-text">ROCK </span><span id="paper-title" class= "dim-text">PAPER </span><span id="scissors-title" class="dim-text">SCISSORS</span>
 
             </div>
 
@@ -84,7 +84,7 @@
 
                 <div id="play-button-container">
         
-                    <button onclick="getNumberOfRounds(); exitStartScreen(); dropFistsInitial(); showPlayerNames()" id="play-button">Play</button>
+                    <button onclick="getNumberOfRounds(); exitStartScreen(); dropFistsInitial(); displayPlayerNames(); displayGameButtonsInitial(); displayHealthContainer(); lightUpTitles();" id="play-button">Play</button>
     
                 </div>
 
@@ -132,7 +132,7 @@
                 
                 </div>
 
-                <div id="health-title">
+                <div id="health-title" class="dim-text">
                     
                     <p>health</p>
                 

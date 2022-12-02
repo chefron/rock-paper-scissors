@@ -1,6 +1,6 @@
 const options = ["rock", "paper", "scissors"];
-const buttons = document.getElementById('button-container').querySelectorAll('button');
-const buttonContainer = document.getElementById('button-container');
+const gameButtons = document.getElementById('game-button-container').querySelectorAll('button');
+const gameButtonContainer = document.getElementById('game-button-container');
 
 const gameOverModalContainer = document.getElementById('game-over-modal-container');
 const gameOverModal = document.getElementById('game-over-modal');
@@ -62,19 +62,26 @@ function dropFistsInitial() {
     userContainer.appendChild(userFist);
     setTimeout(function(){
         cpuContainer.appendChild(cpuFist);
-    }, 1000);
+    }, 900);
     userFist.classList.add('user-fist-intro', 'user-fist');
     setTimeout(function(){
         cpuFist.classList.add('cpu-fist-intro', 'cpu-fist');
-    }, 1000);
+    }, 900);
     setTimeout(function(){
         userFist.classList.add('user-fist-float');
         cpuFist.classList.add('cpu-fist-float');
-    },2000);
+    }, 1900);
+}
+
+//displays game buttons for the first time
+function displayGameButtonsInitial () {
+    setTimeout(function(){
+        gameButtonContainer.style.display='flex';
+    }, 2500);
 }
 
 //the players' names appear in sync with the fists
-function showPlayerNames(){
+function displayPlayerNames(){
     const userName = document.getElementById('user-name');
     const cpuName = document.getElementById('cpu-name');
     setTimeout(function(){
@@ -82,8 +89,47 @@ function showPlayerNames(){
     }, 1000);
     setTimeout(function(){
         cpuName.style.display = 'inline';
-    }, 2000);
+    }, 1900);
 }
+
+function displayHealthContainer(){
+    const healthContainer = document.getElementById('health-container');
+    healthContainer.style.display = 'flex';
+}
+
+const title = document.getElementById('title');
+const rockTitle = document.getElementById('rock-title');
+const paperTitle = document.getElementById('paper-title');
+const scissorsTitle = document.getElementById('scissors-title');
+const healthTitle = document.getElementById('health-title');
+
+function lightUpTitles(){
+
+    setTimeout(function(){
+        rockTitle.classList.remove('dim-text');
+        rockTitle.classList.add('light-up-text');
+    }, 200);
+ 
+
+    setTimeout(function(){
+        paperTitle.classList.remove('dim-text');
+        paperTitle.classList.add('light-up-text');
+    }, 1000);
+
+    setTimeout(function(){
+        scissorsTitle.classList.remove('dim-text');
+        scissorsTitle.classList.add('light-up-text');
+    }, 1800);
+
+    setTimeout(function(){
+        title.classList.add('light-up-border');
+        healthTitle.classList.remove('dim-text');
+    }, 2600);
+}
+
+
+
+
 
 function resetFists(){
     userFist.classList.remove('user-fist-intro', 'shake-user-fist', 'user-fist-float');
@@ -112,7 +158,7 @@ function gameStatus(){
 //Hide game buttons and display User Wins Modal in their place
 function displayUserWinsModal(){
     setTimeout(function(){
-        hideButtons();
+        hideGameButtons();
     },2000);
     gameOverModalContainer.style.display = "block";
     gameOverModalContainer.classList.add("fade-in-modal");
@@ -125,7 +171,7 @@ function displayUserWinsModal(){
 //hide game buttons and display User Loses Modal in their place
 function displayUserLosesModal(){
     setTimeout(function(){
-        hideButtons();
+        hideGameButtons();
     },2000);
     gameOverModalContainer.style.display = "block";
     gameOverModalContainer.classList.add("fade-in-modal");
@@ -135,9 +181,8 @@ function displayUserLosesModal(){
     playAgain.style.display = "block";
 }
 
-function removeButtons(){
-    const buttonContainer = document.querySelector('#button-container');
-    buttonContainer.innerHTML = '';
+function removeGameButtons(){
+    gameButtonContainer.innerHTML = '';
 }
 
 const playAgain = document.getElementById('play-again-button');
@@ -160,7 +205,7 @@ function resetModal() {
 
 playAgain.addEventListener('click', resetFists);
 playAgain.addEventListener('click', dropFists)              
-playAgain.addEventListener('click', displayButtons);
+playAgain.addEventListener('click', displayGameButtons);
 
 function playRound (userSelection, cpuSelection) {
         
@@ -237,7 +282,7 @@ function playRound (userSelection, cpuSelection) {
         },5000);
     
         setTimeout(function(){
-        displayButtons();
+        displayGameButtons();
         },5800);
    
     }
@@ -270,23 +315,23 @@ function shakeCanvas() {
       },10);
 }
 
-function hideButtons() {
-    buttonContainer.classList.remove('fade-in-buttons');
+function hideGameButtons() {
+    gameButtonContainer.classList.remove('fade-in-buttons');
     setTimeout(function(){
-        buttonContainer.classList.add('fade-out-buttons');
+        gameButtonContainer.classList.add('fade-out-buttons');
       },10);
 }
 
-function displayButtons() {
-    buttonContainer.classList.add('fade-in-buttons');
+function displayGameButtons() {
+    gameButtonContainer.classList.add('fade-in-buttons');
     setTimeout(function(){
-        buttonContainer.classList.remove('fade-out-buttons');
+        gameButtonContainer.classList.remove('fade-out-buttons');
       },10);
 }
 
-buttons.forEach((button) => {
+gameButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            shakeCanvas(), shakeFists(), hideButtons();
+            shakeCanvas(), shakeFists(), hideGameButtons();
       });
     });
 
@@ -341,7 +386,7 @@ function cpuScissorsAnimation() {
 //}
     
     
-buttons.forEach((button) => {
+gameButtons.forEach((button) => {
   button.addEventListener('click', () => {
     playRound(button.value, getCpuSelection())
     });

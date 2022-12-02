@@ -41,7 +41,7 @@ body {
 }
 
 .cinematic-wipe {
-    animation: cinematic-wipe 3s forwards;
+    animation: cinematic-wipe 3.1s forwards;
 }
 
 
@@ -249,25 +249,39 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     box-shadow: 0 .2vh 3px #0119787e;
 }
 
-.title {
+#title {
     font-family: neon, Arial, sans-serif;
     font-size: clamp(2.2em, 7vw, 3.3em);
     text-align: center;
-    flex: 1;
     margin: 0px 10px 0px 10px;
     padding: 10px 10px 0px 10px;
-    border: 4px solid #28D7FE;
+    border: 4px solid #28d7fe83;
     border-radius: 10px;
-    box-shadow: 0 0 .33vw #1041FF, 0 0 1vw #1041FF, 0 0 3.33vw #1041FF, 0 0 3.33vw #1041FF, 0 0 .133vw #8BFDFE, .166vw .166vw .033vw #147280;
+    width: max-content;
+    
+}
+
+.dim-text {
+    filter: brightness(50%) grayscale(50%);
+    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914 !important;
+}
+
+.light-up-text {
     filter: brightness(130%);
 }
 
-.rock-title {
+.light-up-border {
+    box-shadow: 0 0 .33vw #1041FF, 0 0 1vw #1041FF, 0 0 3.33vw #1041FF, 0 0 3.33vw #1041FF, 0 0 .133vw #8BFDFE, .166vw .166vw .033vw #147280;
+    filter: brightness(130%);
+    border: 4px solid #28D7FE !important;
+}
+
+#rock-title {
     text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
     color: #FED128;
 }
 
-.paper-title {
+#paper-title {
     text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
     color: #FED128;
    /* color: #28D7FE; 
@@ -275,7 +289,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     filter: brightness(130%); */
 }
 
-.scissors-title {
+#scissors-title {
     text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
     color: #FED128;
     /* text-shadow: 0 0 .33vw #950606, 0 0 1vw #a50101, 0 0 3.33vw #900606, 0 0 3.33vw #6a0808, 0 0 .133vw #fe8b8b, .166vw .166vw .033vw #801414;
@@ -455,11 +469,11 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     }
 }
 
-#button-container {
+#game-button-container {
     position: absolute;
     padding-top: 20vh;
     padding-bottom: 40vh;
-    display: flex;
+    display: none;
     min-height: 250px;
     height: 40vh;
     left: 43.2%;
@@ -754,7 +768,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     height: 5vh;
     flex: 0 0 auto;
     width: 100vw;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-around;
     flex-wrap: nowrap;
@@ -766,9 +780,10 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     text-align: center;
     font-size: clamp(1.5em, 5vw, 3em);
     max-width: 200px;
-    color: #fff;
+    color: rgb(241, 216, 216);
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
 }
+
 
 .user-health-container {
     flex: 2;
@@ -790,7 +805,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 progress[value] {
-    width: 95%;
+    width: 50%;
     height: 1.2vh;
     -webkit-appearance: none; 
     appearance: none;
@@ -809,8 +824,9 @@ progress::-webkit-progress-bar {
   }
 
 #info {
-    flex: 0 0 auto;
-    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
     
 }
 
