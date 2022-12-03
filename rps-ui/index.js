@@ -77,7 +77,7 @@ function dropFistsInitial() {
 function displayGameButtonsInitial () {
     setTimeout(function(){
         gameButtonContainer.style.display='flex';
-    }, 2500);
+    }, 3300);
 }
 
 //the players' names appear in sync with the fists
@@ -93,8 +93,9 @@ function displayPlayerNames(){
 }
 
 function displayHealthContainer(){
-    const healthContainer = document.getElementById('health-container');
-    healthContainer.style.display = 'flex';
+    setTimeout(function(){
+        healthContainer.style.display = 'flex';
+    }, 2600);
 }
 
 const title = document.getElementById('title');
@@ -102,28 +103,22 @@ const rockTitle = document.getElementById('rock-title');
 const paperTitle = document.getElementById('paper-title');
 const scissorsTitle = document.getElementById('scissors-title');
 const healthTitle = document.getElementById('health-title');
+const healthContainer = document.getElementById('health-container');
+const userHealthContainer = document.getElementById('user-health-container');
+const cpuHealthContainer = document.getElementById('cpu-health-container');
 
 function lightUpTitles(){
-
-    setTimeout(function(){
         rockTitle.classList.remove('dim-text');
         rockTitle.classList.add('light-up-text');
-    }, 200);
- 
-
-    setTimeout(function(){
         paperTitle.classList.remove('dim-text');
         paperTitle.classList.add('light-up-text');
-    }, 1000);
-
-    setTimeout(function(){
         scissorsTitle.classList.remove('dim-text');
         scissorsTitle.classList.add('light-up-text');
-    }, 1800);
-
-    setTimeout(function(){
         title.classList.add('light-up-border');
-        healthTitle.classList.remove('dim-text');
+
+    
+    setTimeout(function(){
+        healthContainer.classList.remove('dim-text');
     }, 2600);
 }
 

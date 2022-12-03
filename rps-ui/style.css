@@ -251,7 +251,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 #title {
     font-family: neon, Arial, sans-serif;
-    font-size: clamp(2.2em, 7vw, 3.3em);
+    font-size: clamp(2.2em, 8vw, 4em);
     text-align: center;
     margin: 0px 10px 0px 10px;
     padding: 10px 10px 0px 10px;
@@ -482,7 +482,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 .fade-in-buttons {
-    animation: fade-in-buttons .5s ease-in-out 0s 1 forwards;
+    animation: fade-in-buttons .75s ease-in-out 0s 1 forwards;
 }
 
 @keyframes fade-in-buttons {
@@ -703,13 +703,13 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 @keyframes cpu-gesture {
     0%  {transform: rotate(120deg);}
-    15% {transform: rotate(0deg)}
-    17% {transform: rotate(.1deg)}
-    19% {transform: rotate(0deg)}
-    21% {transform: rotate(.1deg)}
-    32% {transform: rotate(0deg)}
-    50% {transform: rotate(.1deg)}
-    75% {transform: rotate(0deg)}
+    15% {transform: rotate(0deg);}
+    17% {transform: rotate(.1deg);}
+    19% {transform: rotate(0deg);}
+    21% {transform: rotate(.1deg);}
+    32% {transform: rotate(0deg);}
+    50% {transform: rotate(.1deg);}
+    75% {transform: rotate(0deg);}
     99% {opacity: 1;
         height: auto;}
     100%{transform: rotate(200deg);
@@ -770,7 +770,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     width: 100vw;
     display: none;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: nowrap;
 }
 
@@ -782,33 +782,56 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     max-width: 200px;
     color: rgb(241, 216, 216);
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+    animation: bounce-in 1s ease forwards;
 }
 
+@keyframes bounce-in {
+    0%  {
+        opacity: 0;
+        transform: scale(.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {transform: scale(.9);}
+    100% {transform: scale(1);}
+    }
 
-.user-health-container {
+#user-health-container {
     flex: 2;
     display: flex;
-    justify-content: right;
     padding-right: 1vw;
-    text-align: center;
+    justify-content: right;
 }
 
-.cpu-health-container {
+#user-health {
+    height: 1.2vh;
+}
+
+#cpu-health-container {
     flex: 2;
     display: flex;
-    justify-content: left;
     padding-left: 1vw;
 }
 
 #cpu-health {
     transform: rotateY(180deg);
+    height: 1.2vh;
 }
 
-progress[value] {
-    width: 50%;
-    height: 1.2vh;
+progress[value] {    
     -webkit-appearance: none; 
     appearance: none;
+    width: 0%;
+    animation: display-health 1.5s forwards .75s ease;
+}
+
+@keyframes display-health {
+    0%{width: 0%}
+    50%{width: 94%}
+    70%{width: 87%}
+    100%{width: 90%;}
 }
 
 progress::-webkit-progress-value {
