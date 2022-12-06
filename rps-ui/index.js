@@ -18,6 +18,20 @@ const userFist = document.createElement('img');
 const cpuFist = document.createElement('img');
 
 const tableHit = new Audio('sounds/tablehit.mp3');
+const lightsOnSfx = new Audio('sounds/light-turning-on.mp3');
+const backgroundSfx = new Audio('sounds/background.mp3');
+
+let soundOn = true;
+
+function playBackgroundSfx(){
+    if (soundOn){
+    backgroundSfx.play();
+    }
+}
+
+
+
+function turnSoundOn(){}
 
 let numberOfRounds;
 let userHealthCopy; //Background user score to circumvent animation delays
@@ -36,8 +50,13 @@ function getNumberOfRounds () {
 
 function exitStartScreen () {
     const startScreen = document.getElementById('start-game-screen');
-    startScreen.innerHTML = '';
     startScreen.classList.add('cinematic-wipe');
+    const inputRoundsContainer = document.getElementById('input-rounds-container');
+    const soundToggleContainer = document.getElementById('sound-toggle-container');
+    const playButtonContainer = document.getElementById('play-button-container');
+    inputRoundsContainer.style.display='none';
+    soundToggleContainer.style.display='none';
+    playButtonContainer.style.display='none';
 
 }
 
@@ -62,22 +81,22 @@ function dropFistsInitial() {
     userContainer.appendChild(userFist);
     setTimeout(function(){
         cpuContainer.appendChild(cpuFist);
-    }, 900);
+    }, 600);
     userFist.classList.add('user-fist-intro', 'user-fist');
     setTimeout(function(){
         cpuFist.classList.add('cpu-fist-intro', 'cpu-fist');
-    }, 900);
+    }, 600);
     setTimeout(function(){
         userFist.classList.add('user-fist-float');
         cpuFist.classList.add('cpu-fist-float');
-    }, 1900);
+    }, 1600);
 }
 
 //displays game buttons for the first time
 function displayGameButtonsInitial () {
     setTimeout(function(){
         gameButtonContainer.style.display='flex';
-    }, 3300);
+    }, 3000);
 }
 
 //the players' names appear in sync with the fists
@@ -89,13 +108,13 @@ function displayPlayerNames(){
     }, 1000);
     setTimeout(function(){
         cpuName.style.display = 'inline';
-    }, 1900);
+    }, 1500);
 }
 
 function displayHealthContainer(){
     setTimeout(function(){
         healthContainer.style.display = 'flex';
-    }, 2600);
+    }, 3000);
 }
 
 const title = document.getElementById('title');
@@ -108,6 +127,7 @@ const userHealthContainer = document.getElementById('user-health-container');
 const cpuHealthContainer = document.getElementById('cpu-health-container');
 
 function lightUpTitles(){
+    setTimeout(function(){
         rockTitle.classList.remove('dim-text');
         rockTitle.classList.add('light-up-text');
         paperTitle.classList.remove('dim-text');
@@ -115,11 +135,10 @@ function lightUpTitles(){
         scissorsTitle.classList.remove('dim-text');
         scissorsTitle.classList.add('light-up-text');
         title.classList.add('light-up-border');
-
-    
+    }, 2250);
     setTimeout(function(){
         healthContainer.classList.remove('dim-text');
-    }, 2600);
+    }, 3000);
 }
 
 
@@ -198,6 +217,7 @@ function resetModal() {
     gameOverModal.removeChild(gameOverModalTitle)
 }
 
+playAgain.addEventListener('click', resetGame);
 playAgain.addEventListener('click', resetFists);
 playAgain.addEventListener('click', dropFists)              
 playAgain.addEventListener('click', displayGameButtons);

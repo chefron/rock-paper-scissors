@@ -50,43 +50,43 @@
 
             <div id="start-game-screen">
 
-                <div id="input-rounds-container">
-           
-                    <div id="how-many-rounds">
-        
-                        <p class="input-rounds-text">HOW MANY ROUNDS?</p>
-        
-                    </div>
-                        
-                    <div id="input-rounds">
-        
-                        <div id="best-of">
-                                
-                            <p class="input-rounds-text">BEST OF:&nbsp</p>
+                    <div id="input-rounds-container">
+            
+                        <div id="how-many-rounds">
+            
+                            <p class="input-rounds-text">HOW MANY ROUNDS?</p>
+            
+                        </div>
                             
+                        <div id="input-rounds">
+            
+                            <div id="best-of">
+                                    
+                                <p class="input-rounds-text">BEST OF:&nbsp</p>
+                                
+                            </div>
+            
+                            <div id="input">
+            
+                                <input type="number" id="number-of-rounds" class="input-rounds-text" value="3" min="1" max="99" autofocus>
+            
+                            </div>
+            
                         </div>
-        
-                        <div id="input">
-        
-                            <input type="number" id="number-of-rounds" class="input-rounds-text" value="3" min="1" autofocus>
-        
-                        </div>
+            
+                    </div>
+
+                    <div id="sound-toggle-container">
+            
+                        <p class="sound-text">SOUND:</p><button id="sound-on" class="sound-toggle">ON</button><p id="slash">/</p><button id="sound-off">OFF</button>
+            
+                    </div>
+
+                    <div id="play-button-container">
+            
+                        <button onclick="getNumberOfRounds(); exitStartScreen(); dropFistsInitial(); displayPlayerNames(); displayGameButtonsInitial(); displayHealthContainer(); lightUpTitles(); playBackgroundSfx()" id="play-button">Play</button>
         
                     </div>
-        
-                </div>
-
-                <div id="sound-toggle-container">
-        
-                    <p id="sound-toggle" class="input-rounds-text">SOUND: <u>OFF</u>/ON</p>
-        
-                </div>
-
-                <div id="play-button-container">
-        
-                    <button onclick="getNumberOfRounds(); exitStartScreen(); dropFistsInitial(); displayPlayerNames(); displayGameButtonsInitial(); displayHealthContainer(); lightUpTitles();" id="play-button">Play</button>
-    
-                </div>
 
             </div>
 
