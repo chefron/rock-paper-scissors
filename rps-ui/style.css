@@ -761,7 +761,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     margin: -1.5vh 0 1.5vh 0;
     font-family: 'neondesmonregular', Arial, Helvetica, sans-serif;
     color: #fff;
-    font-size: clamp(.5em, 1.2em, 2em);
+    font-size: clamp(.7em, 1.4em, 2em);
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
 }
 
@@ -795,6 +795,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
+    margin-top: 5px;
 }
 
 #health-title {

@@ -36,9 +36,11 @@ function turnSoundOn(){}
 let numberOfRounds;
 let userHealthCopy; //Background user score to circumvent animation delays
 let cpuHealthCopy; //Background cpu score to circumvent animation delays
+let userScore = 0; //keeps count of how many rounds won
+let cpuScore = 0 //see above 
 
 // Asks user to input number of rounds, which dictates initial score
-function getNumberOfRounds () {
+function getNumberOfRounds() {
     numberOfRounds = document.getElementById('number-of-rounds').value;
     userHealth.value = Math.floor((numberOfRounds / 2)+1);
     userHealth.max = Math.floor((numberOfRounds / 2)+1);
@@ -99,16 +101,26 @@ function displayGameButtonsInitial () {
     }, 3000);
 }
 
-//the players' names appear in sync with the fists
+
+const userName = document.getElementById('user-name');
+const cpuName = document.getElementById('cpu-name');
+
+//the players' names and scores appear in sync with the fists
 function displayPlayerNames(){
-    const userName = document.getElementById('user-name');
-    const cpuName = document.getElementById('cpu-name');
     setTimeout(function(){
         userName.style.display = 'inline';
     }, 1000);
     setTimeout(function(){
         cpuName.style.display = 'inline';
-    }, 1500);
+    }, 1650);
+}
+
+function awardUserPoint(){
+    userName.textContent = `YOU: ${userScore}`;
+}
+
+function awardCpuPoint(){
+    cpuName.textContent = `THEM: ${cpuScore}`;
 }
 
 function displayHealthContainer(){
@@ -205,6 +217,10 @@ playAgain.addEventListener('click', resetGame);
 function resetGame() {
     isGameOver = false;
     getNumberOfRounds();
+    userScore = 0;
+    cpuScore = 0;
+    userName.textContent = `YOU:`;
+    cpuName.textContent = `THEM:`;
 }
 
 playAgain.addEventListener('click', resetModal);
@@ -239,46 +255,52 @@ function playRound (userSelection, cpuSelection) {
     } else if ((userSelection == "rock" && cpuSelection == "scissors")){
             userRockAnimation();
             cpuScissorsAnimation();
+            userScore += 1;
             cpuHealthCopy -= 1;
             setTimeout(function(){
-                cpuHealthHit();
+                cpuHealthHit(), awardUserPoint();
             },2750);
     } else if ((userSelection == "paper" && cpuSelection == "rock")){
             userPaperAnimation();
             cpuRockAnimation();
+            userScore += 1;
             cpuHealthCopy -= 1;
             setTimeout(function(){
-                cpuHealthHit();
+                cpuHealthHit(), awardUserPoint();
             },2750);
     } else if ((userSelection == "scissors" && cpuSelection == "paper")){
             userScissorsAnimation();
             cpuPaperAnimation();
+            userScore += 1;
             cpuHealthCopy -= 1;
             setTimeout(function(){
-                cpuHealthHit();
+                cpuHealthHit(), awardUserPoint();
             },2750);
             
     //combinations where user loses to cpu:
     } else if ((userSelection == "rock" && cpuSelection == "paper")){
             userRockAnimation();
             cpuPaperAnimation();
+            cpuScore += 1;
             userHealthCopy -= 1;
             setTimeout(function(){
-                userHealthHit();
+                userHealthHit(), awardCpuPoint();
             },2750);
     } else if ((userSelection == "paper" && cpuSelection == "scissors")){
             userPaperAnimation();
             cpuScissorsAnimation();
+            cpuScore += 1;
             userHealthCopy -= 1;
             setTimeout(function(){
-                userHealthHit();
+                userHealthHit(), awardCpuPoint();
             },2750);
     } else if ((userSelection == "scissors" && cpuSelection == "rock")){
             userScissorsAnimation();
             cpuRockAnimation();
+            cpuScore += 1;
             userHealthCopy -= 1;
             setTimeout(function(){
-                userHealthHit();
+                userHealthHit(), awardCpuPoint();
             },2750);
     }
 
