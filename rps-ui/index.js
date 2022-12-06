@@ -20,6 +20,7 @@ const cpuFist = document.createElement('img');
 const tableHit = new Audio('sounds/tablehit.mp3');
 const lightsOnSfx = new Audio('sounds/light-turning-on.mp3');
 const backgroundSfx = new Audio('sounds/background.mp3');
+backgroundSfx.volume = 0.8;
 
 let soundOn = true;
 
