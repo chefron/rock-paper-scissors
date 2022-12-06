@@ -20,7 +20,7 @@ html {
 }
 
 body {
-    background-color: rgb(45, 0, 0);
+    background-color: rgb(40, 0, 0);
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -32,7 +32,6 @@ body {
     width: 100%;
     margin-top: -.2vh;
     height: 68.3vh;
-    overflow: hidden;
     position: absolute;
     z-index: 2;
     background: rgb(0, 0, 0);
@@ -117,19 +116,19 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 /* Realistic Red Switch by Yoav Kadosh */
 #switch-container {
-    background-color: #fafcff;
-    background-image: radial-gradient(circle, transparent, #afb5bf), linear-gradient(transparent, #d3d8e0);
+    background-color: #000000;
     display: flex;
-    align-items: center;
+    flex: 0 0 auto;
     justify-content: center;
-    height: 500px;
+    transform: scale(.35);
+    margin-top: -8.5vh;
 }
 
 .switch {
     background-color: black;
+    margin: auto;
     width: 150px;
     height: 195px;
-    margin: auto;
     box-shadow:
         0 0 10px 2px rgba(0,0,0,0.2), /* The surrounding shadow (first layer) */
         0 0 1px 2px black, /* The surrounding shadow (second layer) */
@@ -226,6 +225,15 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: space-between;
+}
+
+.button-text {
+    font-family: 'neondesmonregular', Helvetica, sans-serif;
+    color: whitesmoke;
+    font-size: clamp(1.5em, 4vh, 2em);
+    font-weight: 800;
+   
 }
 
 .switch .shine {
@@ -288,10 +296,13 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     display: flex;
     justify-content: center;
     flex: 1 0 auto;
+    margin-top: -12vh;
+    z-index: 2;
 }
 
 #how-many-rounds {
     height: 35%;
+    margin-bottom: -1vh;
     text-align: center;
     flex: 0 0 auto; 
 }
@@ -340,9 +351,8 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 #number-of-rounds:focus {
     outline: none;
-    font-weight: 900 !important;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 30px #0073e6, 0 0 40px #0073e6 !important;
-
+    font-weight: 700;
+    filter: brightness(130%);
 }
 
 .input-rounds-text {
@@ -407,7 +417,6 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 .header {
-    background-color: black;
     width: 100vw;
     min-height: 15vh;
     flex: 1 0 auto;
@@ -475,7 +484,6 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     position: relative;
     overflow: hidden;
     flex: 2 0 auto;
-    
 }
 
 .canvas {

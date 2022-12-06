@@ -30,6 +30,13 @@ function playBackgroundSfx(){
     }
 }
 
+function toggleSound(){
+    if (soundOn){
+        soundOn = false;
+    } else if (!soundOn){
+        soundOn = true;
+    }
+}
 
 
 function turnSoundOn(){}

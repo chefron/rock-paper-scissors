@@ -78,7 +78,7 @@
 
                     <div id="sound-toggle-container">
             
-                        <p class="sound-text">SOUND:</p><button id="sound-on" class="sound-toggle">ON</button><p id="slash">/</p><button id="sound-off">OFF</button>
+                        <p class="sound-text">SOUND</p>
             
                     </div>
 
@@ -86,7 +86,7 @@
 
                         <label class="switch">
                             
-                            <input type="checkbox" checked>
+                            <input type="checkbox" checked onclick="toggleSound()">
                             
                             <div class="button">
 
@@ -96,7 +96,7 @@
 
                                 <div class="characters">
 
-                                    <p>ON</p><p>OFF</p>
+                                    <p class="button-text">ON</p><p class="button-text">OFF</p>
 
                                 </div>
 
@@ -110,11 +110,11 @@
 
                     </div>
 
-                    <!-- <div id="play-button-container">
+                    <div id="play-button-container">
             
                         <button onclick="getNumberOfRounds(); exitStartScreen(); dropFistsInitial(); displayPlayerNames(); displayGameButtonsInitial(); displayHealthContainer(); lightUpTitles(); playBackgroundSfx()" id="play-button">Play</button>
         
-                    </div> -->
+                    </div>
 
             </div>
 
