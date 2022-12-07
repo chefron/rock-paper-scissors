@@ -20,7 +20,6 @@ html {
 }
 
 body {
-    background-color: rgb(40, 0, 0);
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -30,27 +29,32 @@ body {
 
 #start-game-screen {
     width: 100%;
-    margin-top: -.2vh;
     height: 68.3vh;
     position: absolute;
     z-index: 2;
-    background: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
+    background-image: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.75) 25%, 
+    rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.75) 75%, black 100%),
+    url(images/red-brick-wall.jpg);
+    background-size: 110vmax auto;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .cinematic-wipe {
-    animation: cinematic-wipe 2.9s forwards;
+    animation: cinematic-wipe 3.6s forwards ease;
 }
 
 
 @keyframes cinematic-wipe {
-    0% {
-        clip-path: inset(0% 0 0% 0);
+    0% {filter: brightness(100%);
+        clip-path: inset(0 0 0 0);
       
     }
-    35%, 78% {
-      clip-path: inset(0 42% 0 42%);
+    35%, 80% {
+        filter: brightness(0%);
+        clip-path: inset(0 42% 0 42%);
     }
     100% {
         clip-path: inset(0 100% 0 100%);
@@ -117,10 +121,9 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 /* Realistic Red Switch by Yoav Kadosh */
 #switch-container {
-    background-color: #000000;
     flex: 0 0 auto;
     display: flex;
-    transform: scale(.35);
+    transform: scale(.3);
     height: 10vh;
     margin-top: -1.5vh;
 }
@@ -315,6 +318,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     margin: 0 auto;
     flex: 0 0 auto;
     display: flex;
+    padding-left: 2.5vw;
     align-items: center;
     justify-content: center;
 }
@@ -416,6 +420,12 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
+    /*background-image: url(images/black-bricks.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100;
+    z-index: 1;*/
+    
 }
 
 .header {
@@ -427,11 +437,17 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     justify-content: center;
     padding: 5px 0 5px;
     z-index: 1;
-    box-shadow: 0 .2vh 3px #0119787e;
-    background-image: url(images/bluebrickbackground.jpg);
-    background-size: cover;
-    background-position: 50% 50%;
+    /*background-image: url(images/black-bricks.jpg);
+    background-size: 110vmax auto;
     background-repeat: no-repeat;
+    background-position: bottom;*/
+    background-image: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.75) 25%, 
+    rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.75) 75%, black 100%),
+    url(images/red-brick-wall.jpg);
+    background-size: 100vmax auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    
 }
 
 #title {
@@ -440,10 +456,10 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     text-align: center;
     margin: 0px 10px 0px 10px;
     padding: 10px 10px 0px 10px;
-    border: 4px solid #28d7fe83;
+    border: 4px solid #1b93aebc;
+    box-shadow: .1rem -.1rem .25rem #051a1fc8, inset 0 0 .25rem #051a1fc8, 0 0 .133vw #4d9293, .1vw .166vw .033vw #12444c;
     border-radius: 10px;
     width: max-content;
-    
 }
 
 .dim-text {
@@ -484,7 +500,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 /* wrapper div to improve cpu performance with mix-blend-mode */
 
-.canvas-container {
+#main-content-container {
     width: 100%;
     height: auto;
     position: relative;
@@ -492,7 +508,16 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     flex: 2 0 auto;
 }
 
-.canvas {
+#canvas-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    flex: 2 0 auto;
+    background-color: rgb(40, 0, 0);
+}
+
+#canvas {
     width: 100%;
     height: 68vh;
     overflow: hidden;
@@ -500,13 +525,13 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    background-image: url("images/tabletop.jpg");
+    background-image:  url("images/tabletop.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.user-container {
+#user-container {
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 50%;
@@ -777,7 +802,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 
-.cpu-container {
+#cpu-container {
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 50%;
@@ -905,8 +930,11 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 #footer {
     flex: 1 0 auto;
     min-height: 20vh;
-    background-image: url(images/bluebrickbackground.jpg);
-    background-size: cover;
+    background-image: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.75) 25%, 
+    rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.75) 75%, black 100%),
+    url(images/red-brick-wall.jpg);
+    background-size: 110vmax auto;
+    background-position: bottom;
     background-repeat: no-repeat;
     width: 100vw;
     flex: 0 0 auto;
@@ -914,6 +942,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     flex-direction: column;
     justify-content: left;
     box-shadow: 0px -5px 10px rgba(255, 255, 255, 0.64);
+    z-index: 1;
 }
 
 #player-names {
@@ -929,25 +958,18 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 #user-name {
-    width: 45%;
+    width: 42%;
     position: absolute;
     left: 0;
     text-align: right;
-    padding-right: 15vw;
     display: none;
 }
 
 #cpu-name {
-    width: 45%;
+    width: 42%;
     right: 0;
     position: absolute;
     display: none;
-
-}
-
-#spacing {
-    width: 10%;
-    position: absolute;
 }
 
 #health-container {

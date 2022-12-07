@@ -9,10 +9,10 @@ const gameOverModalTitle = document.createElement('p');
 const userHealth = document.getElementById("user-health");
 const cpuHealth = document.getElementById("cpu-health");
 
-const userContainer = document.querySelector('.user-container');
-const cpuContainer = document.querySelector('.cpu-container')
+const userContainer = document.getElementById("user-container");
+const cpuContainer = document.getElementById("cpu-container");
 
-const canvas = document.querySelector('.canvas');
+const canvas = document.getElementById("canvas");
 
 const userFist = document.createElement('img');
 const cpuFist = document.createElement('img');
@@ -120,7 +120,7 @@ function displayPlayerNames(){
     }, 1000);
     setTimeout(function(){
         cpuName.style.display = 'inline';
-    }, 1650);
+    }, 1600);
 }
 
 function awardUserPoint(){
@@ -145,6 +145,7 @@ const healthTitle = document.getElementById('health-title');
 const healthContainer = document.getElementById('health-container');
 const userHealthContainer = document.getElementById('user-health-container');
 const cpuHealthContainer = document.getElementById('cpu-health-container');
+const footer = document.getElementById('footer')
 
 function lightUpTitles(){
     setTimeout(function(){
@@ -158,6 +159,7 @@ function lightUpTitles(){
     }, 2250);
     setTimeout(function(){
         healthContainer.classList.remove('dim-text');
+        healthContainer.classList.add('footer-box-shadow')
     }, 3000);
 }
 
