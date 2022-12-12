@@ -17,7 +17,6 @@ const canvas = document.getElementById("canvas");
 const userFist = document.createElement('img');
 const cpuFist = document.createElement('img');
 
-const tableHit = new Audio('sounds/tablehit.mp3');
 const lightsOnSfx = new Audio('sounds/light-turning-on.mp3');
 const backgroundSfx = new Audio('sounds/background.mp3');
 backgroundSfx.volume = 0.8;
@@ -45,7 +44,15 @@ let numberOfRounds;
 let userHealthCopy; //Background user score to circumvent animation delays
 let cpuHealthCopy; //Background cpu score to circumvent animation delays
 let userScore = 0; //keeps count of how many rounds won
-let cpuScore = 0 //see above 
+let cpuScore = 0 //see above
+
+function playTablePoundsSfx() {
+    const tablePounds = new Audio('sounds/table-pounds-1.mp3');
+    tablePounds.volume = 0.4;
+    if (soundOn) {
+        tablePounds.play();
+    }
+}
 
 // Asks user to input number of rounds, which dictates initial score
 function getNumberOfRounds() {
@@ -378,7 +385,12 @@ function displayGameButtons() {
 
 gameButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            shakeCanvas(), shakeFists(), hideGameButtons();
+            shakeCanvas(), 
+            shakeFists(), 
+            hideGameButtons(), 
+            setTimeout(function(){
+                playTablePoundsSfx();
+              },510);
       });
     });
 
