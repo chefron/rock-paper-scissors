@@ -25,7 +25,6 @@
     </div>
 
     <div id="game-button-container" class="fade-in-buttons">
-               
         <button value="rock" class="selection-button rock-button"><img src="images/rock-icon.png" class="selection-button-image"></button>
 
         <button value="paper" class="selection-button paper-button"><img src="images/paper-icon.png" class="selection-button-image"></button>
@@ -119,6 +118,8 @@
             </div>
 
             <div id="canvas-container">
+                    <p id="game-button-text" class="fade-in-buttons">CHOOSE YOUR WEAPON</p>
+                    
                     <div id="canvas">
                         <div id="user-container"></div>
                         <div id="cpu-container"></div>
@@ -160,10 +161,25 @@
             </div>
 
             <div id="info">
-
-                <p id="info-text">INFO</p>
-
+                <a href="#show" id="info-link" class="modal-open">INFO</a>
             </div>
+
+            <div class="overlay" id="show">
+                
+                <div class="modal">
+                
+                    <svg width="100%" height="100%" viewbox="0 0 560 280" preserveAspectRation="true">
+                        
+                        <line id="1" fill="none" stroke="#000000" stroke-width="2" x1="2" y1="2" x2="558" y2="2"/>
+                        <line id="2" fill="none" stroke="#000000" stroke-width="2" x1="558" y1="278" x2="558" y2="2"/>
+                        <line id="3" fill="none" stroke="#000000" stroke-width="2" x1="2" y1="278" x2="558" y2="278"/>
+                        <line id="4" fill="none" stroke="#000000" stroke-width="2" x1="2" y1="2"  x2="2" y2="278"/>
+
+                    </svg>
+                
+                </div>
+            </div>
+
 
         </div>
     

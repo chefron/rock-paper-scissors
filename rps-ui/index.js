@@ -1,6 +1,7 @@
 const options = ["rock", "paper", "scissors"];
 const gameButtons = document.getElementById('game-button-container').querySelectorAll('button');
 const gameButtonContainer = document.getElementById('game-button-container');
+const gameButtonText = document.getElementById('game-button-text')
 
 const gameOverModalContainer = document.getElementById('game-over-modal-container');
 const gameOverModal = document.getElementById('game-over-modal');
@@ -113,6 +114,7 @@ function dropFistsInitial() {
 function displayGameButtonsInitial () {
     setTimeout(function(){
         gameButtonContainer.style.display='flex';
+        gameButtonText.style.display='block';
     }, 3000);
 }
 
@@ -236,8 +238,8 @@ function resetGame() {
     getNumberOfRounds();
     userScore = 0;
     cpuScore = 0;
-    userName.textContent = `YOU:`;
-    cpuName.textContent = `THEM:`;
+    userName.textContent = `YOU`;
+    cpuName.textContent = `THEM`;
 }
 
 playAgain.addEventListener('click', resetModal);
@@ -329,15 +331,15 @@ function playRound (userSelection, cpuSelection) {
         
         setTimeout(function(){
         resetFists();
-        },4900);
+        },4700);
        
         setTimeout(function(){
         dropFists();
-        },5000);
+        },4750);
     
         setTimeout(function(){
         displayGameButtons();
-        },5800);
+        },5600);
    
     }
         
@@ -371,15 +373,20 @@ function shakeCanvas() {
 
 function hideGameButtons() {
     gameButtonContainer.classList.remove('fade-in-buttons');
+    gameButtonText.classList.remove('fade-in-buttons');
     setTimeout(function(){
+        gameButtonText.classList.add('fade-out-text'),
         gameButtonContainer.classList.add('fade-out-buttons');
       },10);
+    ;
 }
 
 function displayGameButtons() {
     gameButtonContainer.classList.add('fade-in-buttons');
+    gameButtonText.classList.add('fade-in-buttons');
     setTimeout(function(){
         gameButtonContainer.classList.remove('fade-out-buttons');
+        gameButtonText.classList.remove('fade-out-text');
       },10);
 }
 
@@ -425,7 +432,6 @@ function cpuRockAnimation() {
 function cpuPaperAnimation() {
     const cpuPaper = document.createElement('img');
     cpuPaper.src = "images/right-paper.png";
-   
     cpuContainer.appendChild(cpuPaper);
     cpuPaper.classList.add('cpu-paper', 'cpu-movement');
 }
