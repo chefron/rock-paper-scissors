@@ -32,7 +32,7 @@ body {
     height: 68.3vh;
     position: absolute;
     transform: translateY(-2px);
-    z-index: 2;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     background-image: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.75) 25%, 
@@ -116,7 +116,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    z-index: 3;
+    z-index: 1;
 }
 
 
@@ -302,7 +302,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     display: flex;
     justify-content: center;
     flex: 1 0 auto;
-    z-index: 2;
+    z-index: 1;
     margin-top: 2vh;
 }
 
@@ -401,7 +401,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     background-color: rgba(0,0,0,0.5);
     display: none;
 }
@@ -692,7 +692,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     height: 40vh;
     left: 43.2%;
     scale: 1.4;
-    z-index: 1;
+    z-index: 2;
 }
 
 #game-button-text {
@@ -704,7 +704,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     display: none;
     width: 20%;
     text-align: center;
-    z-index: 2;
+    z-index: 1;
     font-family: 'neondesmonregular', Arial, Helvetica, sans-serif;
     color: #fff;
     font-size: clamp(.8em, 1.5vw, 2vw);
@@ -802,7 +802,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     left: 0;
     right: 0;
     padding: 20px;
-    z-index: 5;
+    z-index: 1;
 }
 
 .win-title {
@@ -996,6 +996,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 #footer {
+    position: relative;
     flex: 1 0 auto;
     min-height: 20vh;
     background-image: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.75) 25%, 
@@ -1010,7 +1011,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     flex-direction: column;
     justify-content: left;
     box-shadow: 0px -5px 10px rgba(255, 255, 255, 0.64);
-    z-index: 1;
+    z-index: 0;
 }
 
 #player-names {
@@ -1132,15 +1133,22 @@ progress::-webkit-progress-bar {
     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
   }
 
-#info {
+#info-wrapper {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
+    right: 0%;
+    bottom: 0%;
 }
 
-#info-link {
+#info-button {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    background: none;
+    border: none;
+    cursor: pointer;
     color: whitesmoke;
-    height: 1vh;
     font-family: 'neondesmonregular', Helvetica, sans-serif;
     font-size: .8em;
     font-weight: 500;
@@ -1148,6 +1156,132 @@ progress::-webkit-progress-bar {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6;
     text-decoration: none;
 }
+
+svg {
+    position: relative;
+    width: 75vmin;
+    height: auto;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    filter: drop-shadow(0 0 .33rem #fff) drop-shadow(0 0 .33vw #1041FF) drop-shadow(0 0 1vw #1041FF) drop-shadow(0 0 .133vw #8BFDFE);
+
+}
+
+svg line {
+    stroke-width: 3px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: .7;
+}
+
+svg #top {
+    stroke-dasharray: 100;
+    stroke-dashoffset: -100;
+}
+
+svg #right {
+    stroke-dasharray: 100;
+    stroke-dashoffset: -100;
+}
+
+svg #bottom {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+}
+
+svg #left {
+    stroke-dasharray: 100;
+    stroke-dashoffset: -100;
+}
+
+@keyframes animate-lines {
+    90% {stroke: rgba(2, 162, 239, 1);}
+    100%{
+         stroke: rgb(107, 208, 255);;
+         stroke-dashoffset: 0;
+         opacity: 1;
+        }
+}
+
+#info-overlay {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: display-info .6s forwards;
+    z-index: 2;
+    display: none;
+}
+
+#info-modal {
+    margin: auto auto;
+    width: fit-content;
+    height: auto;
+    z-index: 2;
+    display: none;
+    
+}
+
+#info-modal svg line {
+    animation: animate-lines .7s forwards;
+    animation-delay: .6s;
+    z-index: 2;
+}
+
+#info-modal-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255, 1);
+    opacity: 0;
+    animation: display-info .6s forwards;
+    animation-delay: 1s;
+}
+
+.modal-close {
+    float: right;
+    z-index: 1;
+    color: #424242;
+    margin: 5px 5px 0 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.modal-inner h3 {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    padding: 20px 20px 10px 20px;
+}
+
+.info-overlay:target, .info-overlay:target .modal {
+    animation: display-info .6s forwards;
+    z-index: 2;
+}
+
+
+
+.info-overlay:target .modal .modal-inner {
+    animation: display-info .6 forwards;
+    animation-delay: 1s;
+    z-index: 2;
+}
+
+@keyframes display-info {
+    to {opacity: 1;}
+}
+
+
+
 
 @media (max-width: 530px){
 
@@ -1183,7 +1317,7 @@ progress::-webkit-progress-bar {
     .selection-button-image {
         width: 13vw;
         margin-left: -7vw;
-}
+    }
 
     #button-container {
         padding-top: 25vh; 

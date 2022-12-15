@@ -7,6 +7,17 @@ const gameOverModalContainer = document.getElementById('game-over-modal-containe
 const gameOverModal = document.getElementById('game-over-modal');
 const gameOverModalTitle = document.createElement('p');
 
+const infoOverlay = document.getElementById('info-overlay');
+const infoModal = document.getElementById('info-modal');
+const infoModalInner = document.getElementById('info-modal-inner');
+
+function openInfoModal() {
+    infoOverlay.style.display = 'flex';
+    infoModal.style.display = 'block';
+    infoModalInner.style.display = 'block';
+}
+
+
 const userHealth = document.getElementById("user-health");
 const cpuHealth = document.getElementById("cpu-health");
 
