@@ -693,6 +693,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     left: 43.2%;
     scale: 1.4;
     z-index: 2;
+    align-items: center;
 }
 
 #game-button-text {
@@ -700,7 +701,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     left: 0;
     right: 0;
     margin: auto;
-    top: 9%;
+    top: 6%;
     display: none;
     width: 20%;
     text-align: center;
@@ -724,6 +725,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 .fade-in-buttons {
     animation: fade-in-buttons .75s ease-in-out 0s 1 forwards;
+    z-index: 3;
 }
 
 @keyframes fade-in-buttons {
@@ -733,6 +735,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 .fade-out-buttons {
     animation: fade-out-buttons .25s ease-in-out 0s 1 forwards;
+    z-index: 2;
 }
 
 @keyframes fade-out-buttons {
@@ -767,6 +770,8 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 .selection-button {
     background-color: transparent;
+    height: fit-content;
+    width: fit-content;
     border: none;
     animation: rotation 35s infinite linear;
 }
@@ -802,7 +807,9 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     left: 0;
     right: 0;
     padding: 20px;
-    z-index: 1;
+    z-index: 3;
+    border: 5px solid white;
+    border-radius: 50%;
 }
 
 .win-title {
@@ -811,7 +818,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     margin-bottom: 10%;
     font-size: clamp(2em, 7vw, 3em);
     font-weight: 600;
-    animation: win-pulse .6s infinite alternate;
+    animation: win-pulse .75s infinite alternate;
     filter: brightness(130%) contrast(130%);
 }
 
@@ -840,6 +847,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     font-size: clamp(1.3em, 3.3vw, 2.5em);
     color: #fff;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
+    animation: play-button-pulse .6s infinite ease-in-out
 }
 
 
@@ -1320,7 +1328,7 @@ svg #left {
     }
 
     #button-container {
-        padding-top: 25vh; 
+        padding-top: 25vh;
     }
 
     #best-of {
@@ -1330,6 +1338,14 @@ svg #left {
     #game-button-text {
         top: 12%;
         width: 40%;
+    }
+}
+
+@media (min-width: 430px) and (max-width: 800px) {
+
+    #game-button-text {
+        top: 11%;
+        width: 30%;
     }
 }
 

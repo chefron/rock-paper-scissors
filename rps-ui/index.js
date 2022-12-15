@@ -202,10 +202,10 @@ function getCpuSelection(){
 }
 
 function gameStatus(){
-    if (cpuHealthCopy === 0){
+    if (cpuHealthCopy === 1){
         isGameOver = true;
         displayUserWinsModal(); 
-    } else if (userHealthCopy === 0){
+    } else if (userHealthCopy === 1){
         isGameOver = true;
         displayUserLosesModal();
     }
@@ -222,6 +222,7 @@ function displayUserWinsModal(){
     gameOverModal.prepend(gameOverModalTitle);
     gameOverModalTitle.innerHTML = "YOU WIN!";
     playAgain.style.display = "block";
+
 }
 
 //hide game buttons and display User Loses Modal in their place
@@ -389,10 +390,14 @@ function hideGameButtons() {
         gameButtonText.classList.add('fade-out-text'),
         gameButtonContainer.classList.add('fade-out-buttons');
       },10);
-    ;
+    setTimeout(function(){
+        gameButtonContainer.style.display = "none";
+      },250);
+    
 }
 
 function displayGameButtons() {
+    gameButtonContainer.style.display = "flex";
     gameButtonContainer.classList.add('fade-in-buttons');
     gameButtonText.classList.add('fade-in-buttons');
     setTimeout(function(){
