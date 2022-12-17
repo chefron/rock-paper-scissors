@@ -9,12 +9,12 @@ const gameOverModalTitle = document.createElement('p');
 
 const infoOverlay = document.getElementById('info-overlay');
 const infoModal = document.getElementById('info-modal');
-const infoModalInner = document.getElementById('info-modal-inner');
+//const infoModalInner = document.getElementById('info-modal-inner');
 
 function openInfoModal() {
     infoOverlay.style.display = 'flex';
     infoModal.style.display = 'block';
-    infoModalInner.style.display = 'block';
+ //   infoModalInner.style.display = 'block';
 }
 
 

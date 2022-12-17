@@ -1166,7 +1166,7 @@ progress::-webkit-progress-bar {
 }
 
 svg {
-    position: relative;
+    position: absolute;
     width: 75vmin;
     height: auto;
     height: auto;
@@ -1226,12 +1226,31 @@ svg #left {
 }
 
 #info-modal {
+    
     margin: auto auto;
-    width: fit-content;
-    height: auto;
     z-index: 2;
     display: none;
-    
+    box-shadow: 0 0 .33rem #fff, inset 0 0 1rem #fbfbfb, 0 0 .33vw #1041FF, 0 0 1vw #1041FF, 0 0 4vw #1041FF, 0 0 4vw #1041FF, 0 0 .133vw #8BFDFE, .166vw .166vw .033vw #147280;
+    filter: brightness(130%);
+    border: 4px solid #28D7FE;
+    border-radius: 5%;
+    animation: display-info-modal .75s forwards ease-in-out;
+}
+
+@keyframes display-info-modal {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 75vw;
+        height: 0;
+    }
+  
+    100%{
+        width: 75vw;
+        height: 70vh;
+    }
 }
 
 #info-modal svg line {
