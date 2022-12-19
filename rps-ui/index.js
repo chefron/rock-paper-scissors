@@ -14,9 +14,13 @@ const infoModal = document.getElementById('info-modal');
 function openInfoModal() {
     infoOverlay.style.display = 'flex';
     infoModal.style.display = 'block';
- //   infoModalInner.style.display = 'block';
 }
 
+
+function closeInfoModal() {
+    infoOverlay.style.display = 'none';
+    infoModal.style.display = 'none';
+}
 
 const userHealth = document.getElementById("user-health");
 const cpuHealth = document.getElementById("cpu-health");
@@ -220,10 +224,11 @@ function displayUserWinsModal(){
     gameOverModalContainer.classList.add("fade-in-modal");
     gameOverModalTitle.classList.add("win-title");
     gameOverModal.prepend(gameOverModalTitle);
+    gameOverModal.classList.add("win-border");
     gameOverModalTitle.innerHTML = "YOU WIN!";
     playAgain.style.display = "block";
-
 }
+
 
 //hide game buttons and display User Loses Modal in their place
 function displayUserLosesModal(){

@@ -10,6 +10,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 @font-face {
     font-family: neon;
     src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
@@ -808,8 +810,6 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     right: 0;
     padding: 20px;
     z-index: 3;
-    border: 5px solid white;
-    border-radius: 50%;
 }
 
 .win-title {
@@ -825,6 +825,13 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 @keyframes win-pulse {
   0% {text-shadow: 0 0 2.5px #fff, 0 0 5px #fff, 0 0 7.5px #ffd154, 0 0 10px #e6a900;}
   100% {text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ffd154, 0 0 20px #e6a900, 0 0 30px #e6a900, 0 0 40px #e6a900;}
+}
+
+.win-border {
+    border: 2px solid #fffdf7;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff2d0, 0 0 20px #e6a900, 0 0 30px #e6a900, 0 0 40px #e6a900;
+    background-color: rgb(0, 0, 0, 0.5);
 }
 
 .lose-title {
@@ -850,6 +857,11 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     animation: play-button-pulse .6s infinite ease-in-out
 }
 
+#play-again-button:hover {
+    scale: 1.2;
+    animation: none;
+    filter: brightness(130%);
+}
 
 #cpu-container {
     flex-grow: 0;
@@ -1165,53 +1177,6 @@ progress::-webkit-progress-bar {
     text-decoration: none;
 }
 
-svg {
-    position: absolute;
-    width: 75vmin;
-    height: auto;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-    filter: drop-shadow(0 0 .33rem #fff) drop-shadow(0 0 .33vw #1041FF) drop-shadow(0 0 1vw #1041FF) drop-shadow(0 0 .133vw #8BFDFE);
-
-}
-
-svg line {
-    stroke-width: 3px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: .7;
-}
-
-svg #top {
-    stroke-dasharray: 100;
-    stroke-dashoffset: -100;
-}
-
-svg #right {
-    stroke-dasharray: 100;
-    stroke-dashoffset: -100;
-}
-
-svg #bottom {
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-}
-
-svg #left {
-    stroke-dasharray: 100;
-    stroke-dashoffset: -100;
-}
-
-@keyframes animate-lines {
-    90% {stroke: rgba(2, 162, 239, 1);}
-    100%{
-         stroke: rgb(107, 208, 255);;
-         stroke-dashoffset: 0;
-         opacity: 1;
-        }
-}
-
 #info-overlay {
     background: rgba(0,0,0,0.5);
     width: 100%;
@@ -1226,15 +1191,18 @@ svg #left {
 }
 
 #info-modal {
-    
     margin: auto auto;
+    mix-blend-mode: hard-light;
     z-index: 2;
+    background:rgb(0, 0, 0);
     display: none;
     box-shadow: 0 0 .33rem #fff, inset 0 0 1rem #fbfbfb, 0 0 .33vw #1041FF, 0 0 1vw #1041FF, 0 0 4vw #1041FF, 0 0 4vw #1041FF, 0 0 .133vw #8BFDFE, .166vw .166vw .033vw #147280;
     filter: brightness(130%);
     border: 4px solid #28D7FE;
     border-radius: 5%;
     animation: display-info-modal .75s forwards ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+    color: whitesmoke;
 }
 
 @keyframes display-info-modal {
@@ -1243,44 +1211,56 @@ svg #left {
         height: 0;
     }
     50% {
-        width: 75vw;
+        width: fit-content;
         height: 0;
     }
   
     100%{
-        width: 75vw;
-        height: 70vh;
+        width: fit-content;
+        height: fit-content;
     }
 }
 
-#info-modal svg line {
-    animation: animate-lines .7s forwards;
-    animation-delay: .6s;
-    z-index: 2;
-}
-
 #info-modal-inner {
-    position: absolute;
     width: 100%;
     height: 100%;
-    background: rgb(255, 255, 255, 1);
     opacity: 0;
     animation: display-info .6s forwards;
-    animation-delay: 1s;
+    animation-delay: .6s;
 }
 
-.modal-close {
-    float: right;
-    z-index: 1;
-    color: #424242;
-    margin: 5px 5px 0 0;
-    font-size: 20px;
+@keyframes display-info {
+    to {opacity: 1;}
+}
+
+#info-modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2% 3%;
     font-weight: bold;
-    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+#info-modal-header {
     text-align: center;
-    line-height: 20px;
-    height: 20px;
-    width: 20px;
+    font-weight: 800;
+    font-size: clamp(1em, 3vw, 1.5em);
+}
+
+#info-modal-text {
+    font-weight: 500;
+    list-style-type: none;
+    font-size: clamp(.8em, 2.5vw, 1.2em);
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.info-link {
+    color: #28D7FE;
 }
 
 .modal-inner h3 {
@@ -1295,17 +1275,13 @@ svg #left {
     z-index: 2;
 }
 
-
-
 .info-overlay:target .modal .modal-inner {
     animation: display-info .6 forwards;
     animation-delay: 1s;
     z-index: 2;
 }
 
-@keyframes display-info {
-    to {opacity: 1;}
-}
+
 
 
 
