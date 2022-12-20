@@ -221,11 +221,11 @@ function displayUserWinsModal(){
         hideGameButtons();
     },2000);
     gameOverModalContainer.style.display = "block";
-    gameOverModalContainer.classList.add("fade-in-modal");
+    gameOverModalContainer.classList.add("fade-in-modal", "win-overlay");
     gameOverModalTitle.classList.add("win-title");
     gameOverModal.prepend(gameOverModalTitle);
     gameOverModal.classList.add("win-border");
-    gameOverModalTitle.innerHTML = "YOU WIN!";
+    gameOverModalTitle.innerHTML = "YOU<br>WIN!";
     playAgain.style.display = "block";
 }
 
@@ -236,10 +236,10 @@ function displayUserLosesModal(){
         hideGameButtons();
     },2000);
     gameOverModalContainer.style.display = "block";
-    gameOverModalContainer.classList.add("fade-in-modal");
+    gameOverModalContainer.classList.add("fade-in-modal", "lose-overlay");
     gameOverModalTitle.classList.add("lose-title");
     gameOverModal.prepend(gameOverModalTitle);
-    gameOverModalTitle.innerHTML = "YOU LOSE";
+    gameOverModalTitle.innerHTML = "YOU<br>LOSE";
     playAgain.style.display = "block";
 }
 
@@ -263,9 +263,11 @@ playAgain.addEventListener('click', resetModal);
 
 //hide and reset Modal for next round
 function resetModal() {
-    gameOverModalContainer.style.display='none';
-    gameOverModalTitle.className = ''
+    gameOverModalContainer.style.display ='none';
+    gameOverModalContainer.className = '';
+    gameOverModalTitle.className = '';
     gameOverModalTitle.innerHTML = '';
+    gameOverModal.className = '';
     gameOverModal.removeChild(gameOverModalTitle)
 }
 
