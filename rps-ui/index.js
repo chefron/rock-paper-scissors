@@ -183,7 +183,7 @@ function lightUpTitles(){
     }, 2250);
     setTimeout(function(){
         healthContainer.classList.remove('dim-text');
-        healthContainer.classList.add('footer-box-shadow')
+        footer.classList.add('footer-shine')
     }, 3000);
 }
 
@@ -221,7 +221,7 @@ function displayUserWinsModal(){
         hideGameButtons();
     },2000);
     gameOverModalContainer.style.display = "block";
-    gameOverModalContainer.classList.add("fade-in-modal", "win-overlay");
+    gameOverModalContainer.classList.add("fade-in-modal", "lose-overlay");
     gameOverModalTitle.classList.add("win-title");
     gameOverModal.prepend(gameOverModalTitle);
     gameOverModal.classList.add("win-border");

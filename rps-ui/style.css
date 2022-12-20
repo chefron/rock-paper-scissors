@@ -400,7 +400,11 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 #game-over-modal-container {
+    position: absolute;
     display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .lose-overlay {
@@ -411,13 +415,94 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     background-color: rgba(91, 3, 3, 0.656);
 }
 
-.win-overlay {
-    height: 100%;
-    width: 100%;
-    position: fixed;
+
+/*#win-modal-overlay {
+    height: 245%;
+    width: 245%;
+    position: absolute;
+    transform-origin: 25% 50%;
+    margin-top: -40%;
+    margin-left: -15%;
     z-index: 3;
-    background-color: rgba(255, 255, 255, 0.655);
+    background-image: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+    ansimation: rotate-background 2s linear infinite;
+} */
+
+#win-modal-overlay {
+    height: 300%;
+    width: 300%;
+    margin-left: -100%;
+    top: -100%;
+    position: absolute;
+    z-index: 3;
+    background: conic-gradient(#ffd800 0deg, #ff5520 90deg, #750cf2 180deg, #0cbcf2 270deg, #ffd800 360deg);
+    animation: rotate-win 2s infinite linear;
+    /*background-image: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2, #750cf2, #ff5520, #ffd800);*/
+   /* animation: rotate-background-1 2s ease infinite;
+    filter: blur(10px);*/
 }
+
+@keyframes rotate-win {
+      0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+/*@keyframes rotate-background-1 {
+      0%{background-position: 0% 100%}
+     50%{background-position: 100% 0%}
+    100%{background-position: 0% 100%}
+}*/
+
+/*@keyframes rotate-background {
+    0%{background-image: linear-gradient(40deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+       opacity: .5;
+      }
+ 12.5%{background-image: linear-gradient(80deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+       opacity: 1;
+      }
+   25%{background-image: linear-gradient(120deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+       opacity: .5;
+      }
+ 37.5%{background-image: linear-gradient(160deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+       opacity: 1;
+      }
+   50%{background-image: linear-gradient(200deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+    opacity: .5;}
+ 62.5%{background-image: linear-gradient(240deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+    opacity: 1;}
+   75%{background-image: linear-gradient(280deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+    opacity: .5;}
+ 87.5%{background-image: linear-gradient(320deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+    opacity: 1;}
+  100%{background-image: linear-gradient(360deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+    opacity: .5;}
+} */
+
+
+#win-modal-overlay-clip {
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    clip-path: polygon(0% 0%, 0% 100%, 2% 100%, 2% 2%, 98% 2%, 98% 98%, 2% 98%, 0% 100%, 100% 100%, 100% 0%);
+    background: transparent;
+}
+
+
+
+
+.main-element {
+    position: absolute;
+    display: block;
+    top: 1%;
+    left: 1%;
+    height: 98%;
+    width: 98%;
+    margin: auto;
+    align-self: center;
+    background: #fff;
+    z-index: 1;
+}
+
 
 .fade-in-modal {
     animation: fade-in-modal 4s ease-in 0s 1 forwards;
@@ -451,7 +536,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     align-items: center;
     justify-content: center;
     padding: 5px 0 5px;
-    z-index: 1;
+    z-index: 4;
     /*background-image: url(images/black-bricks.jpg);
     background-size: 110vmax auto;
     background-repeat: no-repeat;
@@ -851,10 +936,11 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     0 0 20px #e6a900, 
     0 0 30px hsl(44, 100%, 45%), 
     0 0 40px #e6a900;
-    filter: brightness(130%) contrast(130%);}
+    filter: brightness(120%) contrast(120%);}
 }
 
 .win-border {
+    background-color: rgb(0, 0, 0, 0.6);
     padding: .5em;
     border: 3px solid #fffdf7;
     border-radius: 50%;
@@ -862,28 +948,9 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
               0 0 .2rem #fff,
               0 0 2rem #ffc42e,
               0 0 0.8rem #ffc42e,
-              inset 0 0 1.3rem #ffc42e;
-    animation: blink .6s infinite alternate;
-}
-
-@keyframes blink {
-      0%{
-         background-color: rgb(0, 0, 0, 0.8);
-         box-shadow: 0 0 .2rem #fff,
-              0 0 .2rem #fff,
-              0 0 2rem #ffc42e,
-              0 0 0.8rem #ffc42e,
-              inset 0 0 1.3rem #ffc42e;
-        }
-    100%{background-color: rgb(0, 0, 0, 0.7);
-              box-shadow: 0 0 .2rem #fff,
-              0 0 .2rem #fff,
-              0 0 2rem #ffc42e,
-              0 0 0.8rem #ffc42e,
               0 0 1rem #ffc42e,
               0 0 1.2rem #ffc42e,
               inset 0 0 1.3rem #ffc42e;
-        }
 }
 
 .lose-title {
@@ -1082,8 +1149,11 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     display: flex;
     flex-direction: column;
     justify-content: left;
+    z-index: 4;
+}
+
+.footer-shine {
     box-shadow: 0px -5px 10px rgba(255, 255, 255, 0.64);
-    z-index: 0;
 }
 
 #player-names {
@@ -1227,6 +1297,7 @@ progress::-webkit-progress-bar {
     padding: 5px 5px 5px 0;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6;
     text-decoration: none;
+    z-index: 4;
 }
 
 #info-overlay {
@@ -1238,7 +1309,7 @@ progress::-webkit-progress-bar {
     left: 0;
     opacity: 0;
     animation: display-info .6s forwards;
-    z-index: 2;
+    z-index: 4;
     display: none;
 }
 
