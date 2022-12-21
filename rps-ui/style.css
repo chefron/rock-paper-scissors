@@ -429,15 +429,33 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 } */
 
 #win-modal-overlay {
-    height: 300%;
-    width: 300%;
-    margin-left: -100%;
-    top: -100%;
+    height: 400%;
+    width: 400%;
+    margin-left: -150%;
+    top: -150%;
     position: absolute;
     z-index: 3;
-    background: conic-gradient(#ffd800 0deg, #ff5520 90deg, #750cf2 180deg, #0cbcf2 270deg, #ffd800 360deg);
-    opacity: .85;
-    animation: rotate-win 3s infinite linear;
+    box-shadow: 0 0 .2rem #fff,
+                0 0 .3rem #ffc42e,
+                0 0 .5rem #ffc42e,
+                inset 0 0 .2rem #fff,
+                inset 0 0 0.8rem #ffc42e,
+                inset 0 0 1rem #ffc42e,
+                inset 0 0 1.3rem #ffc42e,
+                inset 0 0 1.5rem #ffc42e;
+    /*background: conic-gradient(#ffd800 0deg, #ff5520 90deg, #750cf2 180deg, #0cbcf2 270deg, #ffd800 360deg);*/
+    background: conic-gradient(
+        #ffc42e 0deg 20deg,
+        transparent 40deg 80deg,
+        #ffc42e 90deg 110deg,
+        transparent 130deg 170deg,
+        #ffc42e 180deg 200deg,
+        transparent 220deg 260deg,
+        #ffc42e 270deg 290deg,
+        transparent 310deg 350deg,
+        #ffc42e 360deg);
+    animation: rotate-win 4s infinite linear;
+    filter: brightness(130%);
     /*background-image: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2, #750cf2, #ff5520, #ffd800);*/
    /* animation: rotate-background-1 2s ease infinite;
     filter: blur(10px);*/
@@ -907,16 +925,17 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 #game-over-modal {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     margin: auto auto;
 }
 
 .win-title {
     font-family: 'neondesmonregular', Helvetica, sans-serif;
     color: whitesmoke;
-    margin-bottom: 8%;
+    margin: 25% auto 8%;
     font-size: clamp(2em, 9vw, 4em);
+    text-align: center;
     font-weight: 600;
     animation: win-pulse .6s infinite alternate;
     
@@ -947,7 +966,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
                 inset 0 0 1.5rem #ffc42e,
                 inset 0 0 1.7rem #ffc42e,
                 inset 0 0 2rem #ffc42e;
-}
+} 
 
 .lose-title {
     font-family: 'neondesmonregular', Helvetica, sans-serif;
