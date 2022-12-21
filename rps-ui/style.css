@@ -896,7 +896,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     rotate: 240deg;
 }
 
-.selection-button {
+.game-button {
     background-color: transparent;
     height: fit-content;
     width: fit-content;
@@ -908,14 +908,18 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     0% {transform: rotate(-360deg)}
 }
 
-.selection-button-image {
+.game-button-img {
     width: 7vw;
     height: auto;
     filter: invert(100%) opacity(65%) drop-shadow(1px 1px 1px rgb(255, 255, 255));
 }
 
-.selection-button-image:hover {
+.game-button-img:hover {
     animation: selection-button-pulse 1s infinite ease-in-out;
+}
+
+.disable-hover{
+    pointer-events: none;
 }
 
 @keyframes selection-button-pulse {
@@ -928,12 +932,14 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     width: 100%;
     height: 100%;
     margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .win-title {
     font-family: 'neondesmonregular', Helvetica, sans-serif;
     color: whitesmoke;
-    margin: 25% auto 8%;
     font-size: clamp(2em, 9vw, 4em);
     text-align: center;
     font-weight: 600;
@@ -971,7 +977,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 .lose-title {
     font-family: 'neondesmonregular', Helvetica, sans-serif;
     color: #ff1818;
-    margin-bottom: 10%;
+    text-align: center;
     font-size: clamp(2em, 9vw, 3em);
     font-weight: 600;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e61f00, 0 0 20px #e61f00, 0 0 25px #e61f00;
@@ -982,7 +988,6 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     background: none;
     border: none;
     display: none;
-    margin: 0 auto;
     font-family: 'Pacifico', Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: clamp(1.3em, 3.1vw, 2.5em);

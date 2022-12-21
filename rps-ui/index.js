@@ -1,7 +1,7 @@
 const options = ["rock", "paper", "scissors"];
 const gameButtons = document.getElementById('game-button-container').querySelectorAll('button');
 const gameButtonContainer = document.getElementById('game-button-container');
-const gameButtonText = document.getElementById('game-button-text')
+const gameButtonText = document.getElementById('game-button-text');
 
 const gameOverModalContainer = document.getElementById('game-over-modal-container');
 const gameOverModal = document.getElementById('game-over-modal');
@@ -390,7 +390,22 @@ function shakeCanvas() {
       },10);
 }
 
+function disableHover(){
+    const gameButtonImages = document.querySelectorAll('.game-button-img');
+    gameButtonImages.forEach(button => {
+        button.classList.add('disable-hover');
+    });
+}
+
+function enableHover(){
+    const gameButtonImages = document.querySelectorAll('.game-button-img');
+    gameButtonImages.forEach(button => {
+        button.classList.remove('disable-hover');
+    });
+}
+
 function hideGameButtons() {
+    disableHover();
     gameButtonContainer.classList.remove('fade-in-buttons');
     gameButtonText.classList.remove('fade-in-buttons');
     setTimeout(function(){
@@ -400,7 +415,6 @@ function hideGameButtons() {
     setTimeout(function(){
         gameButtonContainer.style.display = "none";
       },250);
-    
 }
 
 function displayGameButtons() {
@@ -411,6 +425,9 @@ function displayGameButtons() {
         gameButtonContainer.classList.remove('fade-out-buttons');
         gameButtonText.classList.remove('fade-out-text');
       },10);
+    setTimeout(function(){
+        enableHover();
+      },800);
 }
 
 gameButtons.forEach((button) => {
