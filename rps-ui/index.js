@@ -220,8 +220,8 @@ function displayUserWinsModal(){
     setTimeout(function(){
         hideGameButtons();
     },2000);
-    gameOverModalContainer.style.display = "block";
-    gameOverModalContainer.classList.add("fade-in-modal", "lose-overlay");
+    gameOverModalContainer.style.display = "flex";
+    gameOverModalContainer.classList.add("fade-in-modal");
     gameOverModalTitle.classList.add("win-title");
     gameOverModal.prepend(gameOverModalTitle);
     gameOverModal.classList.add("win-border");

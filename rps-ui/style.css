@@ -34,7 +34,7 @@ body {
     height: 68.3vh;
     position: absolute;
     transform: translateY(-2px);
-    z-index: 1;
+    z-index: 5;
     display: flex;
     flex-direction: column;
     background-image: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.75) 25%, 
@@ -384,7 +384,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     font-size: clamp(3em, 7vw, 4em);
     color: #fff;
     text-shadow: 0 0 3px #fff, 0 0 6px #fff, 0 0 8px #0073e6, 0 0 11px #0073e6, 0 0 15px #0073e6;
-    animation: play-button-pulse .6s infinite ease-in-out
+    animation: play-button-pulse .6s infinite ease-in-out;
 }
 
 @keyframes play-button-pulse {
@@ -405,13 +405,13 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    z-index: 3;
 }
 
 .lose-overlay {
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: 3;
     background-color: rgba(91, 3, 3, 0.656);
 }
 
@@ -436,7 +436,8 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     position: absolute;
     z-index: 3;
     background: conic-gradient(#ffd800 0deg, #ff5520 90deg, #750cf2 180deg, #0cbcf2 270deg, #ffd800 360deg);
-    animation: rotate-win 2s infinite linear;
+    opacity: .85;
+    animation: rotate-win 3s infinite linear;
     /*background-image: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2, #750cf2, #ff5520, #ffd800);*/
    /* animation: rotate-background-1 2s ease infinite;
     filter: blur(10px);*/
@@ -482,10 +483,11 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 #win-modal-overlay-clip {
     width: 100%;
     height: 100%;
+    position: absolute;
     z-index: 3;
-    clip-path: polygon(0% 0%, 0% 100%, 2% 100%, 2% 2%, 98% 2%, 98% 98%, 2% 98%, 0% 100%, 100% 100%, 100% 0%);
-    background: transparent;
-}
+    clip-path: polygon(0% 0%, 0% 100%, 5% 100%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 0% 100%, 100% 100%, 100% 0%);
+    background: transparent; 
+} 
 
 
 
@@ -905,17 +907,9 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 #game-over-modal {
-    position: absolute;
-    width: 30vw;
-    height: fit-content;
-    text-align: center;
-    margin: auto;
-    top: 0%;
-    bottom: 20%;
-    left: 0;
-    right: 0;
-    padding: 25px;
-    z-index: 3;
+    width: 90%;
+    height: 90%;
+    margin: auto auto;
 }
 
 .win-title {
@@ -941,16 +935,18 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 .win-border {
     background-color: rgb(0, 0, 0, 0.6);
-    padding: .5em;
-    border: 3px solid #fffdf7;
-    border-radius: 50%;
+    border: 0px solid #fffdf7;
+    border-radius: 5px;
     box-shadow: 0 0 .2rem #fff,
-              0 0 .2rem #fff,
-              0 0 2rem #ffc42e,
-              0 0 0.8rem #ffc42e,
-              0 0 1rem #ffc42e,
-              0 0 1.2rem #ffc42e,
-              inset 0 0 1.3rem #ffc42e;
+                0 0 .3rem #ffc42e,
+                0 0 .5rem #ffc42e,
+                inset 0 0 .2rem #fff,
+                inset 0 0 0.8rem #ffc42e,
+                inset 0 0 1rem #ffc42e,
+                inset 0 0 1.3rem #ffc42e,
+                inset 0 0 1.5rem #ffc42e,
+                inset 0 0 1.7rem #ffc42e,
+                inset 0 0 2rem #ffc42e;
 }
 
 .lose-title {
