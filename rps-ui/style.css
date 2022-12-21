@@ -106,7 +106,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 #input-rounds-container {
     width: 100%;
-    flex: 0 0 auto;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -276,7 +276,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     80%{opacity: 0;}
 }
 
-#sound-on, #sound-off, #slash, .sound-text {
+.sound-text {
     text-align: center;
     flex: 0 0 auto;
     border: none;
@@ -285,7 +285,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     font-family: 'neondesmonregular', Helvetica, sans-serif;
     padding: none;
     margin: 0;
-    font-size: clamp(1.5em, 5vw, 2em);
+    font-size: clamp(1.5em, 5vmin, 2em);
     font-weight: 600;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
 }
@@ -548,7 +548,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     
 }
 
-.header {
+#header {
     width: 100vw;
     min-height: 15vh;
     flex: 1 0 auto;
@@ -571,15 +571,15 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 #title {
+    width: fit-content;
     font-family: neon, Arial, sans-serif;
-    font-size: clamp(2.2em, 8vw, 4em);
+    font-size: clamp(2em, 8vw, 4em);
     text-align: center;
     margin: 0px 10px 0px 10px;
     padding: 10px 10px 0px 10px;
     border: 3px solid #233da4cb;
     box-shadow: .1rem -.1rem .25rem #051a1fc8, inset 0 0 .25rem #051a1fc8, 0 0 .133vw #4d9293, .1vw .166vw .033vw #12444c;
     border-radius: 10px;
-    width: fit-content;
 }
 
 .dim-text {
@@ -818,8 +818,8 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     padding-bottom: 40vh;
     min-height: 250px;
     height: 40vh;
-    left: 43.2%;
-    scale: 1.4;
+    left: 44%;
+    scale: 1.2;
     z-index: 2;
     align-items: center;
 }
@@ -938,9 +938,10 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 }
 
 .win-title {
+    margin-top: -3%;
     font-family: 'neondesmonregular', Helvetica, sans-serif;
     color: whitesmoke;
-    font-size: clamp(2em, 9vw, 4em);
+    font-size: clamp(2em, 10vmin, 5em);
     text-align: center;
     font-weight: 600;
     animation: win-pulse .6s infinite alternate;
@@ -975,10 +976,11 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 } 
 
 .lose-title {
+    margin-top: -3%;
     font-family: 'neondesmonregular', Helvetica, sans-serif;
     color: #ff1818;
     text-align: center;
-    font-size: clamp(2em, 9vw, 3em);
+    font-size: clamp(2em, 10vmin, 5em);
     font-weight: 600;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e61f00, 0 0 20px #e61f00, 0 0 25px #e61f00;
     filter: brightness(130%) contrast(130%);
@@ -1218,7 +1220,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     flex: 1;
     font-family: 'Pacifico', cursive;
     text-align: center;
-    font-size: clamp(1.5em, 5vw, 3em);
+    font-size: clamp(1.5em, 5vw, 4em);
     max-width: 200px;
     color: rgb(241, 216, 216);
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
@@ -1317,7 +1319,7 @@ progress::-webkit-progress-bar {
     padding: 5px 5px 5px 0;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6;
     text-decoration: none;
-    z-index: 4;
+    z-index: 5;
 }
 
 #info-overlay {
@@ -1329,7 +1331,7 @@ progress::-webkit-progress-bar {
     left: 0;
     opacity: 0;
     animation: display-info .6s forwards;
-    z-index: 4;
+    z-index: 5;
     display: none;
 }
 
@@ -1464,8 +1466,15 @@ progress::-webkit-progress-bar {
         margin-left: -7vw;
     }
 
-    #button-container {
-        padding-top: 25vh;
+    #game-button-text {
+        top: 12%;
+        width: 30%;
+    }
+
+    #game-button-container {
+        padding-top: 27vh;
+        scale: 2.1;
+        left: 45.5%;
     }
 
     #best-of {
@@ -1476,13 +1485,28 @@ progress::-webkit-progress-bar {
         top: 12%;
         width: 40%;
     }
+
+    #player-names {
+        font-size: clamp(.7em, 1em, 2em);
+    }
+
+    #health-title {
+        font-size: clamp(1.5em, 5vw, 3em);
+    }
+
 }
 
-@media (min-width: 430px) and (max-width: 800px) {
+@media (min-width: 531px) and (max-width: 1199px) {
 
     #game-button-text {
-        top: 11%;
+        top: 8%;
         width: 30%;
+    }
+
+    #game-button-container {
+        padding-top: 27vh;
+        scale: 1.8;
+        left: 44%;
     }
 }
 
@@ -1518,5 +1542,69 @@ progress::-webkit-progress-bar {
     #game-button-text {
         top: 3%;
         width: 30%;
+    }
+
+    #game-button-container {
+        left: 43%;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 430px){
+    
+    #header {
+        flex: 1 1 auto;
+    }
+
+    #title {
+        font-size: clamp(2em, 8vmin, 4em);
+    }
+
+    #start-game-screen {
+        height: 68.5vh;
+    }
+
+    #input-rounds-container {
+        margin-top: -3%;
+        margin-bottom: -1%;
+    }
+
+    .input-rounds-text {
+        font-size: clamp(1.5em, 5vmin, 2em);
+    }
+
+    #switch-container {
+        transform: scale(.23);
+    }
+
+    #play-button {
+        font-size: clamp(2.5em, 6vmin, 4em);
+    }
+
+    #play-again-button {
+        margin-top: -3%;
+    }
+
+    #player-names {
+        height: 4vh;
+        margin: -2.3vh 0 1.5vh 0;
+        font-size: clamp(.6em, .8em, 2em);
+    }
+
+    #health-title {
+        font-size: clamp(1em, 4vw, 3em);
+    }
+
+    #info-button {
+        font-size: .7em;
+        font-weight: 500;
+        padding: 2.5px 2.5px 2.5px 0;
+    }
+
+    #game-button-container {
+        padding-top: 17vh;
+    }
+
+    #game-button-text {
+        width: 40%;
     }
 }
