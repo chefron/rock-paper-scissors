@@ -31,7 +31,7 @@ body {
 
 #start-game-screen {
     width: 100%;
-    height: 68.3vh;
+    height: 68.4vh;
     position: absolute;
     transform: translateY(-2px);
     z-index: 5;
@@ -118,7 +118,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    z-index: 1;
+    z-index: 4;
 }
 
 
@@ -838,7 +838,12 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     color: #fff;
     font-size: clamp(.8em, 1.5vw, 2vw);
     font-weight: 600;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+    text-shadow: 
+    0 0 2px #fff, 
+    0 0 5px #fff, 
+    0 0 7px #0073e6, 
+    0 0 10px #0073e6,
+    0 0 14px #0053a6;
     opacity: 0;
     animation: text-opacity 16s 1 forwards;
 }
@@ -1473,8 +1478,8 @@ progress::-webkit-progress-bar {
 
     #game-button-container {
         padding-top: 27vh;
-        scale: 2.1;
-        left: 45.5%;
+        scale: 2.3;
+        left: 46%;
     }
 
     #best-of {
@@ -1506,7 +1511,7 @@ progress::-webkit-progress-bar {
     #game-button-container {
         padding-top: 27vh;
         scale: 1.8;
-        left: 44%;
+        left: 44.4%;
     }
 }
 
@@ -1606,5 +1611,6 @@ progress::-webkit-progress-bar {
 
     #game-button-text {
         width: 40%;
+        top: 4%;
     }
 }

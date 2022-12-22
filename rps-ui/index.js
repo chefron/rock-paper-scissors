@@ -33,17 +33,8 @@ const canvas = document.getElementById("canvas");
 const userFist = document.createElement('img');
 const cpuFist = document.createElement('img');
 
-const lightsOnSfx = new Audio('sounds/light-turning-on.mp3');
-const backgroundSfx = new Audio('sounds/background.mp3');
-backgroundSfx.volume = 0.8;
-
+// Audio and SFX:
 let soundOn = true;
-
-function playBackgroundSfx(){
-    if (soundOn){
-    backgroundSfx.play();
-    }
-}
 
 function toggleSound(){
     if (soundOn){
@@ -53,8 +44,58 @@ function toggleSound(){
     }
 }
 
+function playBackgroundSfx(){
+    const backgroundSfx = new Audio('sounds/background.mp3');
+    backgroundSfx.loop = true;
+    backgroundSfx.volume = 0.75;
+    if (soundOn){
+        backgroundSfx.play();
+    }
+}
 
-function turnSoundOn(){}
+function playCheerSfx() {
+    const cheerSfx = new Audio('sounds/crowd-cheer.mp3');
+    cheerSfx.volume = 0.5;
+    if (soundOn) {
+        cheerSfx.play();
+    }
+}
+
+function playGroanSfx() {
+    const groanSfx = new Audio('sounds/crowd-groan.mp3');
+    groanSfx.volume = 0.7;
+    if (soundOn) {
+        groanSfx.play();
+    }
+}
+
+
+
+
+
+function playRockWhoosh(){
+    const rockWhoosh = new Audio('sounds/rock-whoosh.mp3');
+    rockWhoosh.volume = 0.8;
+    if (soundOn) {
+        rockWhoosh.play();
+    }
+}
+
+function playPaperWhoosh(){
+    const paperWhoosh = new Audio('sounds/paper-whoosh.mp3');
+    paperWhoosh.volume = 0.4;
+    if (soundOn) {
+        paperWhoosh.play();
+    }
+}
+
+function playScissorsWhoosh(){
+    const scissorsWhoosh = new Audio('sounds/scissors-whoosh.mp3');
+    scissorsWhoosh.volume = 0.35;
+    if (soundOn) {
+        scissorsWhoosh.play();
+    }
+}
 
 let numberOfRounds;
 let userHealthCopy; //Background user score to circumvent animation delays
@@ -64,7 +105,7 @@ let cpuScore = 0 //see above
 
 function playTablePoundsSfx() {
     const tablePounds = new Audio('sounds/table-pounds-1.mp3');
-    tablePounds.volume = 0.4;
+    tablePounds.volume = 0.35;
     if (soundOn) {
         tablePounds.play();
     }
@@ -220,6 +261,9 @@ function displayUserWinsModal(){
     setTimeout(function(){
         hideGameButtons();
     },2000);
+    setTimeout(function(){
+        playCheerSfx();
+    },3000);
     gameOverModalContainer.style.display = "flex";
     gameOverModalContainer.classList.add("fade-in-modal");
     gameOverModalTitle.classList.add("win-title");
@@ -235,6 +279,9 @@ function displayUserLosesModal(){
     setTimeout(function(){
         hideGameButtons();
     },2000);
+    setTimeout(function(){
+        playGroanSfx();
+    },3000);
     gameOverModalContainer.style.display = "block";
     gameOverModalContainer.classList.add("fade-in-modal", "lose-overlay");
     gameOverModalTitle.classList.add("lose-title");
@@ -446,6 +493,9 @@ function userRockAnimation() {
     userRock.src = "images/left-rock.png";
     userContainer.appendChild(userRock);
     userRock.classList.add("user-rock", "user-movement");
+    setTimeout(function(){
+        playRockWhoosh();
+    },2340);
 }
 
 function userPaperAnimation() {
@@ -453,6 +503,9 @@ function userPaperAnimation() {
     userPaper.src = "images/left-paper.png";
     userContainer.appendChild(userPaper);
     userPaper.classList.add("user-paper", "user-movement");
+    setTimeout(function(){
+        playPaperWhoosh();
+    },2340);
 }
 
 function userScissorsAnimation() {
@@ -460,6 +513,9 @@ function userScissorsAnimation() {
     userScissors.src = "images/left-scissors.png";
     userContainer.appendChild(userScissors);
     userScissors.classList.add("user-scissors", "user-movement");
+    setTimeout(function(){
+        playScissorsWhoosh();
+    },2340);
 }
 
 function cpuRockAnimation() {
