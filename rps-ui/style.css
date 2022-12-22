@@ -1,4 +1,4 @@
-/* Document generally reads from top to bottom of page layout, left to right for the three main containers*/
+/**TYPOGRAPHY**/
 
 @font-face {
     font-family: 'neondesmonregular';
@@ -17,6 +17,9 @@
     src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
 }
 
+
+/**TOP-LEVEL ELEMENTS**/
+
 html {
     overflow: hidden;
 }
@@ -28,6 +31,192 @@ body {
     height: auto;
     overflow: hidden;
 }
+
+
+/**GAMEPLAY BUTTONS**/
+
+#game-button-container {
+    position: absolute;
+    display: none;
+    padding-top: 22vh;
+    padding-bottom: 40vh;
+    min-height: 250px;
+    height: 40vh;
+    left: 44%;
+    scale: 1.2;
+    z-index: 2;
+    align-items: center;
+}
+
+.fade-in-buttons {
+    animation: fade-in-buttons .75s ease-in-out 0s 1 forwards;
+    z-index: 3;
+}
+
+@keyframes fade-in-buttons {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.fade-out-buttons {
+    animation: fade-out-buttons .25s ease-in-out 0s 1 forwards;
+    z-index: 2;
+}
+
+@keyframes fade-out-buttons {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.game-button {
+    background-color: transparent;
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    animation: rotation 35s infinite linear;
+}
+
+@keyframes rotation {
+    0% {transform: rotate(-360deg)}
+}
+
+.rock-button {
+    rotate: 0deg;
+    transform-origin: 100%;
+}
+
+.paper-button {
+    margin-left: -33.33%;
+    transform-origin: 100%;
+    rotate: 120deg;
+}
+
+.scissors-button {
+    margin-left: -33.33%;
+    transform-origin: 100%;
+    rotate: 240deg;
+}
+
+.game-button-img {
+    width: 7vw;
+    height: auto;
+    filter: invert(100%) opacity(65%) drop-shadow(1px 1px 1px rgb(255, 255, 255));
+}
+
+.game-button-img:hover {
+    animation: selection-button-pulse 1s infinite ease-in-out;
+}
+
+@keyframes selection-button-pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.15);}
+    100% {transform: scale(1);}
+}
+
+.disable-hover{
+    pointer-events: none;
+}
+
+
+/*Note: From this point on, the stylesheet is organized to reflect the page layout. 
+It's split into the sections and generally reads from left to right, top to bottom, 
+similar to how the HTML is structured.*/
+
+.main-flex-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch; 
+}
+
+
+/**HEADER**/
+
+#header {
+    width: 100vw;
+    min-height: 15vh;
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0 5px;
+    z-index: 4;
+    background-image: linear-gradient(
+        to right, 
+        black 0%,
+        rgba(0, 0, 0, 0.75) 25%, 
+        rgba(0, 0, 0, 0.25) 50%,
+        rgba(0, 0, 0, 0.75) 75%,
+        black 100%),
+        url(images/red-brick-wall.jpg);
+    background-size: 100vmax auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#title {
+    width: fit-content;
+    font-family: neon, Arial, sans-serif;
+    font-size: clamp(2em, 8vw, 4em);
+    text-align: center;
+    margin: 0px 10px 0px 10px;
+    padding: 10px 10px 0px 10px;
+    border: 3px solid #233da4cb;
+    box-shadow: .1rem -.1rem .25rem #051a1fc8, inset 0 0 .25rem #051a1fc8, 0 0 .133vw #4d9293, .1vw .166vw .033vw #12444c;
+    border-radius: 10px;
+}
+
+.dim-text {
+    filter: brightness(50%) grayscale(50%);
+    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914 !important;
+}
+
+.light-up-text {
+    animation: subtle-flicker 0.12s ease-in-out infinite alternate;
+}
+
+.light-up-border {
+    border: 3px solid #28D7FE !important;
+    box-shadow:
+    inset 0 0 .2vw #1041FF,
+    0 0 .2vw #fff, 
+    0 0 .33vw #1041FF, 
+    0 0 1vw #1041FF, 
+    0 0 3vw #1041FF !important;
+    animation: subtle-flicker 0.12s ease-in-out infinite alternate;
+}
+
+@keyframes subtle-flicker {
+    0% {filter: brightness(130%);}
+    100% {filter: brightness(120%);}
+}
+
+/*Note: Words in title are separated into unique classes to allow for individual 
+animation. It's not use in this iteration of the game, but has been
+maintained here for posterity.*/
+#rock-title {
+    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
+    color: #FED128;
+}
+
+#paper-title {
+    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
+    color: #FED128;
+}
+
+#scissors-title {
+    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
+    color: #FED128;
+}
+
+
+/**MAIN GAMEPLAY AREA**/
+
+
+
+
+
 
 #start-game-screen {
     width: 100%;
@@ -104,7 +293,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     flex: 1 1 auto;
 } */
 
-#input-rounds-container {
+#input-rounds-wrapper {
     width: 100%;
     flex: 0 1 auto;
     display: flex;
@@ -112,7 +301,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     justify-content: center;
 }
 
-#sound-toggle-container {
+#sound-toggle-wrapper {
     width: 100%;
     flex: 0 0 auto;
     display: flex;
@@ -123,7 +312,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
 
 
 /* Realistic Red Switch by Yoav Kadosh */
-#switch-container {
+#switch-wrapper {
     flex: 0 0 auto;
     display: flex;
     transform: scale(.3);
@@ -298,7 +487,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     text-decoration-thickness: 1px;
 }
 
-#play-button-container {
+#play-button-wrapper {
     width: 50%;
     margin: 0px auto;
     display: flex;
@@ -534,110 +723,20 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     100% {opacity: 1;}
 }
 
-.flex-container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    /*background-image: url(images/black-bricks.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100;
-    z-index: 1;*/
-    
-}
 
-#header {
-    width: 100vw;
-    min-height: 15vh;
-    flex: 1 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 0 5px;
-    z-index: 4;
-    /*background-image: url(images/black-bricks.jpg);
-    background-size: 110vmax auto;
-    background-repeat: no-repeat;
-    background-position: bottom;*/
-    background-image: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.75) 25%, 
-    rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.75) 75%, black 100%),
-    url(images/red-brick-wall.jpg);
-    background-size: 100vmax auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    
-}
 
-#title {
-    width: fit-content;
-    font-family: neon, Arial, sans-serif;
-    font-size: clamp(2em, 8vw, 4em);
-    text-align: center;
-    margin: 0px 10px 0px 10px;
-    padding: 10px 10px 0px 10px;
-    border: 3px solid #233da4cb;
-    box-shadow: .1rem -.1rem .25rem #051a1fc8, inset 0 0 .25rem #051a1fc8, 0 0 .133vw #4d9293, .1vw .166vw .033vw #12444c;
-    border-radius: 10px;
-}
 
-.dim-text {
-    filter: brightness(50%) grayscale(50%);
-    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914 !important;
-}
-
-.light-up-text {
-    animation: subtle-flicker 0.12s ease-in-out infinite alternate;
-}
-
-.light-up-border {
-    border: 3px solid #28D7FE !important;
-    box-shadow:
-    inset 0 0 .2vw #1041FF,
-    0 0 .2vw #fff, 
-    0 0 .33vw #1041FF, 
-    0 0 1vw #1041FF, 
-    0 0 3vw #1041FF !important;
-    animation: subtle-flicker 0.12s ease-in-out infinite alternate;
-}
-
-@keyframes subtle-flicker {
-    0% {filter: brightness(130%);}
-    100% {filter: brightness(120%);}
-}
-
-#rock-title {
-    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
-    color: #FED128;
-}
-
-#paper-title {
-    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
-    color: #FED128;
-   /* color: #28D7FE; 
-    text-shadow: 0 0 .33vw #1041FF, 0 0 1vw #1041FF, 0 0 3.33vw #1041FF, 0 0 3.33vw #1041FF, 0 0 .133vw #8BFDFE, .166vw .166vw .033vw #147280;
-    filter: brightness(130%); */
-}
-
-#scissors-title {
-    text-shadow: 0 0 .33vw #FA1C16, 0 0 1vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 3.33vw #FA1C16, 0 0 .133vw #FED128, .166vw .166vw .033vw #806914;
-    color: #FED128;
-    /* text-shadow: 0 0 .33vw #950606, 0 0 1vw #a50101, 0 0 3.33vw #900606, 0 0 3.33vw #6a0808, 0 0 .133vw #fe8b8b, .166vw .166vw .033vw #801414;
-    color: #FF3131;
-    filter: brightness(130%); */
-}
 
 /* wrapper div to improve cpu performance with mix-blend-mode */
 
-#main-content-container {
+#gameplay-container {
     width: 100%;
     height: auto;
     position: relative;
     flex: 2 0 auto;
 }
 
-#canvas-container {
+#gameplay-canvas-wrapper {
     width: 100%;
     height: auto;
     position: relative;
@@ -646,7 +745,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     background-color: rgb(40, 0, 0);
 }
 
-#canvas {
+#gameplay-canvas {
     width: 100%;
     height: 68vh;
     overflow: hidden;
@@ -811,18 +910,7 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     }
 }
 
-#game-button-container {
-    position: absolute;
-    display: none;
-    padding-top: 22vh;
-    padding-bottom: 40vh;
-    min-height: 250px;
-    height: 40vh;
-    left: 44%;
-    scale: 1.2;
-    z-index: 2;
-    align-items: center;
-}
+
 
 #game-button-text {
     position: absolute;
@@ -856,81 +944,12 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     100%{opacity: 0;}
 }
 
-.fade-in-buttons {
-    animation: fade-in-buttons .75s ease-in-out 0s 1 forwards;
-    z-index: 3;
-}
-
-@keyframes fade-in-buttons {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-}
-
-.fade-out-buttons {
-    animation: fade-out-buttons .25s ease-in-out 0s 1 forwards;
-    z-index: 2;
-}
-
-@keyframes fade-out-buttons {
-    0% {opacity: 1;}
-    100% {opacity: 0;}
-}
-
 .fade-out-text {
     animation: fade-out-text .25s ease-in-out 0s 1 forwards !important;
 }
 
 @keyframes fade-out-text {
     100% {opacity: 0;}
-}
-
-.rock-button {
-    rotate: 0deg;
-    transform-origin: 100%;
-}
-
-.paper-button {
-    margin-left: -33.33%;
-    transform-origin: 100%;
-    rotate: 120deg;
-}
-
-.scissors-button {
-    margin-left: -33.33%;
-    transform-origin: 100%;
-    rotate: 240deg;
-}
-
-.game-button {
-    background-color: transparent;
-    height: fit-content;
-    width: fit-content;
-    border: none;
-    animation: rotation 35s infinite linear;
-}
-
-@keyframes rotation {
-    0% {transform: rotate(-360deg)}
-}
-
-.game-button-img {
-    width: 7vw;
-    height: auto;
-    filter: invert(100%) opacity(65%) drop-shadow(1px 1px 1px rgb(255, 255, 255));
-}
-
-.game-button-img:hover {
-    animation: selection-button-pulse 1s infinite ease-in-out;
-}
-
-.disable-hover{
-    pointer-events: none;
-}
-
-@keyframes selection-button-pulse {
-    0% {transform: scale(1);}
-    50% {transform: scale(1.15);}
-    100% {transform: scale(1);}
 }
 
 #game-over-modal {
@@ -1245,24 +1264,24 @@ animation: 2.5s cubic-bezier(.25, 1, .30, 1) top-wipe forwards;
     100% {transform: scale(1);}
     }
 
-#user-health-container {
+#user-health-wrapper {
     flex: 2;
     display: flex;
     padding-right: 1vw;
     justify-content: right;
 }
 
-#user-health {
+#user-health-meter {
     height: 1.2vh;
 }
 
-#cpu-health-container {
+#cpu-health-wrapper {
     flex: 2;
     display: flex;
     padding-left: 1vw;
 }
 
-#cpu-health {
+#cpu-health-meter {
     transform: rotateY(180deg);
     height: 1.2vh;
 }
@@ -1302,7 +1321,7 @@ progress::-webkit-progress-bar {
     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
   }
 
-#info-wrapper {
+#info-modal-wrapper {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1310,7 +1329,7 @@ progress::-webkit-progress-bar {
     bottom: 0%;
 }
 
-#info-button {
+#info-modal-button {
     position: absolute;
     right: 0%;
     bottom: 0%;
@@ -1327,7 +1346,7 @@ progress::-webkit-progress-bar {
     z-index: 5;
 }
 
-#info-overlay {
+#info-modal-background {
     background: rgba(0,0,0,0.5);
     width: 100%;
     height: 100%;

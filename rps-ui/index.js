@@ -7,28 +7,38 @@ const gameOverModalContainer = document.getElementById('game-over-modal-containe
 const gameOverModal = document.getElementById('game-over-modal');
 const gameOverModalTitle = document.createElement('p');
 
-const infoOverlay = document.getElementById('info-overlay');
-const infoModal = document.getElementById('info-modal');
-//const infoModalInner = document.getElementById('info-modal-inner');
 
+//INFORMATION MODAL SECTION (GAME CREDITS):
+
+const infoModalBackground = document.getElementById('info-modal-background');
+const infoModal = document.getElementById('info-modal');
+
+// Opens modal by clicking info button
 function openInfoModal() {
-    infoOverlay.style.display = 'flex';
+    infoModalBackground.style.display = 'flex';
     infoModal.style.display = 'block';
 }
 
-
+// Closes modal by clicking close icon with onclick event
 function closeInfoModal() {
-    infoOverlay.style.display = 'none';
+    infoModalBackground.style.display = 'none';
     infoModal.style.display = 'none';
 }
 
-const userHealth = document.getElementById("user-health");
-const cpuHealth = document.getElementById("cpu-health");
+// Closes modal by clicking anywhere outside of modal
+window.onclick = function(event) {
+    if (event.target == infoModalBackground) {
+        infoModalBackground.style.display = 'none';
+    }
+}
+
+const userHealth = document.getElementById("user-health-meter");
+const cpuHealth = document.getElementById("cpu-health-meter");
 
 const userContainer = document.getElementById("user-container");
 const cpuContainer = document.getElementById("cpu-container");
 
-const canvas = document.getElementById("canvas");
+const gameplayCanvas = document.getElementById("gameplay-canvas");
 
 const userFist = document.createElement('img');
 const cpuFist = document.createElement('img');
@@ -69,10 +79,6 @@ function playGroanSfx() {
     }
 }
 
-
-
-
-
 function playRockWhoosh(){
     const rockWhoosh = new Audio('sounds/rock-whoosh.mp3');
     rockWhoosh.volume = 0.8;
@@ -98,10 +104,10 @@ function playScissorsWhoosh(){
 }
 
 let numberOfRounds;
-let userHealthCopy; //Background user score to circumvent animation delays
-let cpuHealthCopy; //Background cpu score to circumvent animation delays
-let userScore = 0; //keeps count of how many rounds won
-let cpuScore = 0 //see above
+let userHealthCopy; // Background user score to bypass animation delays
+let cpuHealthCopy; // Background cpu score to bypass animation delays
+let userScore = 0; // Keeps count of how many rounds user has won
+let cpuScore = 0 // Keeps count of how many rounds CPU has won
 
 function playTablePoundsSfx() {
     const tablePounds = new Audio('sounds/table-pounds-1.mp3');
@@ -125,13 +131,25 @@ function getNumberOfRounds() {
 function exitStartScreen () {
     const startScreen = document.getElementById('start-game-screen');
     startScreen.classList.add('cinematic-wipe');
-    const inputRoundsContainer = document.getElementById('input-rounds-container');
-    const soundToggleContainer = document.getElementById('sound-toggle-container');
-    const playButtonContainer = document.getElementById('play-button-container');
-    inputRoundsContainer.style.display='none';
-    soundToggleContainer.style.display='none';
-    playButtonContainer.style.display='none';
+    const inputRoundsWrapper = document.getElementById('input-rounds-wrapper');
+    const soundToggleWrapper = document.getElementById('sound-toggle-wrapper');
+    const playButtonWrapper = document.getElementById('play-button-wrapper');
+    inputRoundsWrapper.style.display='none';
+    soundToggleWrapper.style.display='none';
+    playButtonWrapper.style.display='none';
 
+}
+
+// A collection of functions that initialize the game
+function startGame (){
+    getNumberOfRounds(); 
+    exitStartScreen(); 
+    dropFistsInitial(); 
+    displayPlayerNames(); 
+    displayGameButtonsInitial(); 
+    displayHealthContainer(); 
+    lightUpTitles(); 
+    playBackgroundSfx()
 }
 
 
@@ -208,8 +226,8 @@ const paperTitle = document.getElementById('paper-title');
 const scissorsTitle = document.getElementById('scissors-title');
 const healthTitle = document.getElementById('health-title');
 const healthContainer = document.getElementById('health-container');
-const userHealthContainer = document.getElementById('user-health-container');
-const cpuHealthContainer = document.getElementById('cpu-health-container');
+//const userHealthWrapper = document.getElementById('user-health-wrapper');
+//const cpuHealthWrapper = document.getElementById('cpu-health-wrapper');
 const footer = document.getElementById('footer')
 
 function lightUpTitles(){
@@ -431,9 +449,9 @@ function shakeFists() {
    }
   
 function shakeCanvas() {
-    canvas.classList.remove('shake-canvas');
+    gameplayCanvas.classList.remove('shake-canvas');
     setTimeout(function(){
-        canvas.classList.add('shake-canvas');
+        gameplayCanvas.classList.add('shake-canvas');
       },10);
 }
 
