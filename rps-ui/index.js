@@ -286,7 +286,7 @@ function displayUserWinsModal(){
     gameOverModalContainer.classList.add("fade-in-modal");
     gameOverModalTitle.classList.add("win-title");
     gameOverModal.prepend(gameOverModalTitle);
-    gameOverModal.classList.add("win-border");
+    gameOverModal.classList.add("win-background");
     gameOverModalTitle.innerHTML = "YOU<br>WIN!";
     playAgain.style.display = "block";
 }
@@ -301,7 +301,7 @@ function displayUserLosesModal(){
         playGroanSfx();
     },3000);
     gameOverModalContainer.style.display = "block";
-    gameOverModalContainer.classList.add("fade-in-modal", "lose-overlay");
+    gameOverModalContainer.classList.add("fade-in-modal", "lose-background");
     gameOverModalTitle.classList.add("lose-title");
     gameOverModal.prepend(gameOverModalTitle);
     gameOverModalTitle.innerHTML = "YOU<br>LOSE";

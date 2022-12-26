@@ -117,10 +117,49 @@ body {
     pointer-events: none;
 }
 
+#game-button-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 6%;
+    display: none;
+    width: 20%;
+    text-align: center;
+    z-index: 1;
+    font-family: 'neondesmonregular', Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: clamp(.8em, 1.5vw, 2vw);
+    font-weight: 600;
+    text-shadow: 
+    0 0 2px #fff, 
+    0 0 5px #fff, 
+    0 0 7px #0073e6, 
+    0 0 10px #0073e6,
+    0 0 14px #0053a6;
+    opacity: 0;
+    animation: text-opacity 16s 1 forwards;
+}
+
+@keyframes text-opacity {
+    0%{opacity: 0;}
+    40%{opacity: 0;}
+    60%{opacity: 100;}
+    90%{opacity: 100;}
+    100%{opacity: 0;}
+}
+
+.fade-out-text {
+    animation: fade-out-text .25s ease-in-out 0s 1 forwards !important;
+}
+
+@keyframes fade-out-text {
+    100% {opacity: 0;}
+}
+
 
 /*Note: From this point on, the stylesheet is organized to reflect the page layout. 
-It's split into the sections and generally reads from left to right, top to bottom, 
-similar to how the HTML is structured.*/
+It's split into the sections and generally reads from left to right, top to bottom. */
 
 .main-flex-container {
     width: 100vw;
@@ -246,6 +285,7 @@ maintained here for posterity.*/
     height: auto; 
 }
 
+
 /*START SCREEN*/
 
 #start-game-screen {
@@ -286,6 +326,7 @@ maintained here for posterity.*/
         clip-path: inset(0 100% 0 100%);
     }
   }
+
 
 /*NUMBER OF ROUNDS INPUT*/
 
@@ -334,6 +375,34 @@ maintained here for posterity.*/
     text-align: right;
     margin-left: 1vw;
 }
+
+/*workaround to remove arrows from number input*/
+@layer base {
+    input[type='number']::-webkit-outer-spin-button,
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number'] {
+      -webkit-appearance: none;
+      margin: 0;
+      -moz-appearance: textfield !important;
+  }
+}
+
+#number-of-rounds {
+    width: 100%;
+    text-align: left;
+    text-decoration-color: whitesmoke;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    background-color: transparent;
+    border: hidden;
+}
+
+#number-of-rounds:focus {
+    outline: none;
+    font-weight: 700;
+    filter: brightness(130%);
+}
+
 
 /*SOUND TOGGLE*/
 
@@ -527,60 +596,22 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
   }
   
 
-  
-
-
-
-
+/*PLAY BUTTON*/
 
 #play-button-wrapper {
+    z-index: 1;
     width: 50%;
-    margin: 0px auto;
+    margin: 2vh auto;
     display: flex;
     justify-content: center;
     flex: 1 0 auto;
-    z-index: 1;
-    margin-top: 2vh;
 }
-
-
-
-
-
-/*workaround to remove arrows from number input*/
-@layer base {
-    input[type='number']::-webkit-outer-spin-button,
-    input[type='number']::-webkit-inner-spin-button,
-    input[type='number'] {
-      -webkit-appearance: none;
-      margin: 0;
-      -moz-appearance: textfield !important;
-  }
-}
-
-#number-of-rounds {
-    width: 100%;
-    text-align: left;
-    background-color: transparent;
-    border: hidden;
-    text-decoration-color: whitesmoke;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-}
-
-#number-of-rounds:focus {
-    outline: none;
-    font-weight: 700;
-    filter: brightness(130%);
-}
-
-
 
 #play-button {
     align-self: start;
-    background: none;
-    margin-top: 8vh;
     height: auto;
+    margin-top: 8vh;
+    background: none;
     border: none;
     font-family: 'Pacifico', Arial, Helvetica, sans-serif;
     text-align: center;
@@ -602,130 +633,17 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     filter: brightness(130%);
 }
 
+
+/*GAME OVER SCREEN*/
+
 #game-over-modal-container {
     position: absolute;
+    z-index: 3;
     display: none;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 3;
 }
-
-.lose-overlay {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    background-color: rgba(91, 3, 3, 0.656);
-}
-
-
-/*#win-modal-overlay {
-    height: 245%;
-    width: 245%;
-    position: absolute;
-    transform-origin: 25% 50%;
-    margin-top: -40%;
-    margin-left: -15%;
-    z-index: 3;
-    background-image: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-    ansimation: rotate-background 2s linear infinite;
-} */
-
-#win-modal-overlay {
-    height: 400%;
-    width: 400%;
-    margin-left: -150%;
-    top: -150%;
-    position: absolute;
-    z-index: 3;
-    box-shadow: 0 0 .2rem #fff,
-                0 0 .3rem #ffc42e,
-                0 0 .5rem #ffc42e,
-                inset 0 0 .2rem #fff,
-                inset 0 0 0.8rem #ffc42e,
-                inset 0 0 1rem #ffc42e,
-                inset 0 0 1.3rem #ffc42e,
-                inset 0 0 1.5rem #ffc42e;
-    /*background: conic-gradient(#ffd800 0deg, #ff5520 90deg, #750cf2 180deg, #0cbcf2 270deg, #ffd800 360deg);*/
-    background: conic-gradient(
-        #ffc42e 0deg 20deg,
-        transparent 40deg 80deg,
-        #ffc42e 90deg 110deg,
-        transparent 130deg 170deg,
-        #ffc42e 180deg 200deg,
-        transparent 220deg 260deg,
-        #ffc42e 270deg 290deg,
-        transparent 310deg 350deg,
-        #ffc42e 360deg);
-    animation: rotate-win 4s infinite linear;
-    filter: brightness(130%);
-    /*background-image: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2, #750cf2, #ff5520, #ffd800);*/
-   /* animation: rotate-background-1 2s ease infinite;
-    filter: blur(10px);*/
-}
-
-@keyframes rotate-win {
-      0%{transform:rotate(0deg);}
-    100%{transform:rotate(360deg);}
-}
-
-/*@keyframes rotate-background-1 {
-      0%{background-position: 0% 100%}
-     50%{background-position: 100% 0%}
-    100%{background-position: 0% 100%}
-}*/
-
-/*@keyframes rotate-background {
-    0%{background-image: linear-gradient(40deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-       opacity: .5;
-      }
- 12.5%{background-image: linear-gradient(80deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-       opacity: 1;
-      }
-   25%{background-image: linear-gradient(120deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-       opacity: .5;
-      }
- 37.5%{background-image: linear-gradient(160deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-       opacity: 1;
-      }
-   50%{background-image: linear-gradient(200deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-    opacity: .5;}
- 62.5%{background-image: linear-gradient(240deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-    opacity: 1;}
-   75%{background-image: linear-gradient(280deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-    opacity: .5;}
- 87.5%{background-image: linear-gradient(320deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-    opacity: 1;}
-  100%{background-image: linear-gradient(360deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
-    opacity: .5;}
-} */
-
-
-#win-modal-overlay-clip {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 3;
-    clip-path: polygon(0% 0%, 0% 100%, 5% 100%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 0% 100%, 100% 100%, 100% 0%);
-    background: transparent; 
-} 
-
-
-
-
-.main-element {
-    position: absolute;
-    display: block;
-    top: 1%;
-    left: 1%;
-    height: 98%;
-    width: 98%;
-    margin: auto;
-    align-self: center;
-    background: #fff;
-    z-index: 1;
-}
-
 
 .fade-in-modal {
     animation: fade-in-modal 4s ease-in 0s 1 forwards;
@@ -735,229 +653,6 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     0% {opacity: 0;}
     75% {opacity: 0;}
     100% {opacity: 1;}
-}
-
-
-
-
-
-/* wrapper div to improve cpu performance with mix-blend-mode */
-
-
-#gameplay-canvas-wrapper {
-    width: 100%;
-    height: auto;
-    position: relative;
-    overflow: hidden;
-    flex: 2 0 auto;
-    background-color: rgb(40, 0, 0);
-}
-
-#gameplay-canvas {
-    width: 100%;
-    height: 68vh;
-    overflow: hidden;
-    mix-blend-mode: hard-light;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    background-image:  url("images/tabletop.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-#user-container {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 50%;
-    margin-left: -27vw;
-}
-
-.user-fist, .user-rock {
-    width: 60vw;
-    height: auto;
-    margin-bottom: -45vh;
-}
-
-.user-paper, .user-scissors {
-    width: 60vw;
-    height: auto;
-    margin-bottom: -41vh;
-    margin-left: 13vw;
-}
-
-.user-fist-intro {
-    animation-name: user-fist-intro;
-    animation-duration: 2s;
-    animation-direction: normal;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in;
-    transform-origin: -100% 0%;
-}
-
-.user-fist-float {
-    animation-duration: 8s;
-    animation-name: float;
-    animation-delay: .2;
-    animation-direction: alternate;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in;
-    transform-origin: -100% 0%;}
-
-@keyframes user-fist-intro  {
-    0%  {transform: rotate(-240deg);}
-    50% {transform: rotate(0deg);}
-    53% {transform: rotate(-.2deg);}
-    56% {transform: rotate(0deg);}
-    59% {transform: rotate(-.1deg);}
-    62% {transform: rotate(0deg);}
-    100% {transform: rotate(0deg);}
-}
-
-.shake-canvas{
-    position: initial;
-    will-change: transform;
-    animation-duration: 2.5s;
-    animation-delay: 0.06s;
-    animation-name: shake-canvas;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-}
-
-@keyframes shake-canvas {
-    0% {transform: translateY(0px);}
-    20% {transform: translateY(0px);}
-    21% {transform: translateY(3px);}
-    23% {transform: translateY(0px);}
-    46.5% {transform: translateY(0px);}
-    47.5% {transform: translateY(3px);}
-    49.5% {transform: translateY(0px);}
-    73.5% {transform: translateY(0px);}
-    74.5% {transform: translateY(4px);}
-    76.5% {transform: translateY(0px);}
-    100% {transform: translateY(0px);}
-}
-
-.user-movement {
-    animation-delay: 2.2s;
-    animation-duration: 3.1s;
-    animation-name: user-gesture;
-    animation-iteration-count: 1;
-    animation-fill-mode: both;
-    transform-origin: -100% 100%;
-    animation-timing-function: ease;
-}
-
-@keyframes user-gesture {
-    0%  {transform: rotate(-90deg);}
-    15% {transform: rotate(0deg)}
-    17% {transform: rotate(-.1deg)}
-    19% {transform: rotate(0deg)}
-    21% {transform: rotate(-.1deg)}
-    32% {transform: rotate(0deg)}
-    50% {transform: rotate(.1deg)}
-    70% {transform: rotate(0deg)}
-    99% {opacity: 1;
-        height: auto;}
-    100%{transform: rotate(-200deg);
-         opacity: 0;
-         height: 0;}
-}
-
-.shake-user-fist {
-    animation-name: shake-user-fist;
-    animation-iteration-count: 1;
-    animation-duration: 2.5s;
-    animation-timing-function: ease-in;
-}
-
-@keyframes shake-user-fist {
-    0%  {transform: rotate(0deg);}
-    10% {transform: rotate(-1deg)}
-    20% {transform: rotate(5deg);}
-    27% {transform: rotate(5deg);}
-    40% {transform: rotate(-5deg);}
-    46.5% {transform: rotate(5deg);}
-    53.5% {transform: rotate(5deg);}
-    66.5% {transform: rotate(-6deg);}
-    73.5% {transform: rotate(5deg);}
-    80.5% {transform: rotate(5deg);}
-    94%   {opacity: 1;
-           height: auto;}
-    95%   {transform: rotate(-80deg);
-           opacity: 0;
-           height: 0;}
-    100%   {transform: rotate(-80deg);
-           opacity: 0;
-           height: 0;}
-}
-
-@keyframes float {
-    0% {
-        transform: rotate(0deg)
-    }
-    20% {
-        transform: rotate(.3deg)
-    }
-    40% {
-        transform: rotate(.1deg)
-    }
-    60% {
-        transform: rotate(.3deg)
-    }
-    80% {
-        transform: rotate(.2deg)
-    }
-    100% {
-        transform: rotate(.1deg)
-    }
-}
-
-
-
-#game-button-text {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 6%;
-    display: none;
-    width: 20%;
-    text-align: center;
-    z-index: 1;
-    font-family: 'neondesmonregular', Arial, Helvetica, sans-serif;
-    color: #fff;
-    font-size: clamp(.8em, 1.5vw, 2vw);
-    font-weight: 600;
-    text-shadow: 
-    0 0 2px #fff, 
-    0 0 5px #fff, 
-    0 0 7px #0073e6, 
-    0 0 10px #0073e6,
-    0 0 14px #0053a6;
-    opacity: 0;
-    animation: text-opacity 16s 1 forwards;
-}
-
-@keyframes text-opacity {
-    0%{opacity: 0;}
-    40%{opacity: 0;}
-    60%{opacity: 100;}
-    90%{opacity: 100;}
-    100%{opacity: 0;}
-}
-
-.fade-out-text {
-    animation: fade-out-text .25s ease-in-out 0s 1 forwards !important;
-}
-
-@keyframes fade-out-text {
-    100% {opacity: 0;}
 }
 
 #game-over-modal {
@@ -991,7 +686,7 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     filter: brightness(120%) contrast(120%);}
 }
 
-.win-border {
+.win-background {
     background-color: rgb(0, 0, 0, 0.6);
     border: 0px solid #fffdf7;
     border-radius: 5px;
@@ -1018,13 +713,20 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     filter: brightness(130%) contrast(130%);
 }
 
+.lose-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(91, 3, 3, 0.656);
+}
+
 #play-again-button {
+    display: none;
     background: none;
     border: none;
-    display: none;
     font-family: 'Pacifico', Arial, Helvetica, sans-serif;
     text-align: center;
-    font-size: clamp(1.3em, 3.1vw, 2.5em);
+    font-size: clamp(1.3em, 3.7vw, 2.8em);
     color: #fff;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
     animation: play-button-pulse .6s infinite ease-in-out
@@ -1036,10 +738,156 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     filter: brightness(130%);
 }
 
+
+/*THE GAME ITSELF*/
+
+#gameplay-canvas-wrapper {
+    position: relative;
+    flex: 2 0 auto;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: rgb(40, 0, 0);
+}
+
+#gameplay-canvas {
+    width: 100%;
+    height: 68vh;
+    overflow: hidden;
+    mix-blend-mode: hard-light;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    background-image:  url("images/tabletop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#user-container {
+    flex-grow: 0 0 50%;
+    margin-left: -27vw;
+}
+
+.user-fist, .user-rock {
+    width: 60vw;
+    height: auto;
+    margin-bottom: -45vh;
+}
+
+.user-paper, .user-scissors {
+    width: 60vw;
+    height: auto;
+    margin-bottom: -41vh;
+    margin-left: 13vw;
+}
+
+.user-fist-intro {
+    animation-name: user-fist-intro;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    transform-origin: -100% 0%;
+}
+
+@keyframes user-fist-intro  {
+    0%  {transform: rotate(-240deg);}
+    50% {transform: rotate(0deg);}
+    53% {transform: rotate(-.2deg);}
+    56% {transform: rotate(0deg);}
+    59% {transform: rotate(-.1deg);}
+    62% {transform: rotate(0deg);}
+    100% {transform: rotate(0deg);}
+}
+
+.user-fist-float {
+    animation-name: float;
+    animation-duration: 8s;
+    animation-timing-function: ease-in;
+    animation-delay: .2;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    transform-origin: -100% 0%;
+}
+
+@keyframes float {
+    0% {transform: rotate(0deg)}
+    20% {transform: rotate(.3deg)}
+    40% {transform: rotate(.1deg)}
+    60% {transform: rotate(.3deg)}
+    80% {transform: rotate(.2deg)}
+    100% {transform: rotate(.1deg)}
+}
+
+.shake-user-fist {
+    animation-name: shake-user-fist;
+    animation-duration: 2.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+}
+
+@keyframes shake-user-fist {
+    0%  {transform: rotate(0deg);}
+    10% {transform: rotate(-1deg)}
+    20% {transform: rotate(5deg);}
+    27% {transform: rotate(5deg);}
+    40% {transform: rotate(-5deg);}
+    46.5% {transform: rotate(5deg);}
+    53.5% {transform: rotate(5deg);}
+    66.5% {transform: rotate(-6deg);}
+    73.5% {transform: rotate(5deg);}
+    80.5% {transform: rotate(5deg);}
+    94% {
+        opacity: 1;
+        height: auto;
+    }
+    95% {
+        transform: rotate(-80deg);
+        opacity: 0;
+        height: 0;
+    }
+    100% {
+        transform: rotate(-80deg);
+        opacity: 0;
+        height: 0;
+    }
+}
+
+.user-movement {
+    animation-name: user-gesture;
+    animation-duration: 3.1s;
+    animation-timing-function: ease;
+    animation-delay: 2.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    transform-origin: -100% 100%;
+}
+
+@keyframes user-gesture {
+    0%  {transform: rotate(-90deg);}
+    15% {transform: rotate(0deg)}
+    17% {transform: rotate(-.1deg)}
+    19% {transform: rotate(0deg)}
+    21% {transform: rotate(-.1deg)}
+    32% {transform: rotate(0deg)}
+    50% {transform: rotate(.1deg)}
+    70% {transform: rotate(0deg)}
+    99% {
+        opacity: 1;
+        height: auto;
+    }
+    100% {
+        transform: rotate(-200deg);
+        opacity: 0;
+        height: 0;
+    }
+}
+
 #cpu-container {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 50%;
+    flex: 0 0 50%;
     margin-right: -25vw;
 }
 
@@ -1059,43 +907,11 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 .cpu-fist-intro {
     animation-name: cpu-fist-intro;
     animation-duration: 2s;
-    animation-direction: normal;
+    animation-timing-function: ease-in;
     animation-iteration-count: 1;
+    animation-direction: normal;
     animation-fill-mode: forwards;
-    animation-timing-function: ease-in;
     transform-origin: 100% 50%;
-}
-
-.cpu-fist-float {
-    animation-duration: 8s;
-    animation-name: cpu-float;
-    animation-delay: .2;
-    animation-direction: alternate;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in;
-    transform-origin: 100% 50%;
-}
-
-@keyframes cpu-float {
-    0% {
-        transform: rotate(0deg)
-    }
-    10% {
-        transform: rotate(-.1deg)
-    }
-    40% {
-        transform: rotate(-.4deg)
-    }
-    65% {
-        transform: rotate(-.3deg)
-    }
-    85% {
-        transform: rotate(-.15eg)
-    }
-    100% {
-        transform: rotate(-1deg)
-    }
 }
 
 @keyframes cpu-fist-intro  {
@@ -1108,10 +924,30 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     100% {transform: rotate(0deg);}
 }
 
+.cpu-fist-float {
+    animation-name: cpu-float;
+    animation-duration: 8s;
+    animation-timing-function: ease-in;
+    animation-delay: .2;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    transform-origin: 100% 50%;
+}
+
+@keyframes cpu-float {
+    0% {transform: rotate(0deg)}
+    10% {transform: rotate(-.1deg)}
+    40% {transform: rotate(-.4deg)}
+    65% {transform: rotate(-.3deg)}
+    85% {transform: rotate(-.15eg)}
+    100% {transform: rotate(-1deg)}
+}
+
 .shake-cpu-fist {
     animation-name: shake-cpu-fist;
-    animation-iteration-count: 1;
     animation-duration: 2.5s;
+    animation-iteration-count: 1;
     transform-origin: 100% 50%;
 }
 
@@ -1127,48 +963,29 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     73.5% {transform: rotate(-9deg);}
     80.5% {transform: rotate(-9deg);}
     94% {
-           opacity: 1;
-           height: auto;}
+        opacity: 1;
+        height: auto;
+    }
     95% {
-           transform: rotate(140deg);
-           opacity: 0;
-           height: 0;}
-    100% {
-           transform: rotate(140deg);
-           opacity: 0;
-           height: 0;}
-}
-
-@keyframes float {
-    0% {
-        transform: rotate(0deg)
-    }
-    20% {
-        transform: rotate(.3deg)
-    }
-    40% {
-        transform: rotate(.1deg)
-    }
-    60% {
-        transform: rotate(.3deg)
-    }
-    80% {
-        transform: rotate(.2deg)
+        transform: rotate(140deg);
+        opacity: 0;
+        height: 0;
     }
     100% {
-        transform: rotate(.1deg)
+        transform: rotate(140deg);
+        opacity: 0;
+        height: 0;
     }
 }
-
 
 .cpu-movement {
-    animation-delay: 2.2s;
-    animation-duration: 3.1s;
     animation-name: cpu-gesture;
+    animation-duration: 3.1s;
+    animation-timing-function: ease;
+    animation-delay: 2.2s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     transform-origin: 100% 50%;
-    animation-timing-function: ease;
 }
 
 @keyframes cpu-gesture {
@@ -1180,13 +997,45 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     32% {transform: rotate(0deg);}
     50% {transform: rotate(.1deg);}
     70% {transform: rotate(0deg);}
-    99% {opacity: 1;
-        height: auto;}
-    100%{transform: rotate(200deg);
-         opacity: 0;
-         height: 0;
+    99% {
+        opacity: 1;
+        height: auto;
+    }
+    100%{
+        transform: rotate(200deg);
+        opacity: 0;
+        height: 0;
     }
 }
+
+.shake-canvas {
+    position: initial;
+    will-change: transform;
+    animation-name: shake-canvas;
+    animation-duration: 2.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0.06s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shake-canvas {
+    0% {transform: translateY(0px);}
+    20% {transform: translateY(0px);}
+    21% {transform: translateY(3px);}
+    23% {transform: translateY(0px);}
+    46.5% {transform: translateY(0px);}
+    47.5% {transform: translateY(3px);}
+    49.5% {transform: translateY(0px);}
+    73.5% {transform: translateY(0px);}
+    74.5% {transform: translateY(4px);}
+    76.5% {transform: translateY(0px);}
+    100% {transform: translateY(0px);}
+}
+
+
+/*FOOTER*/
 
 #footer {
     position: relative;
