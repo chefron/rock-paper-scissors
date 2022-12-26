@@ -54,7 +54,7 @@ body {
 }
 
 @keyframes fade-in-buttons {
-    0% {opacity: 0;}
+    0%   {opacity: 0;}
     100% {opacity: 1;}
 }
 
@@ -64,7 +64,7 @@ body {
 }
 
 @keyframes fade-out-buttons {
-    0% {opacity: 1;}
+    0%   {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -77,7 +77,7 @@ body {
 }
 
 @keyframes rotation {
-    0% {transform: rotate(-360deg)}
+    0%   {transform: rotate(-360deg)}
 }
 
 .rock-button {
@@ -108,8 +108,8 @@ body {
 }
 
 @keyframes selection-button-pulse {
-    0% {transform: scale(1);}
-    50% {transform: scale(1.15);}
+    0%   {transform: scale(1);}
+    50%  {transform: scale(1.15);}
     100% {transform: scale(1);}
 }
 
@@ -142,11 +142,11 @@ body {
 }
 
 @keyframes text-opacity {
-    0%{opacity: 0;}
-    40%{opacity: 0;}
-    60%{opacity: 100;}
-    90%{opacity: 100;}
-    100%{opacity: 0;}
+    0%   {opacity: 0;}
+    40%  {opacity: 0;}
+    60%  {opacity: 100;}
+    90%  {opacity: 100;}
+    100% {opacity: 0;}
 }
 
 .fade-out-text {
@@ -235,7 +235,7 @@ It's split into the sections and generally reads from left to right, top to bott
 }
 
 @keyframes subtle-flicker {
-    0% {filter: brightness(130%);}
+    0%   {filter: brightness(130%);}
     100% {filter: brightness(120%);}
 }
 
@@ -314,7 +314,7 @@ maintained here for posterity.*/
 }
 
 @keyframes cinematic-wipe {
-    0% {
+    0%   {
         filter: brightness(100%);
         clip-path: inset(0 0 0 0);
     }
@@ -474,9 +474,9 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes flicker {
-    0%{opacity: 1;}
-    80%{opacity: 0.8;}
-    100%{opacity: 1;}
+    0%   {opacity: 1;}
+    80%  {opacity: 0.8;}
+    100% {opacity: 1;}
 }
 
 .switch input:checked + .button .shine {
@@ -540,8 +540,8 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes light-off {
-    0%{opacity: 1;}
-    80%{opacity: 0;}
+    0%   {opacity: 1;}
+    80%  {opacity: 0;}
 }
 
 .switch .dots {
@@ -622,8 +622,8 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes play-button-pulse {
-    0% {transform: scale(1);}
-    50% {transform: scale(1.2);}
+    0%   {transform: scale(1);}
+    50%  {transform: scale(1.2);}
     100% {transform: scale(1);}
 }
 
@@ -650,8 +650,8 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes fade-in-modal {
-    0% {opacity: 0;}
-    75% {opacity: 0;}
+    0%   {opacity: 0;}
+    75%  {opacity: 0;}
     100% {opacity: 1;}
 }
 
@@ -676,14 +676,21 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes win-pulse {
-  0% {text-shadow: 0 0 2.5px #fff, 0 0 5px #fff, 0 0 7.5px #ffd154, 0 0 10px #e6a900;}
-  100% {text-shadow: 0 0 5px #fff, 
-    0 0 10px #fff, 
-    0 0 15px #ffd154, 
-    0 0 20px #e6a900, 
-    0 0 30px hsl(44, 100%, 45%), 
-    0 0 40px #e6a900;
-    filter: brightness(120%) contrast(120%);}
+  0%   {
+    text-shadow: 0 0 2.5px #fff, 
+                 0 0 5px #fff, 
+                 0 0 7.5px #ffd154, 
+                 0 0 10px #e6a900;
+    }
+  100% {
+    text-shadow: 0 0 5px #fff, 
+                 0 0 10px #fff, 
+                 0 0 15px #ffd154, 
+                 0 0 20px #e6a900, 
+                 0 0 30px hsl(44, 100%, 45%), 
+                 0 0 40px #e6a900;
+        filter: brightness(120%) contrast(120%);
+    }
 }
 
 .win-background {
@@ -726,7 +733,7 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     border: none;
     font-family: 'Pacifico', Arial, Helvetica, sans-serif;
     text-align: center;
-    font-size: clamp(1.3em, 3.7vw, 2.8em);
+    font-size: clamp(1.3em, 3.7vw, 2.5em);
     color: #fff;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
     animation: play-button-pulse .6s infinite ease-in-out
@@ -793,12 +800,12 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes user-fist-intro  {
-    0%  {transform: rotate(-240deg);}
-    50% {transform: rotate(0deg);}
-    53% {transform: rotate(-.2deg);}
-    56% {transform: rotate(0deg);}
-    59% {transform: rotate(-.1deg);}
-    62% {transform: rotate(0deg);}
+    0%   {transform: rotate(-240deg);}
+    50%  {transform: rotate(0deg);}
+    53%  {transform: rotate(-.2deg);}
+    56%  {transform: rotate(0deg);}
+    59%  {transform: rotate(-.1deg);}
+    62%  {transform: rotate(0deg);}
     100% {transform: rotate(0deg);}
 }
 
@@ -814,11 +821,11 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes float {
-    0% {transform: rotate(0deg)}
-    20% {transform: rotate(.3deg)}
-    40% {transform: rotate(.1deg)}
-    60% {transform: rotate(.3deg)}
-    80% {transform: rotate(.2deg)}
+    0%   {transform: rotate(0deg)}
+    20%  {transform: rotate(.3deg)}
+    40%  {transform: rotate(.1deg)}
+    60%  {transform: rotate(.3deg)}
+    80%  {transform: rotate(.2deg)}
     100% {transform: rotate(.1deg)}
 }
 
@@ -830,26 +837,26 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes shake-user-fist {
-    0%  {transform: rotate(0deg);}
-    10% {transform: rotate(-1deg)}
-    20% {transform: rotate(5deg);}
-    27% {transform: rotate(5deg);}
-    40% {transform: rotate(-5deg);}
+    0%    {transform: rotate(0deg);}
+    10%   {transform: rotate(-1deg)}
+    20%   {transform: rotate(5deg);}
+    27%   {transform: rotate(5deg);}
+    40%   {transform: rotate(-5deg);}
     46.5% {transform: rotate(5deg);}
     53.5% {transform: rotate(5deg);}
     66.5% {transform: rotate(-6deg);}
     73.5% {transform: rotate(5deg);}
     80.5% {transform: rotate(5deg);}
-    94% {
+    94%   {
         opacity: 1;
         height: auto;
     }
-    95% {
+    95%   {
         transform: rotate(-80deg);
         opacity: 0;
         height: 0;
     }
-    100% {
+    100%  {
         transform: rotate(-80deg);
         opacity: 0;
         height: 0;
@@ -867,15 +874,15 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes user-gesture {
-    0%  {transform: rotate(-90deg);}
-    15% {transform: rotate(0deg)}
-    17% {transform: rotate(-.1deg)}
-    19% {transform: rotate(0deg)}
-    21% {transform: rotate(-.1deg)}
-    32% {transform: rotate(0deg)}
-    50% {transform: rotate(.1deg)}
-    70% {transform: rotate(0deg)}
-    99% {
+    0%   {transform: rotate(-90deg);}
+    15%  {transform: rotate(0deg)}
+    17%  {transform: rotate(-.1deg)}
+    19%  {transform: rotate(0deg)}
+    21%  {transform: rotate(-.1deg)}
+    32%  {transform: rotate(0deg)}
+    50%  {transform: rotate(.1deg)}
+    70%  {transform: rotate(0deg)}
+    99%  {
         opacity: 1;
         height: auto;
     }
@@ -915,12 +922,12 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes cpu-fist-intro  {
-    0%  {transform: rotate(190deg);}
-    50% {transform: rotate(0deg);}
-    53% {transform: rotate(.2deg);}
-    56% {transform: rotate(0deg);}
-    59% {transform: rotate(.1deg);}
-    62% {transform: rotate(0deg);}
+    0%   {transform: rotate(190deg);}
+    50%  {transform: rotate(0deg);}
+    53%  {transform: rotate(.2deg);}
+    56%  {transform: rotate(0deg);}
+    59%  {transform: rotate(.1deg);}
+    62%  {transform: rotate(0deg);}
     100% {transform: rotate(0deg);}
 }
 
@@ -936,11 +943,11 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes cpu-float {
-    0% {transform: rotate(0deg)}
-    10% {transform: rotate(-.1deg)}
-    40% {transform: rotate(-.4deg)}
-    65% {transform: rotate(-.3deg)}
-    85% {transform: rotate(-.15eg)}
+    0%   {transform: rotate(0deg)}
+    10%  {transform: rotate(-.1deg)}
+    40%  {transform: rotate(-.4deg)}
+    65%  {transform: rotate(-.3deg)}
+    85%  {transform: rotate(-.15eg)}
     100% {transform: rotate(-1deg)}
 }
 
@@ -952,26 +959,26 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes shake-cpu-fist {
-    0%  {transform: rotate(0deg);}
-    10% {transform: rotate(1deg);}
-    20% {transform: rotate(-9deg);}
-    27% {transform: rotate(-9deg);}
-    40% {transform: rotate(5deg);}
+    0%    {transform: rotate(0deg);}
+    10%   {transform: rotate(1deg);}
+    20%   {transform: rotate(-9deg);}
+    27%   {transform: rotate(-9deg);}
+    40%   {transform: rotate(5deg);}
     46.5% {transform: rotate(-9deg);}
     53.5% {transform: rotate(-9deg);}
     66.5% {transform: rotate(6deg);}
     73.5% {transform: rotate(-9deg);}
     80.5% {transform: rotate(-9deg);}
-    94% {
+    94%   {
         opacity: 1;
         height: auto;
     }
-    95% {
+    95%   {
         transform: rotate(140deg);
         opacity: 0;
         height: 0;
     }
-    100% {
+    100%  {
         transform: rotate(140deg);
         opacity: 0;
         height: 0;
@@ -989,19 +996,19 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes cpu-gesture {
-    0%  {transform: rotate(120deg);}
-    15% {transform: rotate(0deg);}
-    17% {transform: rotate(.1deg);}
-    19% {transform: rotate(0deg);}
-    21% {transform: rotate(.1deg);}
-    32% {transform: rotate(0deg);}
-    50% {transform: rotate(.1deg);}
-    70% {transform: rotate(0deg);}
-    99% {
+    0%    {transform: rotate(120deg);}
+    15%   {transform: rotate(0deg);}
+    17%   {transform: rotate(.1deg);}
+    19%   {transform: rotate(0deg);}
+    21%   {transform: rotate(.1deg);}
+    32%   {transform: rotate(0deg);}
+    50%   {transform: rotate(.1deg);}
+    70%   {transform: rotate(0deg);}
+    99%   {
         opacity: 1;
         height: auto;
     }
-    100%{
+    100%  {
         transform: rotate(200deg);
         opacity: 0;
         height: 0;
@@ -1021,17 +1028,17 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 @keyframes shake-canvas {
-    0% {transform: translateY(0px);}
-    20% {transform: translateY(0px);}
-    21% {transform: translateY(3px);}
-    23% {transform: translateY(0px);}
+    0%    {transform: translateY(0px);}
+    20%   {transform: translateY(0px);}
+    21%   {transform: translateY(3px);}
+    23%   {transform: translateY(0px);}
     46.5% {transform: translateY(0px);}
     47.5% {transform: translateY(3px);}
     49.5% {transform: translateY(0px);}
     73.5% {transform: translateY(0px);}
     74.5% {transform: translateY(4px);}
     76.5% {transform: translateY(0px);}
-    100% {transform: translateY(0px);}
+    100%  {transform: translateY(0px);}
 }
 
 
@@ -1039,20 +1046,19 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 
 #footer {
     position: relative;
-    flex: 1 0 auto;
+    z-index: 4;
+    flex: 0 0 auto;
+    width: 100vw;
     min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
     background-image: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.75) 25%, 
     rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.75) 75%, black 100%),
     url(images/red-brick-wall.jpg);
     background-size: 110vmax auto;
     background-position: bottom;
     background-repeat: no-repeat;
-    width: 100vw;
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    z-index: 4;
 }
 
 .footer-shine {
@@ -1060,35 +1066,38 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 #player-names {
+    position: relative;
+    flex: 0 1 auto;
     width: 100%;
     height: 5vh;
-    flex: 0 1 auto;
-    position: relative;
     margin: -1.5vh 0 1.5vh 0;
     font-family: 'neondesmonregular', Arial, Helvetica, sans-serif;
     color: #fff;
     font-size: clamp(.7em, 1.4em, 2em);
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+    text-shadow: 0 0 5px #fff, 
+                 0 0 10px #fff, 
+                 0 0 15px #0073e6, 
+                 0 0 20px #0073e6;
 }
 
 #user-name {
-    width: 42%;
     position: absolute;
     left: 0;
-    text-align: right;
     display: none;
+    width: 42%;
+    text-align: right;
 }
 
 #cpu-name {
-    width: 42%;
-    right: 0;
     position: absolute;
+    right: 0;
+    width: 42%;
     display: none;
 }
 
 #health-container {
-    height: 5vh;
     flex: 0 0 auto;
+    height: 5vh;
     width: 100vw;
     display: none;
     align-items: center;
@@ -1099,33 +1108,39 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 
 #health-title {
     flex: 1;
-    font-family: 'Pacifico', cursive;
-    text-align: center;
-    font-size: clamp(1.5em, 5vw, 4em);
     max-width: 200px;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(1.5em, 5vw, 4em);
     color: rgb(241, 216, 216);
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+    text-shadow: 0 0 5px #fff, 
+                 0 0 10px #fff, 
+                 0 0 15px #0073e6, 
+                 0 0 20px #0073e6, 
+                 0 0 25px #0073e6, 
+                 0 0 30px #0073e6, 
+                 0 0 35px #0073e6;
     animation: bounce-in 1s ease forwards;
 }
 
 @keyframes bounce-in {
-    0%  {
+    0%   {
         opacity: 0;
         transform: scale(.3);
     }
-    50% {
+    50%  {
         opacity: 1;
         transform: scale(1.05);
     }
-    70% {transform: scale(.9);}
+    70%  {transform: scale(.9);}
     100% {transform: scale(1);}
-    }
+}
 
 #user-health-wrapper {
     flex: 2;
     display: flex;
-    padding-right: 1vw;
     justify-content: right;
+    padding-right: 1vw;
 }
 
 #user-health-meter {
@@ -1152,75 +1167,94 @@ progress[value] {
 }
 
 @keyframes display-health {
-    0%{
+    0%   {
         opacity: 0;
         width: 0%
     }
-    50%{
+    50%  {
         opacity: 100%;
         width: 94%
     }
-    70%{width: 87%}
-    100%{
+    70%  {
+        width: 87%
+    }
+    100% {
         opacity: 100%;
-        width: 90%;}
+        width: 90%;
+    }
 }
 
 progress::-webkit-progress-value {
-    background: #ff1818;
     border: 1px solid rgb(255, 225, 225);
     border-radius: 6px;
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e61f00, 0 0 20px #e61f00, 0 0 25px #e61f00;
-  }
+    background: #ff1818;
+    box-shadow: 0 0 5px #fff, 
+                0 0 10px #fff, 
+                0 0 15px #e61f00, 
+                0 0 20px #e61f00, 
+                0 0 25px #e61f00;
+}
 
 progress::-webkit-progress-bar {
     background: rgb(255, 225, 225);
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
-  }
+    box-shadow: 0 0 5px #fff, 
+                0 0 10px #fff, 
+                0 0 15px #0073e6, 
+                0 0 20px #0073e6, 
+                0 0 25px #0073e6;
+}
+
+/*INFORMATION POP-UP*/
 
 #info-modal-wrapper {
     position: absolute;
-    width: 100%;
-    height: 100%;
     right: 0%;
     bottom: 0%;
+    width: 100%;
+    height: 100%;
 }
 
 #info-modal-button {
     position: absolute;
+    z-index: 5;
     right: 0%;
     bottom: 0%;
+    padding: 5px 5px 5px 0;
     background: none;
     border: none;
-    cursor: pointer;
     color: whitesmoke;
     font-family: 'neondesmonregular', Helvetica, sans-serif;
     font-size: .8em;
     font-weight: 500;
-    padding: 5px 5px 5px 0;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6;
+    text-shadow: 0 0 5px #fff, 
+                 0 0 10px #fff, 
+                 0 0 15px #0073e6;
     text-decoration: none;
-    z-index: 5;
+    cursor: pointer;
 }
 
 #info-modal-background {
-    background: rgba(0,0,0,0.5);
-    width: 100%;
-    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
-    animation: display-info .6s forwards;
     z-index: 5;
     display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    animation: display-info .6s forwards;
+}
+
+@keyframes display-info {
+    to {opacity: 1;}
 }
 
 #info-modal {
-    margin: auto auto;
-    z-index: 2;
-    background:rgb(0, 0, 0);
+    z-index: 2;   
     display: none;
+    margin: auto auto;
+    background:rgb(0, 0, 0);
     box-shadow: 0 0 .33rem #fff, inset 0 0 1rem #fbfbfb, 0 0 .33vw #1041FF, 0 0 1vw #1041FF, 0 0 4vw #1041FF, 0 0 4vw #1041FF, 0 0 .133vw #8BFDFE, .166vw .166vw .033vw #147280;
     filter: brightness(130%);
     border: 4px solid #28D7FE;
@@ -1231,16 +1265,16 @@ progress::-webkit-progress-bar {
 }
 
 @keyframes display-info-modal {
-    0% {
+    0%   {
         width: 0;
         height: 0;
     }
-    50% {
+    50%  {
         width: fit-content;
         height: 0;
     }
   
-    100%{
+    100% {
         width: fit-content;
         height: fit-content;
     }
@@ -1250,24 +1284,21 @@ progress::-webkit-progress-bar {
     width: 100%;
     height: 100%;
     opacity: 0;
-    animation: display-info .6s forwards;
-    animation-delay: .6s;
+    animation: display-info .6s .6s forwards;
 }
 
-@keyframes display-info {
-    to {opacity: 1;}
-}
+
 
 #info-modal-close {
     position: absolute;
     top: 0;
     right: 0;
     padding: 2% 3%;
+    color: whitesmoke;
     font-weight: bold;
     background: none;
     border: none;
     cursor: pointer;
-    color: whitesmoke;
 }
 
 #info-modal-header {
@@ -1277,39 +1308,19 @@ progress::-webkit-progress-bar {
 }
 
 #info-modal-text {
-    font-weight: 500;
-    list-style-type: none;
-    font-size: clamp(.8em, 2.5vw, 1.2em);
     padding-left: 15px;
     padding-right: 15px;
+    list-style-type: none;
+    font-weight: 500;
+    font-size: clamp(.8em, 2.5vw, 1.2em);
 }
 
 .info-link {
     color: #28D7FE;
 }
 
-.modal-inner h3 {
-    display: block;
-    text-align: center;
-    font-size: 22px;
-    padding: 20px 20px 10px 20px;
-}
 
-.info-overlay:target, .info-overlay:target .modal {
-    animation: display-info .6s forwards;
-    z-index: 2;
-}
-
-.info-overlay:target .modal .modal-inner {
-    animation: display-info .6 forwards;
-    animation-delay: 1s;
-    z-index: 2;
-}
-
-
-
-
-
+/* MEDIA QUERIES */
 
 @media (max-width: 530px){
 
@@ -1353,9 +1364,9 @@ progress::-webkit-progress-bar {
     }
 
     #game-button-container {
-        padding-top: 27vh;
-        scale: 2.3;
         left: 46%;
+        scale: 2.3;
+        padding-top: 27vh;
     }
 
     #best-of {
@@ -1385,9 +1396,9 @@ progress::-webkit-progress-bar {
     }
 
     #game-button-container {
-        padding-top: 27vh;
-        scale: 1.8;
         left: 44.6%;
+        scale: 1.8;
+        padding-top: 27vh;
     }
 }
 
@@ -1412,8 +1423,9 @@ progress::-webkit-progress-bar {
     }
 
     .cpu-fist, .cpu-rock, .cpu-paper, .cpu-scissors {
+        width: 55vw;
         margin-bottom: -48vh;
-        width: 55vw; 
+         
     }
 
     #best-of {
@@ -1476,17 +1488,18 @@ progress::-webkit-progress-bar {
     }
 
     #info-button {
+        padding: 2.5px 2.5px 2.5px 0;
         font-size: .7em;
         font-weight: 500;
-        padding: 2.5px 2.5px 2.5px 0;
     }
 
     #game-button-container {
         padding-top: 17vh;
+        left: 44.9%;
     }
 
     #game-button-text {
-        width: 40%;
         top: 4%;
+        width: 40%;
     }
 }
