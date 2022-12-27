@@ -1,3 +1,10 @@
+// LOADING SCREEN:
+
+window.addEventListener("load", (event) => {
+    document.querySelector(".main-flex-container").style.visibility = "visible";
+    document.querySelector("#loading-page").style.visibility = "none";
+  });
+
 // START SCREEN:
 
 let numberOfRounds; // The # of rounds per game, as chosen by user

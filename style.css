@@ -101,6 +101,7 @@ body {
     width: 7vw;
     height: auto;
     filter: invert(100%) opacity(65%) drop-shadow(1px 1px 1px rgb(255, 255, 255));
+    cursor: pointer;
 }
 
 .game-button-img:hover {
@@ -157,6 +158,34 @@ body {
     100% {opacity: 0;}
 }
 
+/*LOADING PAGE*/
+
+#loading-page {
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    visibility: visible;
+}
+
+#loader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #444444;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {transform: rotate(360deg);}
+}
 
 /*Note: From this point on, the stylesheet is organized to reflect the page layout. 
 It's split into the sections and generally reads from left to right, top to bottom. */
@@ -167,8 +196,8 @@ It's split into the sections and generally reads from left to right, top to bott
     display: flex;
     flex-direction: column;
     justify-content: stretch; 
+    visibility: hidden;
 }
-
 
 /*HEADER*/
 
@@ -1286,8 +1315,6 @@ progress::-webkit-progress-bar {
     opacity: 0;
     animation: display-info .6s .6s forwards;
 }
-
-
 
 #info-modal-close {
     position: absolute;
