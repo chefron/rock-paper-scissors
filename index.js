@@ -578,16 +578,20 @@ function playScissorsWhoosh(){
     }
 }
 
+const tablePounds = new Audio('sounds/table-pounds-1.mp3');
+tablePounds.preload = "auto";
+
 function playTablePoundsSfx() {
-    const tablePounds = new Audio('sounds/table-pounds-1.mp3');
     tablePounds.volume = 0.35;
     if (soundOn) {
         tablePounds.play();
     }
 }
 
+const buttonClick = new Audio('sounds/button-click.mp3');
+buttonClick.preload = "auto";
+
 function buttonClickSfx() {
-    const buttonClick = new Audio('sounds/button-click.mp3');
     buttonClick.volume = 0.3;
     if (soundOn) {
         buttonClick.play();
