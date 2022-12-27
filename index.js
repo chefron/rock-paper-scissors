@@ -527,8 +527,10 @@ window.onclick = function(event) {
 
 // MUSIC & SFX:
 
+const backgroundSfx = new Audio('sounds/background.mp3');
+backgroundSfx.preload="auto";
+
 function playBackgroundSfx(){
-    const backgroundSfx = new Audio('sounds/background.mp3');
     backgroundSfx.loop = true;
     backgroundSfx.volume = 0.75;
     if (soundOn){
