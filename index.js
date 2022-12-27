@@ -335,7 +335,6 @@ function displayGameButtonsInitial () {
 
 // Display game buttons at start of each round
 function displayGameButtons() {
-    gameButtonContainer.style.display = "flex";
     gameButtonContainer.classList.add('fade-in-buttons');
     gameButtonText.classList.add('fade-in-buttons');
     setTimeout(function(){
@@ -369,9 +368,6 @@ function hideGameButtons() {
         gameButtonText.classList.add('fade-out-text'),
         gameButtonContainer.classList.add('fade-out-buttons');
       },10);
-    setTimeout(function(){
-        gameButtonContainer.style.display = "none";
-      },250);
 }
 
 // Disables hover animation after user makes selection
