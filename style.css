@@ -197,7 +197,7 @@ It's split into the sections and generally reads from left to right, top to bott
 #title {
     width: fit-content;
     margin: 0px 10px 0px 10px;
-    padding: 10px 10px 0px 10px;
+    padding: 5px 10px 5px 10px;
     font-family: neon, Arial, sans-serif;
     font-size: clamp(2em, 8vw, 4em);
     text-align: center;
