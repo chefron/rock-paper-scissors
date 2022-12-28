@@ -603,6 +603,22 @@ function buttonClickSfx() {
 // MISCELLANEOUS:
 
 // Changes screen orientation to full screen if landscape mode;
+function becomeFullscreen() {
+    var elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) {
+    /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) {
+    /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+
 window.addEventListener("orientationchange", function(event) {
     var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
   
@@ -611,7 +627,7 @@ window.addEventListener("orientationchange", function(event) {
   }
   
   else if (orientation === undefined) {
-    console.log("The orientation API isn't supported in this browser :("); 
+    alert("The orientation API isn't supported in this browser :("); 
   }
   });
 

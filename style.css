@@ -20,10 +20,6 @@
 
 /*TOP-LEVEL ELEMENTS*/
 
-html {
-    overflow: hidden;
-}
-
 body {
     width: 100vw;
     height: auto;
@@ -1483,6 +1479,10 @@ progress::-webkit-progress-bar {
 }
 
 @media (orientation: landscape) and (max-height: 430px){
+
+    html {
+            overflow: scroll;
+    }
 
     #title {
         font-size: clamp(2em, 8vmin, 4em);
