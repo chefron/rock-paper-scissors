@@ -609,6 +609,25 @@ function buttonClickSfx() {
 // MISCELLANEOUS:
 
 // Changes screen orientation to full screen if landscape mode;
+
+function getResolution () {
+    const height = window.innerHeight;
+    alert(height);
+}
+
+getResolution ();
+
+
+let landscape = window.matchMedia("(orientation: landscape)");
+
+landscape.addEventListener("change", function(e) {
+    if(e.matches) {
+        alert("landscape!");
+    } else {
+        alert("portrait");
+    }
+})
+
 function becomeFullscreen() {
     var elem = document.documentElement;
   if (elem.requestFullscreen) {
