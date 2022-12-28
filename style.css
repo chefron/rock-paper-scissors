@@ -221,8 +221,7 @@ It's split into the sections and generally reads from left to right, top to bott
 
 #title {
     width: fit-content;
-    margin: 0px 10px 0px 10px;
-    padding: 5px;
+    padding: .75% .75% 0 .75%;
     font-family: neon, Arial, sans-serif;
     font-size: clamp(2em, 8vw, 4em);
     text-align: center;
@@ -1073,7 +1072,7 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     z-index: 4;
     flex: 1 1 auto;
     width: 100vw;
-    min-height: 18%;
+    min-height: 17%;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -1248,7 +1247,7 @@ progress::-webkit-progress-bar {
     border: none;
     color: whitesmoke;
     font-family: 'neondesmonregular', Helvetica, sans-serif;
-    font-size: .8em;
+    font-size: .75em;
     font-weight: 500;
     text-shadow: 0 0 5px #fff, 
                  0 0 10px #fff, 
@@ -1481,7 +1480,7 @@ progress::-webkit-progress-bar {
 @media (orientation: landscape) and (max-height: 430px){
 
     html {
-            overflow: scroll;
+            overflow-y: scroll;
     }
 
     #title {
@@ -1526,12 +1525,19 @@ progress::-webkit-progress-bar {
     }
 
     #game-button-container {
+        left: 46%;
+        bottom: 30%;
         padding-top: 17vh;
-        left: 44.9%;
+        padding-bottom: 0;
+        height: auto;
     }
 
     #game-button-text {
         top: 4%;
         width: 40%;
+    }
+
+    #info-modal-button {
+        padding: 1px 1px 1px 0;
     }
 }

@@ -530,7 +530,7 @@ window.onclick = function(event) {
 // MUSIC & SFX:
 
 const backgroundSfx = new Audio('sounds/background.mp3');
-backgroundSfx.preload="auto";
+backgroundSfx.preload = 'auto';
 
 function playBackgroundSfx(){
     backgroundSfx.loop = true;
@@ -556,24 +556,30 @@ function playGroanSfx() {
     }
 }
 
+const rockWhoosh = new Audio('sounds/rock-whoosh.mp3');
+rockWhoosh.preload = 'auto';
+
 function playRockWhoosh(){
-    const rockWhoosh = new Audio('sounds/rock-whoosh.mp3');
     rockWhoosh.volume = 0.8;
     if (soundOn) {
         rockWhoosh.play();
     }
 }
 
+const paperWhoosh = new Audio('sounds/paper-whoosh.mp3');
+paperWhoosh.preload = 'auto';
+
 function playPaperWhoosh(){
-    const paperWhoosh = new Audio('sounds/paper-whoosh.mp3');
     paperWhoosh.volume = 0.4;
     if (soundOn) {
         paperWhoosh.play();
     }
 }
 
+const scissorsWhoosh = new Audio('sounds/scissors-whoosh.mp3');
+scissorsWhoosh.preload = 'auto';
+
 function playScissorsWhoosh(){
-    const scissorsWhoosh = new Audio('sounds/scissors-whoosh.mp3');
     scissorsWhoosh.volume = 0.35;
     if (soundOn) {
         scissorsWhoosh.play();
@@ -582,9 +588,9 @@ function playScissorsWhoosh(){
 
 const tablePounds = new Audio('sounds/table-pounds-1.mp3');
 tablePounds.preload = "auto";
+tablePounds.volume = 0.35;
 
 function playTablePoundsSfx() {
-    tablePounds.volume = 0.35;
     if (soundOn) {
         tablePounds.play();
     }
