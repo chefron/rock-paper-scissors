@@ -162,11 +162,11 @@ body {
 /*LOADING PAGE*/
 
 #loading-page {
-    z-index: 10;
+    position: absolute;
+    z-index: 15;
     width: 100%;
     height: 100%;
     background: #ffffff;
-    visibility: visible;
 }
 
 #loader {
@@ -197,17 +197,16 @@ It's split into the sections and generally reads from left to right, top to bott
     display: flex;
     flex-direction: column;
     justify-content: stretch; 
-    visibility: hidden;
 }
 
 /*HEADER*/
 
 #header {
     width: 100vw;
-    min-height: 15vh;
+    height: fit-content;
     z-index: 4;
     display: flex;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     align-items: center;
     justify-content: center;
     padding: 5px 0 5px;
@@ -309,8 +308,11 @@ maintained here for posterity.*/
 /*MAIN GAMEPLAY AREA*/
 
 #gameplay-container {
-    flex: 1 1 auto;
+    position: relative;
+    flex: 0 1 auto;
     width: 100%;
+    height: 69vh;
+    overflow: hidden;
 }
 
 
@@ -322,7 +324,7 @@ maintained here for posterity.*/
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 69vh;
+    height: 102%;
     transform: translateY(-2px);
     background-image: linear-gradient(
         to right,
@@ -627,7 +629,6 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 /*PLAY BUTTON*/
 
 #play-button-wrapper {
-    z-index: 1;
     width: 50%;
     margin: 2vh auto;
     display: flex;
@@ -666,7 +667,7 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 
 #game-over-modal-container {
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     display: none;
     width: 100%;
     height: 100%;
@@ -749,7 +750,6 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 .lose-background {
-    position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(91, 3, 3, 0.656);
@@ -1077,7 +1077,7 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     z-index: 4;
     flex: 1 1 auto;
     width: 100vw;
-    min-height: 15vh;
+    min-height: 18vh;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -1351,7 +1351,6 @@ progress::-webkit-progress-bar {
 @media (max-width: 530px){
 
     #header {
-        flex: 1 1 auto;
         margin: 0px;
     }
 
@@ -1484,17 +1483,9 @@ progress::-webkit-progress-bar {
 }
 
 @media (orientation: landscape) and (max-height: 430px){
-    
-    #header {
-        flex: 1 1 auto;
-    }
 
     #title {
         font-size: clamp(2em, 8vmin, 4em);
-    }
-
-    #start-game-screen {
-        height: 68.5vh;
     }
 
     #input-rounds-container {

@@ -1,8 +1,7 @@
 // LOADING SCREEN:
 
 window.addEventListener("load", (event) => {
-    document.querySelector(".main-flex-container").style.visibility = "visible";
-    document.querySelector("#loading-page").style.visibility = "none";
+    document.querySelector("#loading-page").style.display = 'none';
   });
 
 // START SCREEN:
@@ -466,7 +465,7 @@ function displayUserLosesModal(){
     setTimeout(function(){
         playGroanSfx();
     },3000);
-    gameOverModalContainer.style.display = "block";
+    gameOverModalContainer.style.display = "flex";
     gameOverModalContainer.classList.add("fade-in-modal", "lose-background");
     gameOverModalTitle.classList.add("lose-title");
     gameOverModal.prepend(gameOverModalTitle);
