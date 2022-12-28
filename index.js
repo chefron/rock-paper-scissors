@@ -600,7 +600,20 @@ function buttonClickSfx() {
     }
 }
 
+// MISCELLANEOUS:
 
+// Changes screen orientation to full screen if landscape mode;
+window.addEventListener("orientationchange", function(event) {
+    var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
+  
+  if ( ["landscape-primary","landscape-secondary"].indexOf(orientation)!=-1) {
+    becomeFullscreen();
+  }
+  
+  else if (orientation === undefined) {
+    console.log("The orientation API isn't supported in this browser :("); 
+  }
+  });
 
 
 
