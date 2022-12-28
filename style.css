@@ -311,7 +311,7 @@ maintained here for posterity.*/
     position: relative;
     flex: 0 1 auto;
     width: 100%;
-    height: 69vh;
+    height: 69%;
     overflow: hidden;
 }
 
@@ -1077,7 +1077,7 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     z-index: 4;
     flex: 1 1 auto;
     width: 100vw;
-    min-height: 18vh;
+    min-height: 18%;
     display: flex;
     flex-direction: column;
     justify-content: left;
