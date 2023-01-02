@@ -307,7 +307,6 @@ maintained here for posterity.*/
     flex: 0 1 auto;
     width: 100%;
     height: 69%;
-    overflow: hidden;
 }
 
 
@@ -1340,6 +1339,23 @@ progress::-webkit-progress-bar {
     color: #28D7FE;
 }
 
+#request-fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    background: rgba(0,0,0,0.8);
+}
+
+#fullscreen-button {
+    transform: scale(.5);
+    filter: brightness(120%);
+}
+
 
 /* MEDIA QUERIES */
 
@@ -1487,21 +1503,26 @@ progress::-webkit-progress-bar {
         font-size: clamp(2em, 8vmin, 4em);
     }
 
-    #input-rounds-container {
-        margin-top: -3%;
+    #input-rounds-wrapper {
+        margin-top: -2%;
         margin-bottom: -1%;
     }
 
     .input-rounds-text {
-        font-size: clamp(1.5em, 5vmin, 2em);
+        font-size: 1.2em;
     }
 
-    #switch-container {
-        transform: scale(.23);
+    .sound-text {
+        font-size: 1.2em;
+    }
+
+    #switch-wrapper {
+        transform: scale(.25);
     }
 
     #play-button {
         font-size: clamp(2.5em, 6vmin, 4em);
+        padding-top: .25em;
     }
 
     #play-again-button {

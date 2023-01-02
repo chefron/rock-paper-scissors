@@ -610,51 +610,57 @@ function buttonClickSfx() {
 
 // Changes screen orientation to full screen if landscape mode;
 
-function getResolution () {
-    const height = window.innerHeight;
-    alert(height);
-}
+const requestFullscreen = document.getElementById('request-fullscreen');
+const fullscreenButton = document.getElementById('fullscreen-button');
 
-getResolution ();
+let landscape = window.matchMedia('(orientation: landscape)');
+let portrait = window.matchMedia('(orientation: portrait)');
 
-
-let landscape = window.matchMedia("(orientation: landscape)");
-
-landscape.addEventListener("change", function(e) {
-    if(e.matches) {
-        alert("landscape!");
-    } else {
-        alert("portrait");
+landscape.addEventListener('change', function(e) {
+    if(e.matches && window.innerHeight < 430) {
+        requestFullscreen.style.display = 'flex';
+        console.log('landscape mode');
     }
 })
 
+fullscreenButton.addEventListener('click', becomeFullscreen);
+
+portrait.addEventListener("change", function(e) {
+    if(e.matches) {
+        requestFullscreen.style.display = 'none';
+        closeFullscreen();
+        console.log('portrait mode');
+    }
+})
+
+var elem = document.documentElement;
+
 function becomeFullscreen() {
-    var elem = document.documentElement;
-  if (elem.requestFullscreen) {
+    requestFullscreen.style.display = 'none';
+    if (elem.requestFullscreen) {
     elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) {
+    } else if (elem.mozRequestFullScreen) {
     /* Firefox */
     elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) {
+    } else if (elem.webkitRequestFullscreen) {
     /* Chrome, Safari and Opera */
     elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
+    } else if (elem.msRequestFullscreen) {
     /* IE/Edge */
     elem.msRequestFullscreen();
-  }
+    }
 }
 
-window.addEventListener("orientationchange", function(event) {
-    var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
-  
-  if ( ["landscape-primary","landscape-secondary"].indexOf(orientation)!=-1) {
-    becomeFullscreen();
-  }
-  
-  else if (orientation === undefined) {
-    alert("The orientation API isn't supported in this browser :("); 
-  }
-  });
+function closeFullscreen() {
+    if (document.exitFullscreen && screen.orientation.type === 'landscape-primary'){
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen && screen.orientation.type === 'landscape-primary'){
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullScreen && screen.orientation.type === 'landscape-primary'){
+        document.msExitFullScreen();
+    }
+}
+
 
 
 
