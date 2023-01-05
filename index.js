@@ -652,12 +652,14 @@ function becomeFullscreen() {
 }
 
 function closeFullscreen() {
-    if (document.exitFullscreen && screen.orientation.type === 'landscape-primary'){
-        document.exitFullscreen();
-    } else if (document.webkitExitFullscreen && screen.orientation.type === 'landscape-primary'){
-        document.webkitExitFullscreen();
-    } else if (document.msExitFullScreen && screen.orientation.type === 'landscape-primary'){
-        document.msExitFullScreen();
+    if (window.innerHeight == screen.height) { // checks if browser is full screen
+        if (document.exitFullscreen && screen.orientation.type === 'landscape-primary'){
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen && screen.orientation.type === 'landscape-primary'){
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullScreen && screen.orientation.type === 'landscape-primary'){
+            document.msExitFullScreen();
+        }
     }
 }
 
