@@ -200,7 +200,6 @@ It's split into the sections and generally reads from left to right, top to bott
 #header {
     width: 100vw;
     height: fit-content;
-    min-height: 13%;
     z-index: 4;
     display: flex;
     flex: 1 0 auto;
@@ -308,7 +307,6 @@ maintained here for posterity.*/
     position: relative;
     flex: 0 1 auto;
     width: 100%;
-
 }
 
 
@@ -1069,9 +1067,9 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 
 #footer {
     z-index: 4;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     width: 100vw;
-    min-height: 15%;
+    min-height: 0%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1131,7 +1129,7 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     max-width: 200px;
     text-align: center;
     font-family: 'Pacifico', cursive;
-    font-size: clamp(1.5em, 5vw, 4em);
+    font-size: clamp(1.3em, 4.8vw, 4em);
     color: rgb(241, 216, 216);
     text-shadow: 0 0 3px #fff, 
                  0 0 7px #fff, 
@@ -1360,11 +1358,13 @@ progress::-webkit-progress-bar {
     #header {
         margin: 0px;
         min-height: 0%;
+        max-height: 13%;
     }
 
     #title {
-        margin: 2% 7% 2% 7%;
-        padding: 2.5px;
+        margin: 2% 4% 2% 4%;
+        padding: 2% 1% 1% 1%;
+        font-size: 7vw;
     }
 
     .user-fist, .user-rock {
