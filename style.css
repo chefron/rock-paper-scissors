@@ -200,9 +200,10 @@ It's split into the sections and generally reads from left to right, top to bott
 #header {
     width: 100vw;
     height: fit-content;
+    min-height: 13%;
     z-index: 4;
     display: flex;
-    flex: 1 1 auto;
+    flex: 1 0 auto;
     align-items: center;
     justify-content: center;
     padding: 5px 0 5px;
@@ -222,6 +223,7 @@ It's split into the sections and generally reads from left to right, top to bott
 #title {
     width: fit-content;
     padding: .75% .75% 0 .75%;
+    margin: .5%;
     font-family: neon, Arial, sans-serif;
     font-size: clamp(2em, 8vw, 4em);
     text-align: center;
@@ -306,7 +308,7 @@ maintained here for posterity.*/
     position: relative;
     flex: 0 1 auto;
     width: 100%;
-    height: 69%;
+
 }
 
 
@@ -318,8 +320,7 @@ maintained here for posterity.*/
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 102%;
-    transform: translateY(-2px);
+    height: 100%;
     background-image: linear-gradient(
         to right,
         black 0%,
@@ -772,7 +773,7 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 
 #gameplay-canvas-wrapper {
     position: relative;
-    flex: 2 0 auto;
+    flex: 1 1 auto;
     width: 100%;
     height: auto;
     overflow: hidden;
@@ -1067,14 +1068,13 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 /*FOOTER*/
 
 #footer {
-    position: relative;
     z-index: 4;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     width: 100vw;
-    min-height: 17%;
+    min-height: 15%;
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: space-between;
     background-image: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.75) 25%, 
     rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.75) 75%, black 100%),
     url(images/red-brick-wall.jpg);
@@ -1088,14 +1088,12 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 #player-names {
-    position: relative;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     width: 100%;
-    height: 5vh;
-    margin: -1.5vh 0 1.5vh 0;
+    margin: -1.5vh 0 .6vh 0;
     font-family: 'neondesmonregular', Arial, Helvetica, sans-serif;
     color: #fff;
-    font-size: clamp(.7em, 1.4em, 2em);
+    font-size: clamp(.7em, 1.2em, 2em);
     text-shadow: 0 0 5px #fff, 
                  0 0 10px #fff, 
                  0 0 15px #0073e6, 
@@ -1105,8 +1103,8 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 #user-name {
     position: absolute;
     left: 0;
-    display: none;
     width: 42%;
+    display: none;
     text-align: right;
 }
 
@@ -1115,17 +1113,17 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
     right: 0;
     width: 42%;
     display: none;
+    text-align: left;
 }
 
 #health-container {
-    flex: 0 0 auto;
-    height: 5vh;
-    width: 100vw;
+    flex: 1 2 5%;
+    width: 100%;
+    min-height: 0;
     display: none;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    margin-top: 5px;
 }
 
 #health-title {
@@ -1229,15 +1227,13 @@ progress::-webkit-progress-bar {
 /*INFORMATION POP-UP*/
 
 #info-modal-wrapper {
-    position: absolute;
-    right: 0%;
-    bottom: 0%;
-    width: 100%;
-    height: 100%;
+    flex: 1 1 3%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 #info-modal-button {
-    position: absolute;
     z-index: 5;
     right: 0%;
     bottom: 0%;
@@ -1424,17 +1420,12 @@ progress::-webkit-progress-bar {
         width: 40%;
     }
 
-    #footer {
-        flex: 1 1 auto;
-    }
-
     #player-names {
         font-size: clamp(.7em, 1em, 2em);
-        margin: -1.5vh 0 0 0;
     }
 
     #health-title {
-        font-size: clamp(1.5em, 5vw, 3em);
+        font-size: clamp(1.6em, 5vw, 3em);
     }
 
 }
@@ -1496,7 +1487,7 @@ progress::-webkit-progress-bar {
 @media (orientation: landscape) and (max-height: 430px){
 
     html {
-            overflow-y: scroll;
+        overflow-y: scroll;
     }
 
     #title {
@@ -1530,16 +1521,20 @@ progress::-webkit-progress-bar {
     }
 
     #player-names {
-        height: 4vh;
-        margin: -2.3vh 0 1.5vh 0;
+        height: 3%;
+        margin: -2.3vh 0 .3vh 0;
         font-size: clamp(.6em, .8em, 2em);
+    }
+
+    #user-name, #cpu-name {
+        margin-bottom: .5%;   
     }
 
     #health-title {
         font-size: clamp(1em, 4vw, 3em);
     }
 
-    #info-button {
+    #info-modal-button {
         padding: 2.5px 2.5px 2.5px 0;
         font-size: .7em;
         font-weight: 500;
