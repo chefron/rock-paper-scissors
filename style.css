@@ -202,7 +202,7 @@ It's split into the sections and generally reads from left to right, top to bott
     height: fit-content;
     z-index: 4;
     display: flex;
-    flex: 1 0 auto;
+    flex: 2 0 auto;
     align-items: center;
     justify-content: center;
     padding: 5px 0 5px;
@@ -1067,9 +1067,9 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 
 #footer {
     z-index: 4;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     width: 100vw;
-    min-height: 17vh;
+    min-height: 17%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1117,7 +1117,7 @@ https://dev.to/ykadosh/how-i-made-this-realistic-red-switch-pure-css-49g2 */
 }
 
 #health-container {
-    flex: 1 2 auto;
+    flex: 1 1 auto;
     width: 100%;
     min-height: 0;
     display: none;
@@ -1368,13 +1368,12 @@ progress::-webkit-progress-bar {
     #header {
         margin: 0px;
         min-height: 0%;
-        max-height: 15%;
     }
 
     #title {
         margin: 2% 4% 2% 4%;
         padding: 2% 1% 1% 1%;
-        font-size: 7vw;
+        font-size: 7.2vw;
     }
 
     .user-fist, .user-rock {
@@ -1431,10 +1430,6 @@ progress::-webkit-progress-bar {
         width: 40%;
     }
 
-    #footer {
-        max-height: 15%;
-    }
-
     #player-names {
         font-size: clamp(.7em, 1em, 2em);
         margin-bottom: 0%;
@@ -1444,8 +1439,12 @@ progress::-webkit-progress-bar {
         margin-bottom: 1%;   
     }
 
+    #footer {
+        height: 12%;
+    }
+
     #health-container {
-        margin-bottom: -2%;
+        margin-top: -7%;
     }
 
     #health-title {
