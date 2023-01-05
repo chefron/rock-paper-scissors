@@ -1359,10 +1359,11 @@ progress::-webkit-progress-bar {
 
     #header {
         margin: 0px;
+        min-height: 0%;
     }
 
     #title {
-        margin: 0px 5px 0px 5px;
+        margin: 2% 7% 2% 7%;
         padding: 2.5px;
     }
 
