@@ -625,14 +625,6 @@ landscape.addEventListener('change', function(e) {
 
 fullscreenButton.addEventListener('click', becomeFullscreen);
 
-portrait.addEventListener("change", function(e) {
-    if(e.matches) {
-        requestFullscreen.style.display = 'none';
-        closeFullscreen();
-        console.log('portrait mode');
-    }
-})
-
 var elem = document.documentElement;
 
 function becomeFullscreen() {
@@ -651,64 +643,23 @@ function becomeFullscreen() {
     }
 }
 
-function closeFullscreen() {
-    if (window.innerHeight == screen.height) { // checks if browser is full screen
-        if (document.exitFullscreen && screen.orientation.type === 'landscape-primary'){
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen && screen.orientation.type === 'landscape-primary'){
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullScreen && screen.orientation.type === 'landscape-primary'){
-            document.msExitFullScreen();
-        }
+// Exits from fullscreen when phone is in portrait mode
+
+portrait.addEventListener("change", function(e) {
+    if (e.matches && window.innerHeight == screen.height) { // checks if in full screen mode
+        requestFullscreen.style.display = 'none';
+        closeFullscreen();
+        console.log('portrait mode');
     }
+})
+
+function closeFullscreen() {
+        if (document.exitFullscreen){
+            document.exitFullscreen();
+            console.log('exit full screen');
+        } else if (document.webkitExitFullscreen){
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullScreen){
+            document.msExitFullScreen();
+        }    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1373,7 +1373,7 @@ progress::-webkit-progress-bar {
     #title {
         margin: 2% 4% 2% 4%;
         padding: 2% 1% 1% 1%;
-        font-size: 7.2vw;
+        font-size: 8vw;
     }
 
     .user-fist, .user-rock {
@@ -1432,7 +1432,7 @@ progress::-webkit-progress-bar {
 
     #player-names {
         font-size: clamp(.7em, 1em, 2em);
-        margin-bottom: 0%;
+        margin-bottom: -5%;
     }
 
     #user-name, #cpu-name {
@@ -1441,10 +1441,12 @@ progress::-webkit-progress-bar {
 
     #footer {
         height: 12%;
+        flex: 0 2 auto;
     }
 
     #health-container {
-        margin-top: -7%;
+        flex: 1 1 0;
+        margin-top: -25%;
     }
 
     #health-title {
