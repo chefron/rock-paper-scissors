@@ -201,7 +201,7 @@ It's split into the sections and generally reads from left to right, top to bott
     z-index: 4;
     width: 100vw;
     display: flex;
-    flex: 2 1 auto;
+    flex: 1.5 1 auto;
     height: max-content;
     align-items: center;
     justify-content: center;
@@ -1415,8 +1415,8 @@ progress::-webkit-progress-bar {
     }
 
     #game-button-container {
-        left: 46.1%;
-        scale: 2.4;
+        left: 46.5%;
+        scale: 2.5;
         padding-top: 27vh;
     }
 
@@ -1437,12 +1437,8 @@ progress::-webkit-progress-bar {
         margin-bottom: 1%;   
     }
 
-    #footer {
-        height: 12%;
-    }
-
     #health-container {
-        margin-top: -4%;
+        margin-top: -6%;
     }
 
     #health-title {
