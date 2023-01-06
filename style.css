@@ -224,7 +224,7 @@ It's split into the sections and generally reads from left to right, top to bott
     padding: .75% .75% 0 .75%;
     margin: .5%;
     font-family: neon, Arial, sans-serif;
-    font-size: clamp(2em, 8vw, 4em);
+    font-size: clamp(2em, 7.3vw, 3em);
     text-align: center;
     border: 3px solid #233da4cb;
     border-radius: 10px;
@@ -1415,8 +1415,8 @@ progress::-webkit-progress-bar {
     }
 
     #game-button-container {
-        left: 46%;
-        scale: 2.3;
+        left: 46.1%;
+        scale: 2.4;
         padding-top: 27vh;
     }
 
@@ -1442,7 +1442,7 @@ progress::-webkit-progress-bar {
     }
 
     #health-container {
-        
+        margin-top: -4%;
     }
 
     #health-title {

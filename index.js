@@ -615,6 +615,7 @@ const fullscreenButton = document.getElementById('fullscreen-button');
 
 let landscape = window.matchMedia('(orientation: landscape)');
 let portrait = window.matchMedia('(orientation: portrait)');
+let isFullScreen = false;
 
 landscape.addEventListener('change', function(e) {
     if(e.matches && window.innerHeight < 430) {
@@ -628,6 +629,7 @@ fullscreenButton.addEventListener('click', becomeFullscreen);
 var elem = document.documentElement;
 
 function becomeFullscreen() {
+    isFullScreen = true;
     requestFullscreen.style.display = 'none';
     if (elem.requestFullscreen) {
     elem.requestFullscreen();
@@ -645,21 +647,24 @@ function becomeFullscreen() {
 
 // Exits from fullscreen when phone is in portrait mode
 
-portrait.addEventListener("change", function(e) {
-    if (e.matches && window.innerHeight == screen.height) { // checks if in full screen mode
+portrait.addEventListener("change", function(e) { 
+    if (e.matches && isFullScreen) {
         requestFullscreen.style.display = 'none';
         closeFullscreen();
         console.log('portrait mode');
+    } else if (e.matches) {
+        requestFullscreen.style.display = 'none';
     }
 })
 
 function closeFullscreen() {
-        if (document.exitFullscreen){
+    isFullScreen = false;
+    if (document.exitFullscreen){
             document.exitFullscreen();
             console.log('exit full screen');
-        } else if (document.webkitExitFullscreen){
+    } else if (document.webkitExitFullscreen){
             document.webkitExitFullscreen();
-        } else if (document.msExitFullScreen){
+    } else if (document.msExitFullScreen){
             document.msExitFullScreen();
-        }    
+    }    
 }
