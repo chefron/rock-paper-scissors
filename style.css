@@ -356,7 +356,7 @@ maintained here for posterity.*/
 #input-rounds-wrapper {
     flex: 0 1 auto;
     width: 100%;
-    margin-top: -3%;
+    margin-top: -1.7%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1460,7 +1460,7 @@ progress::-webkit-progress-bar {
     }
 
     #health-title {
-        font-size: 6vw;
+        font-size: 5vw;
     }
 
     #player-names {
@@ -1468,8 +1468,6 @@ progress::-webkit-progress-bar {
         font-size: 1em;
     }
 }
-
-
 
 @media (min-width: 1200px){
 
@@ -1495,6 +1493,10 @@ progress::-webkit-progress-bar {
         width: 55vw;
         margin-bottom: -48vh;
          
+    }
+
+    #input-rounds-wrapper {
+        margin-top: -1%;
     }
 
     #best-of {
