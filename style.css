@@ -1409,11 +1409,6 @@ progress::-webkit-progress-bar {
         margin-left: -7vw;
     }
 
-    #game-button-text {
-        top: 12%;
-        width: 30%;
-    }
-
     #game-button-container {
         left: 46.5%;
         scale: 2.5;
@@ -1425,7 +1420,7 @@ progress::-webkit-progress-bar {
     }
 
     #game-button-text {
-        top: 12%;
+        top: 9.5%;
         width: 40%;
     }
 
@@ -1438,7 +1433,7 @@ progress::-webkit-progress-bar {
     }
 
     #health-container {
-        margin-top: -2.5%;
+        margin-top: -3%;
     }
 
     #health-title {
