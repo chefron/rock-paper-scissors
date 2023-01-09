@@ -1437,6 +1437,10 @@ progress::-webkit-progress-bar {
         margin-bottom: 1%;   
     }
 
+    #health-container {
+        margin-top: -2.5%;
+    }
+
     #health-title {
         font-size: 6vw;
     }
