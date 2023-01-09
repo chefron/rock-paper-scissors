@@ -1439,6 +1439,10 @@ progress::-webkit-progress-bar {
     #health-title {
         font-size: 6vw;
     }
+
+    #info-modal-button {
+        padding: 1px 1px 1px 0;
+    }
 }
 
 @media (min-width: 531px) and (max-width: 1199px) {
